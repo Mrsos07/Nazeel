@@ -1,9 +1,20 @@
+# Team Name
+- The Future Seed
+## Team Members
+- Saud AlGhamdi (TL)
+- Yousef Alsaadan
+- Bakr Hawsawi
+- Suliman AlShammri
+
+
+
+
 #  Nazeel Project
 
 **Project Description:** "Nazeel" is an innovative website aimed at simplifying and enhancing the hotel stay experience for guests. The engagement with the guest begins the moment a room is booked, wherein the website connects the guest to all available services within the hotel. "Nazeel" is the new path to an excellent hotel experience, providing guests with peace of mind and enabling them to enjoy their stay to the fullest.
 
 
-##Feature List:
+## Feature List:
 
 -   **Comprehensive Customization:** Once the hotel populates the site with the guest's name, phone number, and room number, the guest can easily access all available services.
 -   **Multiple Services:** Guests can avail themselves of a range of services such as dining from the restaurant, laundry, coffee, grocery, room cleaning, and additional room needs like extra pillows and power outlets.
