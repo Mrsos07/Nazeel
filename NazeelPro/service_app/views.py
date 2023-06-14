@@ -5,11 +5,13 @@ from django.http import HttpRequest
 
 
 def service(request:HttpRequest):
+    """Rendering  the service page to show all the services that are available in the database"""
     services = MainService.objects.all()
 
     return render(request,'main_app/services.html', {'services': services})
 
 def add_service(request:HttpRequest):
+    """"Add a new service to the database and redirect to the service page"""
     if request.method == 'POST':
         new_service = MainService(name_service=request.POST["name_service"], description_service=request.POST["description_service"])
         new_service.save()
