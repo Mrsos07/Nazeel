@@ -1,0 +1,18 @@
+{% extends 'main_app/index.html' %}
+{% load static %}
+
+{% block title %} Services page {% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center mt-5 mb-5">
+    <a href="{% url 'service_app:add_service' %}" class="btn btn-primary btn-lg px-4 me-md-2">Add Services</a>
+</div>
+<div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">service title</h5>
+        <p class="card-text">service discription</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+{% endblock %}
