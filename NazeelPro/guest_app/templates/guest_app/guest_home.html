@@ -1,0 +1,141 @@
+{% extends 'main_app/index.html' %}
+{% load static %}
+
+{% block title %} Nazeel | Home page {% endblock %}
+
+{% block content %}
+    <!-- hero sectoin -->
+    <section class="home" id="home">
+        <div class="head_container">
+        <div class="box">
+            <div class="text">
+            <h1>Hotel Name</h1>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            </p>
+            <button>MORE INFO</button>
+            </div>
+        </div>
+        <div class="image">
+            <img src="{% static 'images/lobe.jpg' %}" class="slide">
+        </div>
+        </div>
+    </section>
+    <script>
+        function img(anything) {
+        document.querySelector('.slide').src = anything;
+        }
+
+        function change(change) {
+        const line = document.querySelector('.image');
+        line.style.background = change;
+        }
+    </script>
+
+    <!-- Services section -->
+    <section class="room top" id="room">
+        <div class="container">
+          <div class="heading_top flex1">
+            <div class="heading">
+              <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
+              <h2>Services</h2>
+            </div>
+            <div class="button">
+              <button class="btn1">VIEW ALL</button>
+            </div>
+          </div>
+    
+          <div class="content grid">
+            <div class="box">
+              <div class="img">
+                <img src="{% static 'images/bar.jpg' %}" alt="">
+              </div>
+              <div class="text text-row">
+                <div>
+                  <h3>Superior Soble Rooms</h3>
+                <p> rate </p>
+                </div>
+                <div class="order-btn">
+                  <a href="">Order</a>
+                </div>
+              </div>
+            </div>
+            <div class="box">
+              <div class="img">
+                <img src="{% static 'images/bath.jpg' %}" alt="">
+              </div>
+              <div class="text text-row">
+                <div>
+                  <h3>Superior Soble Rooms</h3>
+                <p> rate </p>
+                
+                </div>
+                <div class="order-btn">
+                  <a href="">Order</a>
+                </div>
+              </div>
+            </div>
+            <div class="box">
+              <div class="img">
+                <img src="{% static 'images/bathroom.jpg' %}" alt="">
+              </div>
+              <div class="text text-row">
+                <div>
+                  <h3>Superior Soble Rooms</h3>
+                <p> rate </p>
+                </div>
+                <div class="order-btn">
+                  <a href="">Order</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <!-- Activities sections -->
+    <section class="wrapper top">
+        <div class="container">
+          <div class="text">
+            <h2>See the Activities</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+    
+            <div class="content">
+              <div class="box flex">
+                <i class="fas fa-swimming-pool"></i>
+                <span>Swimming pool</span>
+              </div>
+              <div class="box flex">
+                <i class="fas fa-dumbbell"></i>
+                <span>Gym & yogo</span>
+              </div>
+              <div class="box flex">
+                <i class="fas fa-spa"></i>
+                <span>Spa & massage</span>
+              </div>
+              <div class="box flex">
+                <i class="fas fa-ship"></i>
+                <span>Boat Tours</span>
+              </div>
+              <div class="box flex">
+                <i class="fas fa-swimmer"></i>
+                <span>Surfing Lessons</span>
+              </div>
+              <div class="box flex">
+                <i class="fas fa-microphone"></i>
+                <span>Conference room</span>
+              </div>
+              <div class="box flex">
+                <i class="fas fa-water"></i>
+                <span>Diving & smorking</span>
+              </div>
+              <div class="box flex">
+                <i class="fas fa-umbrella-beach"></i>
+                <span>Private Beach</span>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+{% endblock %}
