@@ -4,5 +4,6 @@ from django.http import HttpRequest
 
 
 def sign_in(request:HttpRequest):
+    """rendering sign in template"""
 
     return render(request,'guest_app/sign_in.html')

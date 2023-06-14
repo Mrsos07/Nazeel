@@ -8,11 +8,13 @@
     <a href="{% url 'service_app:add_service' %}" class="btn btn-primary btn-lg px-4 me-md-2">Add Services</a>
 </div>
 <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
+    {% for service in services%}
+    <img src="" class="card-img-top" alt="...">
     <div class="card-body">
-        <h5 class="card-title">service title</h5>
-        <p class="card-text">service discription</p>
+        <h5 class="card-title">{{service.name_service}}</h5>
+        <p class="card-text">{{service.description_service}}</p>
         <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
+    {% endfor %}
 </div>
 {% endblock %}
