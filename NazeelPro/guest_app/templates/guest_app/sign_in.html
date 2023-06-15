@@ -11,19 +11,20 @@
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
     <div class="form-floating">
-      <input type="email" class="form-control" name="room_number" placeholder="XXXX">
       <label for="floatingInput">Room Number</label>
-    </div>
-    <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="05XXXXX">
-      <label name="phone_number">Phone Number</label>
+      <input type="text" class="form-control" name="room_number" placeholder="XXXX">
     </div>
 
-    <div class="checkbox mb-3">
+    <div class="form-floating">
+      <label >Phone Number</label>
+      <input type="password" name="phone_number" class="form-control" id="floatingPassword" placeholder="05XXXXX">
+    </div>
+
+    <!-- <div class="checkbox mb-3">
       <label>
         <input type="checkbox" value="remember-me"> Remember me
       </label>
-    </div>
+    </div> -->
     <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
   </form>
 {% endblock %}

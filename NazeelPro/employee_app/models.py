@@ -13,5 +13,5 @@ class Employee(models.Model):
 
     def __str__(self):
         """Return string representation"""
-        return f"{self.hotel} - {self.position} - {self.name}"
+        return f" {self.name}"
 
