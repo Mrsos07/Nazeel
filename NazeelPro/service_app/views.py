@@ -26,8 +26,13 @@ def add_service(request: HttpRequest):
         # Convert the input string to a datetime object
         time__on = datetime.strptime(time_on,  '%H:%M')
         time__off = datetime.strptime(time_off,  '%H:%M')
-        new_service = MainService(
-            name_service=request.POST["name_service"], description_service=request.POST["description_service"], time_on=time__on, time_off=time__off, hotel=hotel)
+        if "image" in request.FILES:
+
+            new_service = MainService(
+                name_service=request.POST["name_service"], description_service=request.POST["description_service"], time_on=time__on, time_off=time__off, image=request.FILES["image"], hotel=hotel)
+        else:
+            new_service = MainService(
+                name_service=request.POST["name_service"], description_service=request.POST["description_service"], time_on=time__on, time_off=time__off, hotel=hotel)
         new_service.save()
         return redirect('service_app:service')
 
