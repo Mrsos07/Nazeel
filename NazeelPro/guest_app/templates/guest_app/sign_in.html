@@ -1,10 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'main_app/index.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block title %} Sign in  {% endblock %}
+
+{% block content %}
+
+<form action="{% url 'guest_app:sign_in' %}" method="POST">
+    {% csrf_token %}
+    <!-- <img class="mb-4" src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+    <div class="form-floating">
+      <input type="email" class="form-control" name="room_number" placeholder="XXXX">
+      <label for="floatingInput">Room Number</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" placeholder="05XXXXX">
+      <label name="phone_number">Phone Number</label>
+    </div>
+
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+  </form>
+{% endblock %}
