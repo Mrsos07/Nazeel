@@ -12,15 +12,15 @@
 
 <!-- Display the services -->
 <div class="card" style="width: 18rem;">
-    
-    <img src="" class="card-img-top" alt="...">
+    {% for service in services%}
+    <img src="{{service.image.url}}" class="card-img-top" alt="...">
     <div class="card-body">
         <h5 class="card-title">{{service.name_service}}</h5>
         <p class="card-text">{{service.description_service}}</p>
         <a href="{% url 'service_app:menu' %}" class="btn btn-primary">Open</a>
         <a href="#" class="btn btn-primary">Delete</a>
     </div>
-    
+    {% endfor%}
 </div>
     
 {% endblock %}

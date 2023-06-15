@@ -39,7 +39,7 @@ def add_service(request: HttpRequest):
         new_service.save()
         return redirect('service_app:service')
 
-    return render(request,'service_app/add_service.html')
+    return render(request, 'service_app/add_service.html', {'hotels': hotels})
 
 def menu(request:HttpRequest):
     return render(request,"service_app/menu.html")
