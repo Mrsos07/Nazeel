@@ -31,6 +31,15 @@
         <input type="file" name="image"/>
     </div>
 
+    <div class="mb-3">
+        <label for="hotel">Hotel:</label>
+        <select name="hotel" required>
+          {% for hotel in hotels %}
+            <option value="{{ hotel.id }}">{{ hotel.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
     <button class="btn btn-primary w-100 py-2" type="submit" fdprocessedid="1isj6h">Add appointment</button>
 </form>
 {% endblock %}
