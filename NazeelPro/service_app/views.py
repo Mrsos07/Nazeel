@@ -10,9 +10,9 @@ def service(request:HttpRequest):
     services = MainService.objects.all()
 
 
-    return render(request,'main_app/services.html', {'services': services})
+    return render(request,'service_app/service.html', {'services': services})
 
-    return render(request,'service_app/service.html')
+    # return render(request,'service_app/service.html')
 
 
 def add_service(request:HttpRequest):
@@ -23,3 +23,15 @@ def add_service(request:HttpRequest):
         return redirect('service_app:service')
 
     return render(request,'service_app/add_service.html')
+
+def menu(request:HttpRequest):
+    return render(request,"service_app/menu.html")
+
+def edit_items(request:HttpRequest):
+    return render(request,"service_app/edit_items.html")
+
+def order_request(request:HttpRequest):
+    return render(request,"service_app/order_request.html")
+
+def active_order(request:HttpRequest):
+    return render(request,"service_app/active_order.html")

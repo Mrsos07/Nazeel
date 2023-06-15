@@ -1,0 +1,93 @@
+{% extends "main_app/index.html" %}
+
+{% block title %}Order Request Page{% endblock%}
+
+{% block content %} 
+<div class="row row-cols-sm-4 p-4 me-5 text-center d-flex justify-content-center">
+    <a href="{% url 'service_app:menu' %}" type="button" class=" btn btn-light shadow">Menu</a>
+    <a href="{% url 'service_app:order_request' %}" type="button" style="background-color: #7e7e84;" class=" btn btn-light shadow">Order Request</a>
+    <a href="{% url 'service_app:active_order' %}" type="button" class=" btn btn-light shadow">Active Order</a>
+</div>
+<div class="card mb-3" >
+  <div class="row g-0">
+  <p class="card-text">Room Number:000</p>
+  <p class="card-text">Delving Time: 00:00</p>
+    <div class="col-md-8">
+      <div class="card-body">
+        <div class="row g-0">
+    <div class="col-md-4">
+      <img src="/static/images/default.png" class="img-fluid rounded-start" style="height: 100px; width: 100px;" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Item name</h5>
+        <p class="card-text"><small class="text-body-secondary">َuantity: 0</small></p>
+      </div>
+    </div>
+  </div>
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="/static/images/default.png" class="img-fluid rounded-start" style="height: 100px; width: 100px;" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Item name</h5>
+        <p class="card-text"><small class="text-body-secondary">َuantity: 0</small></p>
+      </div>
+    </div>
+  </div>
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="/static/images/default.png" class="img-fluid rounded-start" style="height: 100px; width: 100px;" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Item name</h5>
+        <p class="card-text"><small class="text-body-secondary">َuantity: 0</small></p>
+      </div>
+    </div>
+  </div>
+        <a href="{% url 'service_app:edit_items' %}" type="button" class=" btn btn-light shadow">Refuse</a>
+        <a href="{% url 'service_app:edit_items' %}" type="button" class=" btn btn-light shadow">Accept</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mb-3" >
+    <div class="row g-0">
+    <p class="card-text">Room Number:000</p>
+    <p class="card-text">Delving Time: 00:00</p>
+      <div class="col-md-8">
+        <div class="card-body">
+          <div class="row g-0">
+      <div class="col-md-4">
+        <img src="/static/images/default.png" class="img-fluid rounded-start" style="height: 100px; width: 100px;" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Item name</h5>
+          <p class="card-text"><small class="text-body-secondary">َuantity: 0</small></p>
+        </div>
+      </div>
+    </div>
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="/static/images/default.png" class="img-fluid rounded-start" style="height: 100px; width: 100px;" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Item name</h5>
+          <p class="card-text"><small class="text-body-secondary">َuantity: 0</small></p>
+        </div>
+      </div>
+    </div>
+          <a href="#" type="button" class=" btn btn-light shadow">Refuse</a>
+          <a href="#" type="button" class=" btn btn-light shadow">Accept</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "main_app/index.html" %}
+
+{% block title %}Servicese Detail Page{% endblock%}
+
+{% block content %} 
+<div class="row row-cols-sm-4 p-4 me-5 text-center d-flex justify-content-center">
+    <a href="{% url 'service_app:menu' %}" type="button" style="background-color: #7e7e84;" class=" btn btn-light shadow">Menu</a>
+    <a href="{% url 'service_app:order_request' %}" type="button" class=" btn btn-light shadow">Order Request</a>
+    <a href="{% url 'service_app:active_order' %}" type="button" class=" btn btn-light shadow">Active Order</a>
+</div>
+<div class="card mb-3 m-auto  d-flex justify-content-center" >
+  <img src="/static/images/default.png" style="height: 120px; object-fit: cover;;" class="card-img-top" alt="...">
+  <div class="card-body">
+    <p class="card-text text-center">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+  </div>
+  
+  <div class="card mb-3" >
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="/static/images/default.png" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Item name</h5>
+        <p class="card-text">Item description Item description Item description Item description Item description Item description Item description Item description </p>
+        <p class="card-text"><small class="text-body-secondary">Item price</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mb-3" >
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="/static/images/default.png" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Item name</h5>
+        <p class="card-text">Item description Item description Item description Item description Item description Item description Item description Item description </p>
+        <p class="card-text"><small class="text-body-secondary">Item price</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row row-cols-sm-4 p-4 me-5 text-center d-flex justify-content-center">
+    <a href="{% url 'service_app:edit_items' %}" type="button" class=" btn btn-light shadow">Edit</a>
+</div>
+
+</div>
+{% endblock %}
