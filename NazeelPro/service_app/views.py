@@ -2,17 +2,21 @@
 from django.shortcuts import render, redirect
 from .models import MainService
 from django.http import HttpRequest
+import datetime
 # Create your views here.
 
 
-def service(request:HttpRequest):
-    """Rendering  the service page to show all the services that are available in the database"""
+def service(request: HttpRequest):
+    """Rendering the service page to show all the services that are available in the database"""
+
     services = MainService.objects.all()
 
+    if services:
+        return render(request, 'main_app/services.html', {'services': services})
+    else:
+        return render(request, 'service_app/add_service.html')
 
-    return render(request,'main_app/services.html', {'services': services})
 
-    return render(request,'service_app/service.html')
 
 
 def add_service(request:HttpRequest):

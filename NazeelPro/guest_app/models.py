@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
-from main_app.models import Hotel 
+from main_app.models import Hotel
 from employee_app.models import Employee
+
 
 
 # Create your models here.
@@ -36,3 +37,5 @@ class Stay(models.Model):
     def __str__(self):
         """Returns a string representation of """
         return f"{self.guest} - {self.check_in_date} - {self.check_out_date}"
+
+
