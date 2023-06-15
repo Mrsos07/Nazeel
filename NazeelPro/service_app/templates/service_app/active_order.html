@@ -1,0 +1,113 @@
+{% extends "main_app/index.html" %}
+
+{% block title %}Order Request Page{% endblock%}
+
+{% block content %} 
+<div class="row row-cols-sm-4 p-4 me-5 text-center d-flex justify-content-center">
+<!-- buttons detail's bar -->
+    <a href="{% url 'service_app:menu' %}" type="button" class=" btn btn-light shadow">Menu</a>
+    <a href="{% url 'service_app:order_request' %}" type="button" class=" btn btn-light shadow">Order Request</a>
+    <a href="{% url 'service_app:active_order' %}" type="button" style="background-color: #7e7e84;" class=" btn btn-light shadow">Active Order</a>
+</div>
+<!--------------- First Order ---------------->
+<div class="card mb-3" >
+  <div class="row g-0">
+    <p class="card-text">Room Number:000</p>
+    <p class="card-text">Timer: 00:00</p>
+    <div class="col-md-8">
+      <div class="card-body">
+
+      <!--------------- First Item ---------------->
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="/static/images/default.png" class="img-fluid rounded-start" style="height: 100px; width: 100px;" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Item name</h5>
+                    <p class="card-text"><small class="text-body-secondary">َuantity: 0</small></p>
+                </div>
+            </div>
+        </div>
+        <!--------------- End Of First Item ---------------->
+
+
+        <!--------------- Secound Item ---------------->
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="/static/images/default.png" class="img-fluid rounded-start" style="height: 100px; width: 100px;" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Item name</h5>
+                    <p class="card-text"><small class="text-body-secondary">َuantity: 0</small></p>
+                </div>
+            </div>
+        </div>
+        <!--------------- End Of Secound Item ---------------->
+
+        <!--------------- Third Item ---------------->
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="/static/images/default.png" class="img-fluid rounded-start" style="height: 100px; width: 100px;" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Item name</h5>
+                    <p class="card-text"><small class="text-body-secondary">َuantity: 0</small></p>
+                </div>
+            </div>
+        </div>
+        <!--------------- End Of Third Item ---------------->
+        <a href="#" type="button" class=" btn btn-light shadow">Done    </a>
+    </div>
+</div>
+  </div>
+</div>
+<!--------------- End Of First Order ---------------->
+
+
+<!--------------- Secound Order ---------------->
+<div class="card mb-3" >
+  <div class="row g-0">
+    <p class="card-text">Room Number:000</p>
+    <p class="card-text">Timer: 00:00</p>
+    <div class="col-md-8">
+      <div class="card-body">
+
+      <!--------------- First Item ---------------->
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="/static/images/default.png" class="img-fluid rounded-start" style="height: 100px; width: 100px;" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Item name</h5>
+                    <p class="card-text"><small class="text-body-secondary">َuantity: 0</small></p>
+                </div>
+            </div>
+        </div>
+        <!--------------- End Of First Item ---------------->
+
+        
+        <!--------------- Secound Item ---------------->
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="/static/images/default.png" class="img-fluid rounded-start" style="height: 100px; width: 100px;" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Item name</h5>
+                    <p class="card-text"><small class="text-body-secondary">َuantity: 0</small></p>
+                </div>
+            </div>
+        </div>
+        <!--------------- End Of Secound Item ---------------->
+        <a href="#" type="button" class=" btn btn-light shadow">Done</a>
+    </div>
+</div>
+  </div>
+</div>
+<!--------------- End Of Secound Order ---------------->
+
+{% endblock %}
