@@ -21,16 +21,18 @@
       <header class="header" id="navigation-menu">
         <div class="container">
           <nav>
-            <a href="{% url 'main_app:home' %}" class="logo"> <img src="{% static 'images/logo_b.png' %}" alt=""> </a>
+            <a href="{% url 'main_app:home' %}" class="logo"> <img src="{% static 'images/logo_w.png' %}" alt=""> </a>
     
+            <!-- navbar -->
             <ul class="nav-menu">
               <li> <a href="{% url 'main_app:home' %}" class="nav-link">Home</a> </li>
               <li> <a href="{% url 'service_app:service' %}" class="nav-link">Services</a> </li>
-              <li> <a href="#rooms" class="nav-link">History</a> </li>
+              <li> <a href="{% url 'main_app:history' %}" class="nav-link">History</a> </li>
               <li> <a href="#restaurant" class="nav-link">About</a> </li>
               <li> <a href="#gallery" class="nav-link">Map</a> </li>
             </ul>
     
+            <!-- navbar mobile -->
             <div class="hambuger">
               <span class="bar"></span>
               <span class="bar"></span>
@@ -70,6 +72,7 @@
             <p> Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           </div>
     
+          <!-- footer links -->
           <div class="box">
             <h3>Links</h3>
             <ul>

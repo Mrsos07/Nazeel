@@ -4,17 +4,5 @@
 {% block title %} Services page {% endblock %}
 
 {% block content %}
-<div class="d-flex justify-content-center mt-5 mb-5">
-    <a href="{% url 'service_app:add_service' %}" class="btn btn-primary btn-lg px-4 me-md-2">Add Services</a>
-</div>
-<div class="card" style="width: 18rem;">
-    {% for service in services%}
-    <img src="" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">{{service.name_service}}</h5>
-        <p class="card-text">{{service.description_service}}</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-    {% endfor %}
-</div>
+
 {% endblock %}

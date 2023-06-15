@@ -9,4 +9,6 @@ def employee(request:HttpRequest):
     return render(request,'employee_app/employee.html')
 
 
+def add_guest(request:HttpRequest):
 
+    return render(request,'employee_app/add_guest.html')

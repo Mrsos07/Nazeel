@@ -12,7 +12,6 @@ def service(request: HttpRequest):
     """Rendering the service page to show all the services that are available in the database"""
 
     services = MainService.objects.all()
-
     if services:
         return render(request, 'main_app/services.html', {'services': services})
     else:
@@ -45,3 +44,15 @@ def add_service(request: HttpRequest):
         return redirect('service_app:service')
 
     return render(request, 'service_app/add_service.html', {'hotels': hotels})
+
+def menu(request:HttpRequest):
+    return render(request,"service_app/menu.html")
+
+def edit_items(request:HttpRequest):
+    return render(request,"service_app/edit_items.html")
+
+def order_request(request:HttpRequest):
+    return render(request,"service_app/order_request.html")
+
+def active_order(request:HttpRequest):
+    return render(request,"service_app/active_order.html")
