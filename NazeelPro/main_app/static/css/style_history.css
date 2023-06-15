@@ -1,0 +1,25 @@
+.history-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+}
+.history-detail{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    margin-top: 50px;
+}
+.t-history{
+    border-collapse: collapse;
+    width: 100%;
+}
+.t-history th, td{
+    text-align: left;
+    padding: 8px;
+}
+.t-history tr:nth-child(even){
+    background-color: rgb(236, 233, 227);
+}

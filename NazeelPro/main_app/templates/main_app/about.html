@@ -1,0 +1,36 @@
+{% extends "main_app/index.html" %}
+{% load static %}
+
+{% block title %}About Hotel{% endblock%}
+
+{% block content %}
+    <!-- background video -->
+    <video autoplay muted loop class="aboutVideo">
+        <source src="{% static 'video/about.mp4' %}" type="video/mp4">
+    </video>
+
+    <!-- content video -->
+    <section class="home" id="home">
+        <div class="head_container">
+        <div class="box">
+            <div class="text">
+            <h1>Hotel Name</h1>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            </p>
+            </div>
+        </div>
+        </div>
+    </section>
+    <script>
+        function img(anything) {
+        document.querySelector('.slide').src = anything;
+        }
+
+        function change(change) {
+        const line = document.querySelector('.image');
+        line.style.background = change;
+        }
+    </script>
+{% endblock %}
