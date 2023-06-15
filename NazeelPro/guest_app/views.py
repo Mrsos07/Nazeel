@@ -18,3 +18,9 @@ def sign_in(request:HttpRequest):
             msg = "Incorrect Credentials"
 
     return render(request,'guest_app/sign_in.html', {"msg" : msg})
+
+
+def guest_home(request:HttpRequest):
+    """rendering sign in template"""
+
+    return render(request,'guest_app/guest_home.html')

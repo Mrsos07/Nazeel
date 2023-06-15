@@ -1,4 +1,5 @@
 from datetime import datetime
+
 from django.shortcuts import render, redirect
 from .models import MainService
 from main_app.models import Hotel
