@@ -7,19 +7,19 @@
     <!-- hero sectoin -->
     <section class="home" id="home">
         <div class="head_container">
-        <div class="box">
-            <div class="text">
-            <h1>Hotel Name</h1>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            </p>
-            <button>MORE INFO</button>
-            </div>
-        </div>
-        <div class="image">
-            <img src="{% static 'images/hero2.jpg' %}" class="slide">
-        </div>
+          <div class="box">
+              <div class="text">
+              <h1>Hotel Name</h1>
+              <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+              </p>
+              <button><a href="{% url 'main_app:about' %}" style="color: #fff;">MORE INFO</a></button>
+              </div>
+          </div>
+          <div class="image">
+              <img src="{% static 'images/hero4.jpg' %}" class="slide">
+          </div>
         </div>
     </section>
     <script>
@@ -42,55 +42,29 @@
               <h2>Services</h2>
             </div>
             <div class="button">
-              <button class="btn1">VIEW ALL</button>
+              <button class="btn1"><a style="color: #fff;" href="{% url 'main_app:services' %}">VIEW ALL</a></button>
             </div>
           </div>
-    
-          <!-- service box -->
           <div class="content grid">
+            <!-- service box -->
             <div class="box">
               <div class="img">
-                <img src="{% static 'images/bar.jpg' %}" alt="">
+                  <img src="{% static 'images/bar.jpg' %}" alt="">
               </div>
               <div class="text text-row">
-                <div>
-                  <h3>Superior Soble Rooms</h3>
-                <p> rate </p>
-                </div>
-                <div class="order-btn">
-                  <a href="">Order</a>
-                </div>
+                  <div>
+                      <h3>Superior Soble Rooms</h3>
+                      <div style="display: flex;">
+                        <span class="material-symbols-outlined">star</span>
+                        <p>5.5</p>
+                      </div>
+                  </div>
+                  <div class="order-btn">
+                      <a href="{% url 'main_app:order' %}">Order</a>
+                  </div>
               </div>
             </div>
-            <div class="box">
-              <div class="img">
-                <img src="{% static 'images/bath.jpg' %}" alt="">
-              </div>
-              <div class="text text-row">
-                <div>
-                  <h3>Superior Soble Rooms</h3>
-                <p> rate </p>
-                
-                </div>
-                <div class="order-btn">
-                  <a href="">Order</a>
-                </div>
-              </div>
-            </div>
-            <div class="box">
-              <div class="img">
-                <img src="{% static 'images/bathroom.jpg' %}" alt="">
-              </div>
-              <div class="text text-row">
-                <div>
-                  <h3>Superior Soble Rooms</h3>
-                <p> rate </p>
-                </div>
-                <div class="order-btn">
-                  <a href="">Order</a>
-                </div>
-              </div>
-            </div>
+            <!-- end box -->
           </div>
         </div>
     </section>

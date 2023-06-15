@@ -1,112 +1,67 @@
 {% extends "main_app/index.html" %}
+{% load static %}
 
 {% block title %}History Page{% endblock%}
 
-{% block content %} 
-
-<!--------------- First Order ---------------->
-<div class="card mb-3" >
-  <div class="row g-0">
-    <p class="card-text">Service name: ##### </p>
-    <p class="card-text">Room Number:000 ----------------> " Only Manager can see"</p>
-
-    <div class="col-md-8">
-      <div class="card-body">
-
-      <!--------------- First Item ---------------->
-        <div class="row g-0">
-            <div class="col-md-4">
-                <img src="/static/images/default.png" class="img-fluid rounded-start" style="height: 100px; width: 100px;" alt="...">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">Item name</h5>
-                    <p class="card-text"><small class="text-body-secondary">َuantity: 0</small></p>
-                </div>
-            </div>
+{% block content %}
+    <!-- hero sectoin -->
+    <section class="home" id="home">
+        <div class="head_container">
+        <div class="image">
+            <img src="{% static 'images/black-bg.jpg' %}" style="height: 24vh; object-fit: cover;" class="slide">
         </div>
-        <!--------------- End Of First Item ---------------->
-
-
-        <!--------------- Secound Item ---------------->
-        <div class="row g-0">
-            <div class="col-md-4">
-                <img src="/static/images/default.png" class="img-fluid rounded-start" style="height: 100px; width: 100px;" alt="...">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">Item name</h5>
-                    <p class="card-text"><small class="text-body-secondary">َuantity: 0</small></p>
-                </div>
-            </div>
         </div>
-        <!--------------- End Of Secound Item ---------------->
+    </section>
+    <script>
+        function img(anything) {
+        document.querySelector('.slide').src = anything;
+        }
 
-        <!--------------- Third Item ---------------->
-        <div class="row g-0">
-            <div class="col-md-4">
-                <img src="/static/images/default.png" class="img-fluid rounded-start" style="height: 100px; width: 100px;" alt="...">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">Item name</h5>
-                    <p class="card-text"><small class="text-body-secondary">َuantity: 0</small></p>
-                </div>
-            </div>
+        function change(change) {
+        const line = document.querySelector('.image');
+        line.style.background = change;
+        }
+    </script>
+    
+    <!-- history details -->
+    <section class="container">
+        <div class="history-center">
+            <h1>My orders</h1>
         </div>
-        <!--------------- End Of Third Item ---------------->
-
-    <p class="card-text">Total price:000</p>
-    <p class="card-text">Date of order :00-00-0000</p>
-    </div>
-</div>
-  </div>
-</div>
-<!--------------- End Of First Order ---------------->
-
-<!--------------- Secound Order ---------------->
-<div class="card mb-3" >
-  <div class="row g-0">
-    <p class="card-text">Service name: ##### </p>
-    <p class="card-text">Room Number:000 ---------------->" Only Manager can see"</p>
-
-    <div class="col-md-8">
-      <div class="card-body">
-
-      <!--------------- First Item ---------------->
-        <div class="row g-0">
-            <div class="col-md-4">
-                <img src="/static/images/default.png" class="img-fluid rounded-start" style="height: 100px; width: 100px;" alt="...">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">Item name</h5>
-                    <p class="card-text"><small class="text-body-secondary">َuantity: 0</small></p>
-                </div>
-            </div>
+        <div class="history-detail">
+            <table class="t-history">
+                <!-- table titel -->
+                <tr>
+                    <th>Name service</th>
+                    <th>Date order</th>
+                    <th>Room Number</th>
+                    <th>Order detail</th>
+                    <th>Total amount</th>
+                </tr>
+                <!-- contant of table -->
+                <tr>
+                    <td>rerer</td>
+                    <td>123513</td>
+                    <td>2.54</td>
+                    <td>asfwetjklanskfhio</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td>rerer</td>
+                    <td>123513</td>
+                    <td>2.54</td>
+                    <td>asfwetjklanskfhio</td>
+                    <td>60</td>
+                </tr>
+                <!-- all total amout -->
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>total</td>
+                    <td>60</td>
+                </tr>
+            </table>
         </div>
-        <!--------------- End Of First Item ---------------->
-
-
-        <!--------------- Secound Item ---------------->
-        <div class="row g-0">
-            <div class="col-md-4">
-                <img src="/static/images/default.png" class="img-fluid rounded-start" style="height: 100px; width: 100px;" alt="...">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">Item name</h5>
-                    <p class="card-text"><small class="text-body-secondary">َuantity: 0</small></p>
-                </div>
-            </div>
-        </div>
-        <!--------------- End Of Secound Item ---------------->
-    <p class="card-text">Total price:000</p>
-    <p class="card-text">Date of order :00-00-0000</p>
-    </div>
-</div>
-  </div>
-</div>
-<!--------------- End Of Secound Order ---------------->
-
+    </section>
 {% endblock %}

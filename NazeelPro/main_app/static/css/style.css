@@ -6,8 +6,8 @@
   box-sizing: border-box;
 }
 :root{
-  --main-color: #806941;
-  --second-bg-color: #ece9e3;
+  --main-color: #816941;
+  --second-bg-color: rgb(236, 233, 227);
   --bg-color: #ffffff;
   --font-color-b: #000000;
   --font-color-w: #ffffff;
@@ -134,10 +134,6 @@ header ul li a:hover {
 
 /*--------------header--------*/
 /*--------------home--------*/
-.image{
-  background: black;
-  overflow: hidden;
-}
 .home .image img {
   position: absolute;
   top: 0;
@@ -163,7 +159,7 @@ header ul li a:hover {
   line-height: 25px;
   font-family: sans-serif;
   font-size: 17px;
-  margin: 50px 0 0 50px;
+  margin-top: 50px;
 }
 
 .btn-home,
@@ -184,7 +180,7 @@ button:hover{
 }
 
 .home button {
-  margin-left: 50px;
+  margin-left: 0px;
 }
 
 .home .image_item {
@@ -465,6 +461,7 @@ input {
 
 .room .box {
   box-shadow: 0 13px 43px 0 rgb(37 46 89/10%);
+  margin-bottom: 100px;
 }
 
 .room .text {
