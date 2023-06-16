@@ -7,7 +7,7 @@
 }
 :root{
   --main-color: #816941;
-  --second-bg-color: rgb(236, 233, 227);
+  --second-bg-color: #ece9e3;
   --bg-color: #ffffff;
   --font-color-b: #000000;
   --font-color-w: #ffffff;
@@ -528,9 +528,14 @@ input {
   background-color: #806941;
   padding: 10px 15px;
   border-radius: 25px;
+  border: 2px solid white;
+  transition: 0.5s;
 }
 .order-btn a{
   color: white;
+}
+.order-btn:hover{
+  border: 2px solid #806941;
 }
 .flex1 {
   display: flex;
