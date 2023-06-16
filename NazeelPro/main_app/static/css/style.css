@@ -547,7 +547,7 @@ input {
 }
 
 .room .box {
-  box-shadow: 0 13px 43px 0 rgb(37 46 89/10%);
+  box-shadow: 0 13px 43px 0 rgba(0, 0, 0, 0.2);
   margin-bottom: 100px;
 }
 
