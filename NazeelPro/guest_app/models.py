@@ -6,27 +6,25 @@ from employee_app.models import Employee
 
 
 # Create your models here.
+class Room(models.Model):
+    # the hotel have relationship with Hotel class that we import from main_app
+    hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE)
+    room_number = models.IntegerField()  # the number of the room
+    is_available = models.BooleanField(
+        default=True)  # the room is available or not
+
 
 # Create guest model
 class Guest(models.Model):
+    room = models.ForeignKey(Room, on_delete=models.CASCADE)
     created_by = models.ForeignKey(Employee, on_delete=models.CASCADE)
-    name = models.CharField(max_length=50)  # the name of the guest
-    room_number = models.IntegerField()  # the room number
+    name = models.CharField(max_length=50)  # the name of the guest # the room number
     phone_number = models.IntegerField()  # the phone number of the guest
 
     def __str__(self):
         """Returns a string representation of"""
         return f"{self.name}"
 
-# Create room model
-
-
-class Room(models.Model):
-    # the hotel have relationship with Hotel class that we import from main_app
-    hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE)
-    number = models.IntegerField()  # the number of the room
-    is_available = models.BooleanField(
-        default=True)  # the room is available or not
 
 
 # create stay model

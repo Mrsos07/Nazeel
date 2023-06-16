@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpRequest
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
-from guest_app.models import Guest
+from guest_app.models import Guest , Room
 
 
 # Create your views here.
@@ -16,14 +16,21 @@ def sign_in(request: HttpRequest,):
         room_number = request.POST["room_number"]
         phone_number = request.POST["phone_number"]
 
-        # check if a Guest with this room_number and phone_number exists
+        # check if a Room with this room_number exists
         try:
-            guest = Guest.objects.get(room_number=room_number, phone_number=phone_number)
+            room = Room.objects.get(room_number=room_number)
+        except Room.DoesNotExist:
+            messages.error(request, "Incorrect room number")
+            return render(request, "guest_app/sign_in.html")
+
+        # check if a Guest with this room and phone_number exists
+        try:
+            guest = Guest.objects.get(room=room, phone_number=phone_number)
             # guest found, redirect to home
             return redirect("main_app:home")
         except Guest.DoesNotExist:
             # guest not found, send error message and show the sign_in page again
-            messages.error(request, "Incorrect room number or phone number")
+            messages.error(request, "Incorrect phone number")
 
     # if request.method is not POST or if login failed
     return render(request, "guest_app/sign_in.html")

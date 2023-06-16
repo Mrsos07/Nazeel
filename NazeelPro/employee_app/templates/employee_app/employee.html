@@ -1,13 +1,36 @@
 {% extends 'main_app/index.html' %}
 {% load static %}
 
-{% block title %} Nazeel | create a new user page {% endblock %}
+{% block title %} Sign in  {% endblock %}
 
 {% block content %}
-    <form method="POST">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Create Guest</button>
-    </form>
+
+<form action="" method="POST" style="margin-top:5px;padding:10px;display:block; justify-content:center; gap: 6px;">
+    {% csrf_token %}
+    <!-- <img class="mb-4" src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+    <div class="form-floating" style="margin-top:3px;width:250px;">
+      <label for="floatingInput">Username</label>
+      <input type="text" class="form-control" name="username" placeholder="username" required>
+    </div>
+
+    <div class="form-floating"style="margin-top:3px;width:250px;">
+      <label >Password</label>
+      <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="password" required>
+    </div>
+
+    <!-- <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div> -->
+    <button type="submit" style="background-color: black;">Submit</button>
+    {% if error_message %}
+        <div class="alert alert-danger">{{ error_message }}</div>
+    {% endif %}
+
+  </form>
+
 {% endblock %}
 
