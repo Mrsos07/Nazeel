@@ -4,4 +4,64 @@
 {% block title %} Nazeel | order page {% endblock %}
 
 {% block content %}
+    <!-- hero sectoin -->
+    <section class="home" id="home">
+        <div class="head_container">
+        <div class="image">
+            <img src="{% static 'images/restorant3.jpg' %}" style="height: 50vh; object-fit: cover;" class="slide">
+        </div>
+        </div>
+    </section>
+    <script>
+        function img(anything) {
+        document.querySelector('.slide').src = anything;
+        }
+
+        function change(change) {
+        const line = document.querySelector('.image');
+        line.style.background = change;
+        }
+    </script>
+
+    <!-- menu section -->
+    <div class="container">
+        <!-- descripion -->
+        <div class="service-titel">
+            <h1>servise title</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+        </div>
+        <div class="menu-continer">
+            <!-- catogores bar -->
+            <div class="service-catogres">
+                <div class="cat-ser">
+                    <a href="#id" class="order-btn">asd</a>
+                    <a href="#id" class="order-btn">asd</a>
+                    <a href="#id" class="order-btn">asd</a>
+                    <a href="#id" class="order-btn">asd</a>
+                </div>
+                <div class="complet-order-btn">
+                    <a href="{% url 'main_app:history' %}" class="order-btn">order</a>
+                </div>
+            </div>
+            <!-- menu -->
+            <div class="service-menu">
+                <img src="{% static 'images/restorant2.jpg' %}" alt="">
+                <div class="menu-detile">
+                    <h4>name</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+                    <a href="" class="order-btn">add</a>
+                </div>
+                <div class="menu-price">
+                    <p>price 14.5$</p>
+                    <label for="">Quantity</label>
+                    <select name="" id="" class="form-select">
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
