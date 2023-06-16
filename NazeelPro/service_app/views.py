@@ -4,17 +4,25 @@ from django.shortcuts import render, redirect
 from .models import MainService
 from main_app.models import Hotel
 from django.http import HttpRequest
+import datetime
 # Create your views here.
 
 
 def service(request: HttpRequest):
-    """Rendering  the service page to show all the services that are available in the database"""
+    """Rendering the service page to show all the services that are available in the database"""
+
     services = MainService.objects.all()
+    if services:
+        return render(request, 'main_app/services.html', {'services': services})
+    else:
+        return render(request, 'service_app/add_service.html')
+
+def services(request):
+    main_services = MainService.objects.all()
+    context = {'main_services': main_services}
+    return render(request, 'main_app/services.html', context)
 
 
-    return render(request,'service_app/service.html', {'services': services})
-
-    # return render(request,'service_app/service.html')
 
 
 def add_service(request: HttpRequest):

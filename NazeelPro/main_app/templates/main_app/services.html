@@ -5,4 +5,67 @@
 
 {% block content %}
 
+    <!-- hero sectoin -->
+    <section class="home" id="home">
+        <div class="head_container">
+        <div class="box">
+            <div class="text">
+            <h1>Hotel Name</h1>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            </p>
+            <button><a href="#room" style="color: #fff;">MORE INFO</a></button>
+            </div>
+        </div>
+        <div class="image">
+            <img src="{% static 'images/service_hero.jpg' %}" class="slide">
+        </div>
+        </div>
+    </section>
+    <script>
+        function img(anything) {
+        document.querySelector('.slide').src = anything;
+        }
+
+        function change(change) {
+        const line = document.querySelector('.image');
+        line.style.background = change;
+        }
+    </script>
+
+    <!-- Services section -->
+    <section class="room top" id="room">
+        <div class="container">
+        <div class="heading_top flex1">
+            <div class="heading">
+            <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
+            <h2>Services</h2>
+            </div>
+        </div>
+            <div class="content grid">
+                <!-- service box -->
+                <!-- service box -->
+                {% for service in services %}
+                <div class="box">
+                    <div class="img">
+                        <img src="{{ service.image.url }}" alt="{{ service.name_service }}">
+                    </div>
+                    <div class="text text-row">
+                        <div>
+                            <h3>{{ service.name_service }}</h3>
+                            <p>{{ service.description_service }}</p>
+                            <p>Time: {{ service.time_on }} - {{ service.time_off }}</p>
+                        </div>
+                        <div class="order-btn">
+                            <a href="{% url 'main_app:order' %}">Order</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- end box -->
+            </div>
+        </div>
+    </section>
+
 {% endblock %}

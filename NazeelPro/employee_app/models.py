@@ -1,6 +1,7 @@
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
 from main_app.models import Hotel
+
 # Create your models here.
 
 # create employee model
@@ -12,5 +13,5 @@ class Employee(models.Model):
 
     def __str__(self):
         """Return string representation"""
-        return f"{self.hotel} - {self.position} - {self.name}"
-    
+        return f" {self.name}"
+
