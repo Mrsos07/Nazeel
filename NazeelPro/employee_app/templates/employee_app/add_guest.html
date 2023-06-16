@@ -16,10 +16,13 @@
             <input type="number" name="guest_phone_number" class="form-control" id="exampleFormControlInput1" placeholder="fill in course hours" >
         </div>
 
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">room number</label>
-            <input type="number" name="guest_room_number" class="form-control" id="exampleFormControlInput1" placeholder="fill in course hours" >
-        </div>
+        <label for="room_number">Room:</label>
+        <select id="room_number" name="guest_room_number">
+            {% for room in available_rooms %}
+                <option value="{{ room.room_number }}">{{ room.room_number }}</option>
+            {% endfor %}
+        </select>
+
 
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">check in date</label>

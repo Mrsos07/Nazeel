@@ -17,6 +17,10 @@ def service(request: HttpRequest):
     else:
         return render(request, 'service_app/add_service.html')
 
+def services(request):
+    main_services = MainService.objects.all()
+    context = {'main_services': main_services}
+    return render(request, 'main_app/services.html', context)
 
 
 

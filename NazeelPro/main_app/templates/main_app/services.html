@@ -45,23 +45,24 @@
         </div>
             <div class="content grid">
                 <!-- service box -->
+                <!-- service box -->
+                {% for service in services %}
                 <div class="box">
                     <div class="img">
-                        <img src="{% static 'images/bar.jpg' %}" alt="">
+                        <img src="{{ service.image.url }}" alt="{{ service.name_service }}">
                     </div>
                     <div class="text text-row">
                         <div>
-                            <h3>Superior Soble Rooms</h3>
-                            <div style="display: flex;">
-                                <span class="material-symbols-outlined">star</span>
-                                <p>5.5</p>
-                            </div>
+                            <h3>{{ service.name_service }}</h3>
+                            <p>{{ service.description_service }}</p>
+                            <p>Time: {{ service.time_on }} - {{ service.time_off }}</p>
                         </div>
                         <div class="order-btn">
                             <a href="{% url 'main_app:order' %}">Order</a>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
                 <!-- end box -->
             </div>
         </div>
