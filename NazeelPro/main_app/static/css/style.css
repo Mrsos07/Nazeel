@@ -167,7 +167,7 @@ button {
   padding: 20px 40px;
   background: none;
   outline: none;
-  border: 2px solid white;
+  border: 2px solid #f8f2e8;
   border-radius: 50px;
   color: white;
   margin-top: 20px;
@@ -354,15 +354,16 @@ input {
 /*--------------about--------*/
 /*--------------wrapper--------*/
 .wrapper {
-  background-image: url("/static/images/ami.jpg");
+  background-image: url("/static/images/image8.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
   height: 480px;
   position: relative;
+  
 }
 .wrapper-r {
-  background-image: url("/static/images/ami.jpg");
+  background-image: url("/static/images/image7.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
@@ -380,6 +381,8 @@ input {
   right: 10%;
   padding-top: 10%;
   color: #000000;
+  box-shadow:10px 7px 15px 3px rgba(0, 0, 0, 0.23);
+  border-radius: 20px;
 }
 .wrapper-r .text{
   background: #ece9e3;
@@ -390,6 +393,8 @@ input {
   top: -13%;
   padding-top: 10%;
   color: #000000;
+  box-shadow:10px 7px 15px 3px rgba(0, 0, 0, 0.23);
+  border-radius: 20px;
 }
 
 .wrapper-r .content {
@@ -430,7 +435,89 @@ input {
   margin: 5px 20px 0 0;
 }
 
+.wrapper-z {
+  background-image: url("/static/images/image6.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 480px;
+  position: relative;
+  
+}
+.wrapper-z .text {
+  background: #ece9e3;
+  padding: 50px;
+  width: 40%;
+  height: 600px;
+  position: absolute;
+  top: -13%;
+  right: 10%;
+  padding-top: 10%;
+  color: #000000;
+  box-shadow:10px 7px 15px 3px rgba(0, 0, 0, 0.23);
+  border-radius: 20px;
+  
+}
+.wrapper-z .content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-row-gap: 30px;
+}
+
+.wrapper-z h2 {
+  font-weight: 400;
+}
+
+.wrapper-z p {
+  margin: 20px 0 50px 0;
+  line-height: 30px;
+}
+
+.wrapper-z i {
+  margin: 5px 20px 0 0;
+}
 /*--------------wrapper--------*/
+
+
+/* Visit Saudi sections */
+
+.hero-wrapper-visit{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.hero-split{
+  display: flex;
+  flex-direction: column;
+  direction: vertical;
+  align-items: start;
+  justify-content: start;
+  max-width: 46%;
+}
+.shadow-two{
+  max-width: 100%;
+  display: block;
+}
+.button-primary{
+  display: block;
+  padding: 12px 25px 12px 25px;
+  size: 12px;
+  color: #fff;
+  background-color: #000000;
+}
+.hero-split h1{
+  margin: 0px 0px 13px 0 ;
+  font-weight: 400;
+}
+.hero-split p{
+  margin: 0px 0px 13px 0 ;  
+}
+
+.hero-split img{
+  box-shadow:10px 7px 15px 3px rgba(0, 0, 0, 0.23);
+}
+/* End Of Visit Saudi sections */
+
 /*--------------room--------*/
 .text-row{
   display: flex;
@@ -460,7 +547,7 @@ input {
 }
 
 .room .box {
-  box-shadow: 0 13px 43px 0 rgb(37 46 89/10%);
+  box-shadow: 0 13px 43px 0 rgba(0, 0, 0, 0.2);
   margin-bottom: 100px;
 }
 
