@@ -9,12 +9,11 @@
         <div class="head_container">
           <div class="box">
               <div class="text">
-              <h1>Hotel Name</h1>
+              <h1>Welcom </h1>
               <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                  Stay in our stylish hotel in an enviable city center location in Riyadh. Our hotel is Riyadh’s unique design is inspired by local architecture, mixed with modern interior design. Choose from 192 rooms with different views and state-of-the-art facilities convenient for business and leisure travelers. Our rooms are also equipped with free Wi-Fi and coffee and tea provisions. 
               </p>
-              <button><a href="{% url 'main_app:about' %}" style="color: #fff;">MORE INFO</a></button>
+              <button><a href="{% url 'main_app:about' %}" style="color: #fff;">LEARN MORE</a></button>
               </div>
           </div>
           <div class="image">
@@ -42,28 +41,30 @@
               <h2>Services</h2>
             </div>
             <div class="button">
-              <button class="btn1"><a style="color: #fff;" href="{% url 'main_app:services' %}">VIEW ALL</a></button>
+              <button class="btn1"><a style="color: #fff;" href="{% url 'service_app:service' %}">VIEW ALL</a></button>
             </div>
           </div>
           <div class="content grid">
             <!-- service box -->
+            {% for service in services %}
             <div class="box">
               <div class="img">
-                  <img src="{% static 'images/bar.jpg' %}" alt="">
+                  <img src="{{ service.image.url }}" alt="">
               </div>
               <div class="text text-row">
                   <div>
-                      <h3>Superior Soble Rooms</h3>
+                      <h3>{{ service.name_service }}</h3>
                       <div style="display: flex;">
                         <span class="material-symbols-outlined">star</span>
                         <p>5.5</p>
                       </div>
                   </div>
                   <div class="order-btn">
-                      <a href="{% url 'main_app:order' %}">Order</a>
+                      <a href="{% url 'main_app:order' service.id %}">Order</a>
                   </div>
               </div>
             </div>
+            {% endfor %}
             <!-- end box -->
           </div>
         </div>

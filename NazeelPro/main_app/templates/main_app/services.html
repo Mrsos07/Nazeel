@@ -12,7 +12,7 @@
             <div class="text">
             <h1>Our Services</h1>
             <p>Explore all our services and order for whatever you want, And we will make sure that we deliver as soon as possible, with the best quality and the most complete service, and that your experience is exceptional and unforgettable.</p>
-            <button><a href="#services" style="color: #fff;">Explore Service</a></button>
+            <button><a href="#services" style="color: #fff;">View Services</a></button>
             </div>
         </div>
         <div class="image">
@@ -55,7 +55,7 @@
                             <p>Time: {{ service.time_on }} - {{ service.time_off }}</p>
                         </div>
                         <div class="order-btn">
-                            <a href="{% url 'main_app:order' %}">Order</a>
+                            <a href="{% url 'main_app:order' service.id %}">Order</a>
                         </div>
                     </div>
                 </div>

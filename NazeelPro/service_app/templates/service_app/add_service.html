@@ -4,10 +4,29 @@
 {% block title %}  {% endblock %}
 
 {% block content %}
+    <!-- hero sectoin -->
+    <section class="home" id="home">
+        <div class="head_container">
+        <div class="image">
+            <img src="{% static 'images/black-bg.jpg' %}" style="height: 24vh; object-fit: cover;" class="slide">
+        </div>
+        </div>
+    </section>
+    <script>
+        function img(anything) {
+        document.querySelector('.slide').src = anything;
+        }
+
+        function change(change) {
+        const line = document.querySelector('.image');
+        line.style.background = change;
+        }
+    </script>
+    <!-- End of hero sectoin -->
+<div class="container">
+<div class="container-manager">
 <form action="{% url 'service_app:add_service' %}" method="POST" class="w-50 align-items-center justify-content-center" enctype="multipart/form-data">
     {% csrf_token %}
-    <h1 class="h3 mb-3 fw-normal">Add</h1>
-
     <label for="exampleFormControlInput1" class="form-label">service name:</label>
     <input name="name_service" type="text" class="">
 
@@ -40,6 +59,8 @@
         </select>
       </div>
 
-    <button class="btn btn-primary w-100 py-2" type="submit" fdprocessedid="1isj6h">Add appointment</button>
+    <button class="btn1" type="submit" fdprocessedid="1isj6h">Add new service</button>
 </form>
+</div>
+</div>
 {% endblock %}
