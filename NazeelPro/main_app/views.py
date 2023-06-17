@@ -18,3 +18,6 @@ def about(request:HttpRequest):
 
 def order(request:HttpRequest):
     return render(request,'main_app/order.html')
+
+def maps(request:HttpRequest):
+    return render(request,'main_app/maps.html')
