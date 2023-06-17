@@ -1,0 +1,17 @@
+.sign-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-top: 250px;
+}
+.btn-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.map-content{
+    display: flex;
+}
