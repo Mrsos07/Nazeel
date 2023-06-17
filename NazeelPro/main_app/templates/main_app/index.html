@@ -27,6 +27,7 @@
       <link rel="stylesheet" href="{% static 'css/employee.css' %}">
       <link rel="stylesheet" href="{% static 'css/reviews.css' %}">
       <link rel="stylesheet" href="{% static 'css/maps.css' %}">
+      <link rel="stylesheet" href="{% static 'css/chatbot.css' %}">
 
       {% block style %} {% endblock %}
       
@@ -81,6 +82,33 @@
 
       <!-- content section -->
       {% block content %} {% endblock %}
+
+      <!-- chatbot -->
+      <div class="container">
+        <div class="chatbox">
+          <div class="chatbox__support">
+            <div class="chatbox__header">
+              <div class="chatbox__image--header">
+                <img src="{% static 'images/chatbot-icon.jpg' %}" style="max-width: 100px; border-radius: 50%;" alt="image">
+              </div>
+              <div class="chatbox__content--header">
+                <h4 class="chatbox__heading--header">Chat support</h4>
+                <p class="chatbox__description--header">Hi. My name is Nazeel. How can I help you?</p>
+              </div>
+            </div>
+            <div class="chatbox__messages">
+              <div></div>
+            </div>
+            <div class="chatbox__footer">
+              <input type="text" placeholder="Write a message...">
+              <button class="chatbox__send--footer send__button">Send</button>
+            </div>
+          </div>
+          <div class="chatbox__button">
+            <button><img src="{% static 'images/chatbox-icon.svg' %}" /></button>
+          </div>
+        </div>
+      </div>
       
       <!-- footer section -->
       <footer>
@@ -104,5 +132,7 @@
       </footer>
 
       {% block script %} {% endblock %}
+      <!-- script chatbot stayle -->
+      <script src="{% static 'js/chatbot.js' %}"></script>
   </body>
 </html>
