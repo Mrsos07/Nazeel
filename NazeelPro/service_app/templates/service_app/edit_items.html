@@ -25,16 +25,16 @@
     <!-- End of hero sectoin -->
 <div class="container">
 <div class="container-manager">
-{% comment %} 
+
 <div class="order-btn">
-    <a href="{% url 'service_app:menu' %}" >Menu</a>
+    <a href="{% url 'service_app:menu' main_services.id %}" >Menu</a>
 </div>
 <div class="order-btn">
-    <a href="{% url 'service_app:order_request' %}" >Order Request</a>
+    <a href="{% url 'service_app:order_request' main_services.id %}" >Order Request</a>
 </div>
 <div class="order-btn">
-    <a href="{% url 'service_app:active_order' %}" >Active Order</a>
-</div> {% endcomment %}
+    <a href="{% url 'service_app:active_order' main_services.id %}" >Active Order</a>
+</div> 
 
 <div class="card mb-3 m-auto  d-flex justify-content-center" >
   <form action="{% url 'service_app:edit_items' main_services.id %} " method="POST" enctype="multipart/form-data">
