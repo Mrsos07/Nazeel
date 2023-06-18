@@ -26,6 +26,7 @@
       <link rel="stylesheet" href="{% static 'css/style_order.css' %}">
       <link rel="stylesheet" href="{% static 'css/employee.css' %}">
       <link rel="stylesheet" href="{% static 'css/reviews.css' %}">
+      <link rel="stylesheet" href="{% static 'css/style_manager.css' %}">
       <link rel="stylesheet" href="{% static 'css/maps.css' %}">
       <link rel="stylesheet" href="{% static 'css/chatbot.css' %}">
 
@@ -48,7 +49,7 @@
               <li> <a href="{% url 'service_app:manager_services' %}" class="nav-link">Manger</a> </li>
               <li> <a href="{% url 'main_app:history' %}" class="nav-link">History</a> </li>
               <li> <a href="{% url 'main_app:about' %}" class="nav-link">About</a> </li>
-              <li> <a href="#gallery" class="nav-link">Map</a> </li>
+              <li> <a href="{% url 'main_app:maps' %}" class="nav-link">Map</a> </li>
             </ul>
             <!-- navbar mobile -->
             <div class="hambuger">
