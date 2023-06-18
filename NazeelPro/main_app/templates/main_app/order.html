@@ -26,14 +26,13 @@
     <!-- menu section -->
     <div class="container">
         <!-- descripion -->
-        <div class="heading_top flex1 marg-t" style="margin-top: 400px;">
-            <div class="heading">
-            <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
-            <h2>servise title</h2>
-            </div>
+        <div class="service-titel">
+            <h1>{{main_services.name_service}}</h1>
+            <p>{{main_services.description_service}}</p>
         </div>
         <div class="menu-continer">
             <!-- catogores bar -->
+            {% for sub in sub_service %}
             <div class="service-catogres">
                 <div class="cat-ser">
                     <a href="#id" class="order-btn">asd</a>
@@ -47,15 +46,15 @@
             </div>
             <!-- menu -->
             <div class="service-menu">
-                <img src="{% static 'images/restorant2.jpg' %}" alt="">
+                <img src="{{sub.image.url}}" alt="">
                 <div class="menu-detile">
-                    <h4>name</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
-                    <a href="" class="order-btn">add</a>
+                     <h4>{{sub.name_service}}</h4>
+                    <p>{{sub.catogory}}</p>
+                    <a href="#" class="order-btn">add</a>
                 </div>
                 <div class="menu-price">
-                    <p>price 14.5$</p>
-                    <label for="">Quantity</label>
+                    <p>price: {{sub.price}} $</p>
+                    <label for="#">Quantity</label>
                     <select name="" id="" class="form-select">
                         <option value="1" selected>1</option>
                         <option value="2">2</option>
@@ -64,6 +63,7 @@
                     </select>
                 </div>
             </div>
+            {% endfor%}
         </div>
     </div>
 {% endblock %}
