@@ -1,10 +1,8 @@
 from datetime import datetime
-
 from django.shortcuts import render, redirect
 from .models import MainService
 from main_app.models import Hotel
 from django.http import HttpRequest
-import datetime
 # Create your views here.
 
 
@@ -17,12 +15,11 @@ def service(request: HttpRequest):
     else:
         return render(request, 'service_app/add_service.html')
 
+
 def services(request):
     main_services = MainService.objects.all()
     context = {'main_services': main_services}
     return render(request, 'main_app/services.html', context)
-
-
 
 
 def add_service(request: HttpRequest):
@@ -49,14 +46,18 @@ def add_service(request: HttpRequest):
 
     return render(request, 'service_app/add_service.html', {'hotels': hotels})
 
-def menu(request:HttpRequest):
-    return render(request,"service_app/menu.html")
 
-def edit_items(request:HttpRequest):
-    return render(request,"service_app/edit_items.html")
+def menu(request: HttpRequest):
+    return render(request, "service_app/menu.html")
 
-def order_request(request:HttpRequest):
-    return render(request,"service_app/order_request.html")
 
-def active_order(request:HttpRequest):
-    return render(request,"service_app/active_order.html")
+def edit_items(request: HttpRequest):
+    return render(request, "service_app/edit_items.html")
+
+
+def order_request(request: HttpRequest):
+    return render(request, "service_app/order_request.html")
+
+
+def active_order(request: HttpRequest):
+    return render(request, "service_app/active_order.html")
