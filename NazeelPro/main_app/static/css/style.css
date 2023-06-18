@@ -250,13 +250,13 @@ input {
   padding: 15px;
   border: 2px solid rgba(255, 255, 255, 0.1);
   outline: none;
-  background: #263760;
+  background: #ece9e3;
   margin-top: 20px;
-  color: white;
+  color: black;
 }
 
 ::placeholder {
-  color: white;
+  color: black;
 }
 
 .book .search {

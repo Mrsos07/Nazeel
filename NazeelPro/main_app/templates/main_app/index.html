@@ -1,9 +1,15 @@
 <html lang="en">
   <head>
+      <!-- meta tags -->
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      {% load static %}
+      <meta name="description" content="'Nazeel' is an innovative website aimed at simplifying and enhancing the hotel stay experience for guests. The engagement with the guest begins the moment a ...">
+      <meta name="keywords" content="The Future Seed, Nazeel, Hotel, service, فندق, نزيل, بذرة المستقبل, خدمات">
+      <meta name="author" content="The Future Seed">
       
+      {% load static %}
+      <link rel="icon" type="images/x-icon" href="{% static 'images/logo_w.png' %}">
+
       <title>{% block title %} {% endblock %}</title>
 
       <!-- style link -->
@@ -18,6 +24,12 @@
       <link rel="stylesheet" href="{% static 'css/style_history.css' %}">
       <link rel="stylesheet" href="{% static 'css/style_about.css' %}">
       <link rel="stylesheet" href="{% static 'css/style_order.css' %}">
+      <link rel="stylesheet" href="{% static 'css/employee.css' %}">
+      <link rel="stylesheet" href="{% static 'css/reviews.css' %}">
+      <link rel="stylesheet" href="{% static 'css/maps.css' %}">
+      <link rel="stylesheet" href="{% static 'css/chatbot.css' %}">
+
+      {% block style %} {% endblock %}
       <link rel="stylesheet" href="{% static 'css/style_manager.css' %}">
   </head>
   <body style="background-color: #f8f2e8;">
@@ -25,7 +37,9 @@
       <header class="header" id="navigation-menu">
         <div class="container">
           <nav>
-            <a href="{% url 'main_app:home' %}" class="logo"> <img src="{% static 'images/logo_w.png' %}" alt=""> </a>
+            {% block logo %}
+              <a href="{% url 'main_app:home' %}" class="logo"> <img src="{% static 'images/logo_w.png' %}" alt=""> </a>
+            {% endblock %}
     
             <!-- navbar -->
             <ul class="nav-menu">
@@ -34,7 +48,7 @@
               <li> <a href="{% url 'service_app:manager_services' %}" class="nav-link">Manger</a> </li>
               <li> <a href="{% url 'main_app:history' %}" class="nav-link">History</a> </li>
               <li> <a href="{% url 'main_app:about' %}" class="nav-link">About</a> </li>
-              <li> <a href="#" class="nav-link">Map</a> </li>
+              <li> <a href="#gallery" class="nav-link">Map</a> </li>
             </ul>
             <!-- navbar mobile -->
             <div class="hambuger">
@@ -67,6 +81,33 @@
 
       <!-- content section -->
       {% block content %} {% endblock %}
+
+      <!-- chatbot -->
+      <div class="container">
+        <div class="chatbox">
+          <div class="chatbox__support">
+            <div class="chatbox__header">
+              <div class="chatbox__image--header">
+                <img src="{% static 'images/chatbot-icon.jpg' %}" style="max-width: 100px; border-radius: 50%;" alt="image">
+              </div>
+              <div class="chatbox__content--header">
+                <h4 class="chatbox__heading--header">Chat support</h4>
+                <p class="chatbox__description--header">Hi. My name is Nazeel. How can I help you?</p>
+              </div>
+            </div>
+            <div class="chatbox__messages">
+              <div></div>
+            </div>
+            <div class="chatbox__footer">
+              <input type="text" placeholder="Write a message...">
+              <button class="chatbox__send--footer send__button">Send</button>
+            </div>
+          </div>
+          <div class="chatbox__button">
+            <button><img src="{% static 'images/chatbox-icon.svg' %}" /></button>
+          </div>
+        </div>
+      </div>
       
       <!-- footer section -->
       <footer>
@@ -102,7 +143,8 @@
         
       </footer>
 
-      <!-- Bootstrap js -->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+      {% block script %} {% endblock %}
+      <!-- script chatbot stayle -->
+      <script src="{% static 'js/chatbot.js' %}"></script>
   </body>
 </html>

@@ -5,6 +5,10 @@
 
 {% block content %}
     <!-- hero sectoin -->
+    <!-- background video -->
+    <video autoplay muted loop class="aboutVideo">
+      <source src="{% static 'video/home.mp4' %}" type="video/mp4">
+    </video>
     <section class="home" id="home">
         <div class="head_container">
           <div class="box">
@@ -16,9 +20,11 @@
               <button><a href="{% url 'main_app:about' %}" style="color: #fff;">LEARN MORE</a></button>
               </div>
           </div>
+          <!--
           <div class="image">
               <img src="{% static 'images/hero4.jpg' %}" class="slide">
           </div>
+          -->
         </div>
     </section>
     <script>
@@ -71,8 +77,16 @@
     </section>
 
     <!-- facilities sections -->
+    <div class="container">
+      <div class="heading_top flex1 marg-t">
+        <div class="heading">
+        <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
+        <h2>facilities</h2>
+        </div>
+      </div>
+    </div>
     <!-- facilities one -->
-    <section class="wrapper top">
+    <section class="wrapper top" style="margin-top: 5%;">
         <div class="container">
           <div class="text">
             <h2>Fitness Center</h2>
@@ -197,6 +211,12 @@
 
     <section class="wrapper-f top">
       <div class="container" >
+        <div class="heading_top flex1 marg-t">
+          <div class="heading">
+          <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
+          <h2>Entertainments</h2>
+        </div>
+      </div>
         <div class="hero-wrapper-visit">
           <div class="hero-split "><img src="{% static 'images/saudiEvents3.jpg' %}" style="border-radius: 25px;" class="shadow-two" alt=""></div>
           <div class="hero-split">
@@ -208,7 +228,7 @@
           </div>
         </div>
       </div>
-  </section> 
+    </section> 
 
     <!--End Of Visit Saudi sections -->
 {% endblock %}

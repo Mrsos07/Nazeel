@@ -4,63 +4,70 @@
 {% block title %}  {% endblock %}
 
 {% block content %}
-    <!-- hero sectoin -->
-    <section class="home" id="home">
-        <div class="head_container">
-        <div class="image">
-            <img src="{% static 'images/black-bg.jpg' %}" style="height: 24vh; object-fit: cover;" class="slide">
-        </div>
-        </div>
-    </section>
-    <script>
-        function img(anything) {
-        document.querySelector('.slide').src = anything;
-        }
-
-        function change(change) {
-        const line = document.querySelector('.image');
-        line.style.background = change;
-        }
-    </script>
-    <!-- End of hero sectoin -->
-<div class="container">
-<div class="container-manager">
-<form action="{% url 'service_app:add_service' %}" method="POST" class="w-50 align-items-center justify-content-center" enctype="multipart/form-data">
-    {% csrf_token %}
-    <label for="exampleFormControlInput1" class="form-label">service name:</label>
-    <input name="name_service" type="text" class="">
-
-    <div class="input-group mb-3">
-        <span class="input-group-text">service description:</span>
-        <textarea class="form-control" name="description_service" aria-label="With textarea"></textarea>
+  <!-- hero sectoin -->
+  <section class="home" id="home">
+    <div class="head_container">
+    <div class="image">
+        <img src="{% static 'images/black-bg.jpg' %}" style="height: 24vh; object-fit: cover;" class="slide">
     </div>
-
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Open time:</label>
-        <input type="time" name="time_on"/>
     </div>
+  </section>
+  <script>
+    function img(anything) {
+    document.querySelector('.slide').src = anything;
+    }
 
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Close time:</label>
-        <input type="time" name="time_off"/>
+    function change(change) {
+    const line = document.querySelector('.image');
+    line.style.background = change;
+    }
+  </script>
+
+  <!-- sign form -->
+  <div class="container">
+    <div class="sign-form">
+      <form action="{% url 'service_app:add_service' %}" method="POST" style="margin-top:5px;padding:10px;display:block; justify-content:center; gap: 6px;" enctype="multipart/form-data">
+          {% csrf_token %}
+          <h1 class="h3 mb-3 fw-normal">Add</h1>
+
+          <div style="margin-top:20px;">
+            <label for="exampleFormControlInput1" class="form-label">service name:</label>
+            <input name="name_service" type="text" class="">
+          </div>
+
+          <div style="margin-top:20px; display: flex; flex-direction: column;">
+              <label class="input-group-text">service description:</label>
+              <textarea style="max-width: 450px; margin-top: 20px;" name="description_service" aria-label="With textarea"></textarea>
+          </div>
+
+          <div style="margin-top:20px;">
+              <label for="exampleFormControlInput1" class="form-label">Open time:</label>
+              <input type="time" name="time_on"/>
+          </div>
+
+          <div style="margin-top:20px;">
+              <label for="exampleFormControlInput1" class="form-label">Close time:</label>
+              <input type="time" name="time_off"/>
+          </div>
+
+          <div style="margin-top:20px;">
+              <label for="exampleFormControlInput1" class="form-label">Service image:</label>
+              <input type="file" name="image"/>
+          </div>
+
+          <div style="margin-top:20px; display: flex; gap: 15px;">
+              <label for="hotel">Hotel:</label>
+              <select name="hotel" required>
+                {% for hotel in hotels %}
+                  <option value="{{ hotel.id }}">{{ hotel.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="btn-form">
+              <button class="btn1" type="submit" fdprocessedid="1isj6h">Add appointment</button>
+            </div>
+      </form>
     </div>
-
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Service image:</label>
-        <input type="file" name="image"/>
-    </div>
-
-    <div class="mb-3">
-        <label for="hotel">Hotel:</label>
-        <select name="hotel" required>
-          {% for hotel in hotels %}
-            <option value="{{ hotel.id }}">{{ hotel.name }}</option>
-          {% endfor %}
-        </select>
-      </div>
-
-    <button class="btn1" type="submit" fdprocessedid="1isj6h">Add new service</button>
-</form>
-</div>
-</div>
+  </div>
 {% endblock %}

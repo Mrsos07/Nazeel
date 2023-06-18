@@ -53,6 +53,11 @@
                             <h3>{{ service.name_service }}</h3>
                             <p>{{ service.description_service }}</p>
                             <p>Time: {{ service.time_on }} - {{ service.time_off }}</p>
+                            <!-- rateing --> <!--
+                            <div style="display: flex;">
+                                <span class="material-symbols-outlined">star</span>
+                                <p>5.5</p>
+                            </div> -->
                         </div>
                         <div class="order-btn">
                             <a href="{% url 'main_app:order' service.id %}">Order</a>
@@ -65,4 +70,35 @@
         </div>
     </section>
 
+    <!-- reviews section -->
+    <div class="container">
+        <div class="heading_top flex1 marg-t">
+            <div class="heading">
+            <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
+            <h2>reviews</h2>
+            </div>
+        </div>
+        <div class='reviews'>
+            <!-- Panel -->
+            <div class='panel'>
+                <div style="display: flex; gap: 5px; align-items: center; margin-top: 20px;">
+                    <h7 style="width: 100px;">servise name</h7>
+                    <span class="material-symbols-outlined">star</span>
+                    <p>5.5</p>
+                </div>
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                </p>
+                <h7>guest name</h7>
+            </div>
+        </div>
+    </div>
+    <script>
+        speed = 600
+    </script>
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/reviews.js' %}"></script>
 {% endblock %}

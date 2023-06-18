@@ -4,37 +4,63 @@
 {% block title %} Add Guest page {% endblock %}
 
 {% block content %}
-<form action="{% url 'employee_app:add_guest' %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="mb-3 mt-3">
-            <label for="exampleFormControlInput1" class="form-label">Guest Name</label>
-            <input type="text" name="guest_name" class="form-control" id="exampleFormControlInput1" placeholder="fill in course title" >
+    <!-- hero sectoin -->
+    <section class="home" id="home">
+        <div class="head_container">
+        <div class="image">
+            <img src="{% static 'images/black-bg.jpg' %}" style="height: 24vh; object-fit: cover;" class="slide">
         </div>
-
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Guest Phone number</label>
-            <input type="number" name="guest_phone_number" class="form-control" id="exampleFormControlInput1" placeholder="fill in course hours" >
         </div>
+    </section>
+    <script>
+        function img(anything) {
+        document.querySelector('.slide').src = anything;
+        }
 
-        <label for="room_number">Room:</label>
-        <select id="room_number" name="guest_room_number">
-            {% for room in available_rooms %}
-                <option value="{{ room.room_number }}">{{ room.room_number }}</option>
-            {% endfor %}
-        </select>
+        function change(change) {
+        const line = document.querySelector('.image');
+        line.style.background = change;
+        }
+    </script>
 
-
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">check in date</label>
-            <input type="date" name="check_in_date"  />
-        </div>
-
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">check out date</label>
-            <input type="date" name="check_out_date"  />
-        </div>
-        <div class="mb-3">
-            <input type="submit" value="Add Guest" class="btn btn-light shadow" />
-        </div>
+  <!-- add form -->
+  <div class="container">
+    <div class="sign-form">
+        <form action="{% url 'employee_app:add_guest' %}" method="POST" enctype="multipart/form-data" style="margin-top:5px;padding:10px;display:block; justify-content:center; gap: 6px;">
+            {% csrf_token %}
+            <h1>Add guest</h1>
+            <div class="mb-3 mt-3" style="margin-top:20px;">
+                <label for="exampleFormControlInput1" class="form-label">Guest Name</label>
+                <input type="text" name="guest_name" class="form-control" id="exampleFormControlInput1" placeholder="fill in course title" >
+            </div>
+    
+            <div class="mb-3" style="margin-top:20px;">
+                <label for="exampleFormControlInput1" class="form-label">Guest Phone number</label>
+                <input type="text" name="guest_phone_number" class="form-control" id="exampleFormControlInput1" placeholder="fill in course hours" >
+            </div>
+    
+            <div style="margin-top:20px;">
+                <label for="room_number">Room:</label>
+                <select id="room_number" name="guest_room_number">
+                    {% for room in available_rooms %}
+                        <option value="{{ room.room_number }}">{{ room.room_number }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+    
+            <div class="mb-3" style="margin-top:20px;">
+                <label for="exampleFormControlInput1" class="form-label">check in date</label>
+                <input type="date" name="check_in_date"  />
+            </div>
+    
+            <div class="mb-3" style="margin-top:20px;">
+                <label for="exampleFormControlInput1" class="form-label">check out date</label>
+                <input type="date" name="check_out_date"  />
+            </div>
+            <div class="btn-form">
+                <button type="submit" class="btn1">Add Guest</button>
+            </div>
         </form>
+    </div>
+  </div>
 {% endblock %}

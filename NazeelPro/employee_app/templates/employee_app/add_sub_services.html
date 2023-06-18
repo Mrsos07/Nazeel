@@ -1,0 +1,54 @@
+{% extends 'main_app/index.html' %}
+{% load static %}
+
+{% block title %} Add room {% endblock %}
+
+{% block content %}
+    <!-- hero sectoin -->
+    <section class="home" id="home">
+        <div class="head_container">
+        <div class="image">
+            <img src="{% static 'images/black-bg.jpg' %}" style="height: 24vh; object-fit: cover;" class="slide">
+        </div>
+        </div>
+    </section>
+    <script>
+        function img(anything) {
+        document.querySelector('.slide').src = anything;
+        }
+
+        function change(change) {
+        const line = document.querySelector('.image');
+        line.style.background = change;
+        }
+    </script>
+
+    <!-- add form -->
+    <div class="container">
+        <div class="sign-form">
+            <form action="{% url 'employee_app:add_guest' %}" method="POST" enctype="multipart/form-data" style="margin-top:5px;padding:10px;display:block; justify-content:center; gap: 6px;">
+                {% csrf_token %}
+                <h1>Add Room</h1>
+                <div style="margin-top:20px;">
+                    <!-- Put fields here -->
+                </div>
+
+                <div style="margin-top:20px;">
+                    <!-- Put fields here -->
+                </div>
+
+                <div style="margin-top:20px;">
+                    <!-- Put fields here -->
+                </div>
+
+                <div style="margin-top:20px;">
+                    <!-- Put fields here -->
+                </div>
+        
+                <div class="btn-form">
+                    <button type="submit" class="btn1">Add Subservices</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

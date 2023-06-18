@@ -22,3 +22,6 @@ def order(request:HttpRequest,main_services_id):
     main_services = MainService.objects.get( id = main_services_id )
     sub_service = SubService.objects.filter(main_service=main_services)
     return render(request,'main_app/order.html',{'main_services': main_services,'sub_service': sub_service})
+
+def maps(request:HttpRequest):
+    return render(request,'main_app/maps.html')
