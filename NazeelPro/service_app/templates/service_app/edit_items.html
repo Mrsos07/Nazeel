@@ -1,10 +1,10 @@
 {% extends "main_app/index.html" %}
 {% load static %}
 
-{% block title %}Edit Items Page{% endblock%}
+{% block title %} Edit Items Page {% endblock%}
 
 {% block content %} 
-<!-- hero sectoin -->
+    <!-- hero sectoin -->
     <section class="home" id="home">
         <div class="head_container">
         <div class="image">
@@ -23,54 +23,61 @@
         }
     </script>
     <!-- End of hero sectoin -->
-<div class="container">
-<div class="container-manager">
 
-<div class="order-btn">
-    <a href="{% url 'service_app:menu' main_services.id %}" >Menu</a>
-</div>
-<div class="order-btn">
-    <a href="{% url 'service_app:order_request' main_services.id %}" >Order Request</a>
-</div>
-<div class="order-btn">
-    <a href="{% url 'service_app:active_order' main_services.id %}" >Active Order</a>
-</div> 
+    <!-- edit section -->
+    <div class="container">
+        <!-- manager bar -->
+        <div class="container-manager">
+            <div class="mange-btn">
+                <div class="order-btn">
+                    <a href="{% url 'service_app:menu' main_services.id %}" >Menu</a>
+                </div>
+                <div class="order-btn">
+                    <a href="{% url 'service_app:order_request' main_services.id %}" >Order Request</a>
+                </div>
+                <div class="order-btn">
+                    <a href="{% url 'service_app:active_order' main_services.id %}" >Active Order</a>
+                </div>
+            </div>
+        </div> 
 
-<div class="card mb-3 m-auto  d-flex justify-content-center" >
-  <form action="{% url 'service_app:edit_items' main_services.id %} " method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Item name</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="fill in course title" name="name_service">
+        <!-- edit form -->
+        <div class="sign-form" style="margin-top: 80px;" >
+            <form action="{% url 'service_app:edit_items' main_services.id %} " method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div style="margin-top:20px;">
+                    <label for="exampleFormControlInput1" class="form-label">Item name</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="fill in course title" name="name_service">
+                </div>
+
+                <div style="margin-top:20px;">
+                    <label for="exampleFormControlInput1" class="form-label">Item catogory</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="fill in course title" name="catogory">
+                </div>
+
+                <div style="margin-top:20px;">
+                    <label for="exampleFormControlInput1" class="form-label">Item price</label>
+                    <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="fill in price" name="price">
+                </div>
+                <div style="margin-top:20px;">
+                    <label for="exampleFormControlInput1" class="form-label">Start From</label>
+                    <input type="date" name="delivery_time" />
+                </div>
+                <div style="margin-top:20px;">
+                        <label for="exampleFormControlInput1" class="form-label">Upload image</label>
+                        <input type="file" name="image" class="form-control" />
+                </div>
+            
+                <div class="btn-form">
+                    <button type="submit" class="btn1">Add Item</button>
+                </div>
+            </form>
         </div>
 
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Item catogory</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="fill in course title" name="catogory">
-        </div>
-
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Item price</label>
-            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="fill in price" name="price">
-        </div>
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Start From</label>
-            <input type="date" name="delivery_time" />
-        </div>
-        <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Upload image</label>
-                <input type="file" name="image" class="form-control" />
-        </div>
-    
-        <div class="mb-3">
-            <input type="submit" value="Add Item" class="btn btn-light shadow" />
-        </div>
-    </form>
-</div>
-
-<div class="menu-continer">
-              <!-- For Loop Start Here -->
-              {% for item in delete_items%}
+        <!-- display menu -->
+        <div class="menu-continer" style="margin-top: 30px;">
+            <!-- For Loop Start Here -->
+            {% for item in delete_items%}
             <div class="service-menu">
                 <img src="{{item.image.url}}" alt="{{item.name_service}}">
                 <div class="menu-detile">
@@ -84,9 +91,6 @@
             </div>
             {%endfor%}
             <!-- For Loop Ends Here -->
+        </div>
     </div>
-
-</div>
-
-</div></div>
 {% endblock %}

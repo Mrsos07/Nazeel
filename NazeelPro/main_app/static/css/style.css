@@ -547,13 +547,14 @@ input {
 }
 
 .room img {
-  width: 100%;
+  width: 385px;
   height: 100%;
+  object-fit: cover;
 }
 
 .room .box {
   box-shadow: 0 13px 43px 0 rgba(0, 0, 0, 0.2);
-  margin-bottom: 100px;
+  margin-bottom: 150px;
 }
 
 .room .text {
@@ -724,6 +725,21 @@ footer li {
 footer li:hover {
   color: #806941;
   cursor: pointer;
+}
+.top-fot{
+  padding-top: 15%;
+}
+.footing{
+  position: relative;
+}
+.footing::after {
+  position: absolute;
+  top: 200px;
+  left: 0;
+  content: '';
+  width: 75%;
+  height: 2px;
+  background: #806941;
 }
 
 /*--------------footer--------*/

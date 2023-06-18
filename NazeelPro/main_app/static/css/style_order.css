@@ -8,6 +8,9 @@
     margin-bottom: 25px;
     margin-top: 350px;
     gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .service-catogres{
     display: flex;
@@ -33,7 +36,8 @@
     margin-bottom: 100px;
 }
 .service-menu img{
-    max-height: 140px;
+    height: 140px;
+    width: 140px;
     object-fit: cover;
     border-radius: 10px;
 }

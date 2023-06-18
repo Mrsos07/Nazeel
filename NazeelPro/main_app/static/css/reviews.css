@@ -1,6 +1,6 @@
   .reviews {
-    width : 600px; 
-    height : 200px;
+    width : 800px; 
+    height : 300px;
     overflow : hidden ;
     background-color : #fff ;
     border-radius : 5px;
@@ -13,6 +13,8 @@
     max-height: 100%;
     position : absolute ; 
     margin-left: 80px;
+    display: flex;
+    flex-direction: column;
   }
   .PanelAct {
     left : 0 ;
@@ -40,18 +42,18 @@
   
   .panel p {
     float : left ; 
-    width : 420px;
+    width : 500px;
     clear : right ;
     text-align : justify ;
     margin : 10px 0 10px 0;
-    font-size : 14px ; 
+    font-size : 18px ; 
     color : #aaa ;
     line-height : 1.2em
   }
   .panel h7 { 
     float : left ; 
     width: 200px; 
-    font-size : 14px ; 
+    font-size : 25px ; 
     color : #999 ;
     font-weight : bold ;
     font-style : italic ;
