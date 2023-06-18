@@ -26,11 +26,12 @@
       <link rel="stylesheet" href="{% static 'css/style_order.css' %}">
       <link rel="stylesheet" href="{% static 'css/employee.css' %}">
       <link rel="stylesheet" href="{% static 'css/reviews.css' %}">
+      <link rel="stylesheet" href="{% static 'css/style_manager.css' %}">
       <link rel="stylesheet" href="{% static 'css/maps.css' %}">
       <link rel="stylesheet" href="{% static 'css/chatbot.css' %}">
 
       {% block style %} {% endblock %}
-      
+      <link rel="stylesheet" href="{% static 'css/style_manager.css' %}">
   </head>
   <body style="background-color: #f8f2e8;">
       <!-- hedar section -->
@@ -45,12 +46,11 @@
             <ul class="nav-menu">
               <li> <a href="{% url 'main_app:home' %}" class="nav-link">Home</a> </li>
               <li> <a href="{% url 'service_app:service' %}" class="nav-link">Services</a> </li>
-              <!-- <li> <a href="{% url 'service_app:service' %}" class="nav-link">Manger</a> </li> -->
+              <li> <a href="{% url 'service_app:manager_services' %}" class="nav-link">Manger</a> </li>
               <li> <a href="{% url 'main_app:history' %}" class="nav-link">History</a> </li>
               <li> <a href="{% url 'main_app:about' %}" class="nav-link">About</a> </li>
               <li> <a href="{% url 'main_app:maps' %}" class="nav-link">Map</a> </li>
             </ul>
-    
             <!-- navbar mobile -->
             <div class="hambuger">
               <span class="bar"></span>
@@ -122,13 +122,26 @@
           <div class="box">
             <h3>Links</h3>
             <ul>
-              <a href="https://bio.site/Nazeel" target="_blank" style="color: #000;"><li>The Future Seed (TFS) members</li></a> <!-- "https://bio.site/Nazeel" -->
-              <li>Chill and Escape in Our Natural Shelters</li>
+              <a href="https://bio.site/the_future_seed" target="_blank" style="color: #000;"><li>The Future Seed (TFS) members</li></a> <!-- "https://bio.site/Nazeel" -->
+              <a href="https://tuwaiq.edu.sa/" target="_blank" style="color: #000;"><li>This work is one of the outputs of Tuwaiq Academy</li></a>
               <li>September in Luviana Hotel</li>
               <li>Live Music Concerts at Luviana</li>
             </ul>
+            
+          </div>
+          <div class="box">
+            <h3>Site Map</h3>
+            <ul>
+              <a href="{% url 'main_app:home' %}"  style="color: #000;"><li>- Home</li></a> <!-- "https://bio.site/Nazeel" -->
+              <a href="{% url 'service_app:service' %}"  style="color: #000;"><li>- Services</li></a>
+              <a href="{% url 'main_app:history' %}"  style="color: #000;"><li>- History</li></a>
+              <a href="{% url 'main_app:about' %}"  style="color: #000;"><li>- About</li></a>
+              <a href="#"  style="color: #000;"><li>- Map</li></a>
+            </ul>
+            
           </div>
         </div>
+        
       </footer>
 
       {% block script %} {% endblock %}

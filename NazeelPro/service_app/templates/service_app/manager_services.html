@@ -1,0 +1,74 @@
+{% extends 'main_app/index.html' %}
+{% load static %}
+
+{% block title %} Services page {% endblock %}
+
+{% block content %}
+    <!-- hero sectoin -->
+    <section class="home" id="home">
+        <div class="head_container">
+        <div class="image">
+            <img src="{% static 'images/black-bg.jpg' %}" style="height: 24vh; object-fit: cover;" class="slide">
+        </div>
+        </div>
+    </section>
+    <script>
+        function img(anything) {
+        document.querySelector('.slide').src = anything;
+        }
+
+        function change(change) {
+        const line = document.querySelector('.image');
+        line.style.background = change;
+        }
+    </script>
+    <!-- End of hero sectoin -->
+
+<div class="container">
+<div class="container-manager">
+
+
+<!-- To add new service -->
+<div class="order-btn">
+    <a href="{% url 'service_app:add_service' %}" >Add Services</a>
+</div>
+<!-- To add new room -->
+<div class="order-btn">
+    <a href="{% url 'employee_app:add_room' %}" >Add Rooms</a>
+</div>
+<!-- To add new guest -->
+<div class="order-btn">
+    <a href="{% url 'employee_app:add_guest' %}" >Add Guest</a>
+</div>
+        
+
+
+<!-- Display the services -->
+<section class="room top" id="services">
+        <div class="container">
+        {% for service in main_services %}
+            <div class="content grid">
+                <div class="box">
+                    <div class="img">
+                        <img src="{{ service.image.url }}" alt="{{ service.name_service }}">
+                    </div>
+                    <div class="text text-row">
+                        <div>
+                            <h3>{{service.name_service}}</h3>
+                            {% comment %} <p>{{service.description_service}}</p> {% endcomment %}
+                        </div>
+                        <div class="order-btn">
+                            <a href="{% url 'service_app:menu' service.id %}" class="btn btn-primary">Detail</a>
+                        </div>
+                    </div>
+                </div>
+                {%endfor%}
+                <!-- end box -->
+            </div>
+        </div>
+    </section>
+<!-- End of Display the services -->
+</div>
+</div>
+<!-- End of Container -->
+{% endblock %}

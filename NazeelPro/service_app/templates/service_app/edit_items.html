@@ -1,33 +1,65 @@
 {% extends "main_app/index.html" %}
+{% load static %}
 
 {% block title %}Edit Items Page{% endblock%}
 
 {% block content %} 
+<!-- hero sectoin -->
+    <section class="home" id="home">
+        <div class="head_container">
+        <div class="image">
+            <img src="{% static 'images/black-bg.jpg' %}" style="height: 24vh; object-fit: cover;" class="slide">
+        </div>
+        </div>
+    </section>
+    <script>
+        function img(anything) {
+        document.querySelector('.slide').src = anything;
+        }
 
-<div class="row row-cols-sm-4 p-4 me-5 text-center d-flex justify-content-center">
-    <a href="{% url 'service_app:menu' %}" type="button" class=" btn btn-light shadow">Menu</a>
-    <a href="{% url 'service_app:order_request' %}" type="button" class=" btn btn-light shadow">Order Request</a>
-    <a href="{% url 'service_app:active_order' %}" type="button" class=" btn btn-light shadow">Active Order</a>
+        function change(change) {
+        const line = document.querySelector('.image');
+        line.style.background = change;
+        }
+    </script>
+    <!-- End of hero sectoin -->
+<div class="container">
+<div class="container-manager">
+
+<div class="order-btn">
+    <a href="{% url 'service_app:menu' main_services.id %}" >Menu</a>
 </div>
+<div class="order-btn">
+    <a href="{% url 'service_app:order_request' main_services.id %}" >Order Request</a>
+</div>
+<div class="order-btn">
+    <a href="{% url 'service_app:active_order' main_services.id %}" >Active Order</a>
+</div> 
+
 <div class="card mb-3 m-auto  d-flex justify-content-center" >
-  <form action="#" method="POST" enctype="multipart/form-data">
+  <form action="{% url 'service_app:edit_items' main_services.id %} " method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Item name</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="fill in course title" name="#">
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="fill in course title" name="name_service">
         </div>
 
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Item description</label>
-            <textarea class="form-control" id="exampleFormControlInput1" placeholder="fill in about" name="#"></textarea>
+            <label for="exampleFormControlInput1" class="form-label">Item catogory</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="fill in course title" name="catogory">
         </div>
+
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Item price</label>
-            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="fill in course hours" name="#">
+            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="fill in price" name="price">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Start From</label>
+            <input type="date" name="delivery_time" />
         </div>
         <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Upload image</label>
-                <input type="file" name="#" class="form-control" />
+                <input type="file" name="image" class="form-control" />
         </div>
     
         <div class="mb-3">
@@ -36,21 +68,25 @@
     </form>
 </div>
 
-<div class="card mb-3" >
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="/static/images/default.png" class="img-fluid rounded-start" alt="...">
+<div class="menu-continer">
+              <!-- For Loop Start Here -->
+              {% for item in delete_items%}
+            <div class="service-menu">
+                <img src="{{item.image.url}}" alt="{{item.name_service}}">
+                <div class="menu-detile">
+                    <h4>{{item.name_service}}</h4>
+                    <p>{{item.catogory}}</p>
+                    <a href="{% url 'service_app:delete_items' item.id%}" class="order-btn">Delete</a>
+                </div>
+                <div class="menu-price">
+                    <p>price: {{item.price}} $</p>
+                </div>
+            </div>
+            {%endfor%}
+            <!-- For Loop Ends Here -->
     </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Item name</h5>
-        <p class="card-text">Item description Item description Item description Item description Item description Item description Item description Item description </p>
-        <p class="card-text"><small class="text-body-secondary">Item price</small></p>
-        <a href="#" type="button" class=" btn btn-light shadow">Delete Item</a>
-      </div>
-    </div>
-  </div>
-</div>
 
 </div>
+
+</div></div>
 {% endblock %}

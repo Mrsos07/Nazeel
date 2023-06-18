@@ -1,51 +1,71 @@
 {% extends "main_app/index.html" %}
+{% load static %}
 
 {% block title %}Servicese Detail Page{% endblock%}
 
 {% block content %} 
-<div class="row row-cols-sm-4 p-4 me-5 text-center d-flex justify-content-center">
-    <a href="{% url 'service_app:menu' %}" type="button" style="background-color: #7e7e84;" class=" btn btn-light shadow">Menu</a>
-    <a href="{% url 'service_app:order_request' %}" type="button" class=" btn btn-light shadow">Order Request</a>
-    <a href="{% url 'service_app:active_order' %}" type="button" class=" btn btn-light shadow">Active Order</a>
+
+    <!-- hero sectoin -->
+    <section class="home" id="home">
+        <div class="head_container">
+        <div class="image">
+            <img src="{% static 'images/black-bg.jpg' %}" style="height: 24vh; object-fit: cover;" class="slide">
+        </div>
+        </div>
+    </section>
+    <script>
+        function img(anything) {
+        document.querySelector('.slide').src = anything;
+        }
+
+        function change(change) {
+        const line = document.querySelector('.image');
+        line.style.background = change;
+        }
+    </script>
+    <!-- End of hero sectoin -->
+
+
+<!-- menu -->
+<div class="container">
+<div class="container-manager">
+
+<!-- button bar -->
+ <div class="order-btn">
+    <a href="{% url 'service_app:menu' main_services.id %}" >Menu</a>
 </div>
-<div class="card mb-3 m-auto  d-flex justify-content-center" >
-  <img src="/static/images/default.png" style="height: 120px; object-fit: cover;;" class="card-img-top" alt="...">
-  <div class="card-body">
-    <p class="card-text text-center">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-  </div>
+<div class="order-btn">
+    <a href="{% url 'service_app:order_request' main_services.id %}" >Order Request</a>
+</div>
+<div class="order-btn">
+    <a href="{% url 'service_app:active_order' main_services.id %}" >Active Order</a>
+</div> 
+<!-- End of button bar -->
+
+<div class="service-titel">
+            <h1>{{main_services.name_service}}</h1>
+            <p>{{main_services.description_service}}</p>
+        </div>
   
-  <div class="card mb-3" >
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="/static/images/default.png" class="img-fluid rounded-start" alt="...">
+  <div class="menu-continer">
+  {% for sub in sub_service %}
+            <div class="service-menu">
+                <img src="{{sub.image.url}}" alt="">
+                <div class="menu-detile">
+                    <h4>{{sub.name_service}}</h4>
+                    <p>{{sub.catogory}}</p>
+                </div>
+                <div class="menu-price">
+                    <p>price: {{sub.price}} $</p>
+                </div>
+            </div>
+            {% endfor%}
     </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Item name</h5>
-        <p class="card-text">Item description Item description Item description Item description Item description Item description Item description Item description </p>
-        <p class="card-text"><small class="text-body-secondary">Item price</small></p>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="card mb-3" >
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="/static/images/default.png" class="img-fluid rounded-start" alt="...">
+<div class="order-btn">
+        <a href="{% url 'service_app:edit_items' main_services.id%}" >Edit</a>
     </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Item name</h5>
-        <p class="card-text">Item description Item description Item description Item description Item description Item description Item description Item description </p>
-        <p class="card-text"><small class="text-body-secondary">Item price</small></p>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="row row-cols-sm-4 p-4 me-5 text-center d-flex justify-content-center">
-    <a href="{% url 'service_app:edit_items' %}" type="button" class=" btn btn-light shadow">Edit</a>
 </div>
 
 </div>
