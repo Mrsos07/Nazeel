@@ -24,7 +24,8 @@ def employee(request):
         if user is not None and user.employee is not None:
             # تم العثور على مستخدم موظف صحيح، قم بتسجيل دخوله
             login(request, user)
-            return redirect('service_app:manager_services')  # توجيه الموظف إلى صفحة البداية الخاصة به
+            # توجيه الموظف إلى صفحة البداية الخاصة به
+            return redirect('service_app:manager_services')
 
         else:
             # بيانات تسجيل الدخول غير صحيحة، قم بعرض رسالة خطأ
@@ -67,11 +68,16 @@ def add_guest(request: HttpRequest,):
 
 
 def add_room(request: HttpRequest):
-    all_hotels = Hotel.objects.all()
-    # if request.method == 'POST' :
-    #     hotel_object = Hotel.objects.get(id=hotel_id)
-    #     new_room = Room(hotel=hotel_object,room_number=request.POST["room_number"])
-    #     new_room.save()
-    #     return redirect('employee_app:manager_services',hotel_id=hotel_id)
-    # hotel = Hotel.objects.get(id=hotel_id)
-    return render(request, 'employee_app/add_room.html', {"all_hotels":all_hotels})
+    hotels = Hotel.objects.all()
+    if request.method == 'POST':
+        hotel_id = request.POST['hotel']
+        hotel = Hotel.objects.get(pk=hotel_id)
+        # create the Guest instance with the Room
+        new_room = Room.objects.create(
+            room_number=request.POST['room_number'],
+            hotel=hotel
+        )
+
+        new_room.save()
+
+    return render(request, 'employee_app/add_room.html', {"hotel": hotels})

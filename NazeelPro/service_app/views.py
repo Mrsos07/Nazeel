@@ -1,9 +1,10 @@
 from datetime import datetime
 
 from django.shortcuts import render, redirect
-from .models import MainService , SubService
+from .models import MainService, SubService, Review
 from main_app.models import Hotel
 from django.http import HttpRequest
+
 
 # Create your views here.
 
@@ -12,16 +13,16 @@ def service(request: HttpRequest):
     """Rendering the service page to show all the services that are available in the database"""
 
     services = MainService.objects.all()
+    reviews = Review.objects.all()
     if services:
-        return render(request, 'main_app/services.html', {'services': services})
+        return render(request, 'main_app/services.html', {'services': services, 'reviews': reviews})
     else:
         return render(request, 'service_app/add_service.html')
 
 
-def manager_services(request:HttpRequest):
+def manager_services(request: HttpRequest):
     main_services = MainService.objects.all()
-    return render(request, "service_app/manager_services.html",{'main_services': main_services})
-
+    return render(request, "service_app/manager_services.html", {'main_services': main_services})
 
 
 def add_service(request: HttpRequest):
@@ -35,7 +36,7 @@ def add_service(request: HttpRequest):
 
         # Convert the input string to a datetime object
         time__on = datetime.strptime(time_on,  '%H:%M')
-        time__off = datetime.strptime(time_off,  '%H:%M')   
+        time__off = datetime.strptime(time_off,  '%H:%M')
         if "image" in request.FILES:
 
             new_service = MainService(
@@ -48,35 +49,42 @@ def add_service(request: HttpRequest):
 
     return render(request, 'service_app/add_service.html', {'hotels': hotels})
 
-def menu(request:HttpRequest, main_services_id):
-    main_services = MainService.objects.get( id = main_services_id )
+
+def menu(request: HttpRequest, main_services_id):
+    main_services = MainService.objects.get(id=main_services_id)
     sub_service = SubService.objects.filter(main_service=main_services)
-    
-    return render(request,"service_app/menu.html",{'main_services': main_services,'sub_service': sub_service})
 
-def edit_items(request:HttpRequest,main_services_id):
+    return render(request, "service_app/menu.html", {'main_services': main_services, 'sub_service': sub_service})
+
+
+def edit_items(request: HttpRequest, main_services_id):
     if request.method == 'POST':
-        main_services_object = MainService.objects.get(id = main_services_id)
-        new_sub_service = SubService(main_service=main_services_object,name_service=request.POST["name_service"],catogory=request.POST["catogory"],price=request.POST["price"],image=request.FILES["image"],delivery_time=request.POST["delivery_time"])
+        main_services_object = MainService.objects.get(id=main_services_id)
+        new_sub_service = SubService(main_service=main_services_object, name_service=request.POST["name_service"], catogory=request.POST[
+                                     "catogory"], price=request.POST["price"], image=request.FILES["image"], delivery_time=request.POST["delivery_time"])
         new_sub_service.save()
-        return redirect("service_app:edit_items",main_services_id=main_services_id)
-    
-    main_services=MainService.objects.get( id = main_services_id )
-    delete_items=SubService.objects.filter(main_service=main_services_id)
-    return render(request,"service_app/edit_items.html",{"delete_items":delete_items,"main_services":main_services})
+        return redirect("service_app:edit_items", main_services_id=main_services_id)
 
-def delete_items(request:HttpRequest,item_id):
-    deleted_items=SubService.objects.get(id=item_id)
-    main_services_id=MainService.objects.get(id=deleted_items.main_service.id)
+    main_services = MainService.objects.get(id=main_services_id)
+    delete_items = SubService.objects.filter(main_service=main_services_id)
+    return render(request, "service_app/edit_items.html", {"delete_items": delete_items, "main_services": main_services})
+
+
+def delete_items(request: HttpRequest, item_id):
+    deleted_items = SubService.objects.get(id=item_id)
+    main_services_id = MainService.objects.get(
+        id=deleted_items.main_service.id)
     deleted_items.delete()
     return redirect('service_app:edit_items', main_services_id=main_services_id.id)
 
-def order_request(request:HttpRequest, main_services_id):
-    main_services = MainService.objects.get( id = main_services_id )
-    sub_service = SubService.objects.filter(main_service=main_services)
-    return render(request,"service_app/order_request.html",{'main_services': main_services,'sub_service': sub_service})
 
-def active_order(request:HttpRequest, main_services_id):
-    main_services = MainService.objects.get( id = main_services_id )
+def order_request(request: HttpRequest, main_services_id):
+    main_services = MainService.objects.get(id=main_services_id)
     sub_service = SubService.objects.filter(main_service=main_services)
-    return render(request,"service_app/active_order.html",{'main_services': main_services,'sub_service': sub_service})
+    return render(request, "service_app/order_request.html", {'main_services': main_services, 'sub_service': sub_service})
+
+
+def active_order(request: HttpRequest, main_services_id):
+    main_services = MainService.objects.get(id=main_services_id)
+    sub_service = SubService.objects.filter(main_service=main_services)
+    return render(request, "service_app/active_order.html", {'main_services': main_services, 'sub_service': sub_service})
