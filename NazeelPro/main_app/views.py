@@ -36,12 +36,12 @@ def maps(request: HttpRequest):
     return render(request, 'main_app/maps.html')
 
 
-# def add_review(request: HttpRequest):
+def add_review(request: HttpRequest):
 
-#     if request.method == "POST":
+    if request.method == "POST":
 
-#         new_review = Review(
-#             name=request.POST["name"], content=request.POST["content"], rating=request.POST["rating"])
-#         new_review.save()
+        new_review = Review(
+            name=request.POST["name"], content=request.POST["content"], rating=request.POST["rating"])
+        new_review.save()
 
-#         return redirect("service_app:services")
+        return redirect("service_app:service")

@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from django.shortcuts import render, redirect
-from .models import MainService, SubService
+from .models import MainService, SubService, Review
 from main_app.models import Hotel
 from django.http import HttpRequest
 
@@ -13,9 +13,9 @@ def service(request: HttpRequest):
     """Rendering the service page to show all the services that are available in the database"""
 
     services = MainService.objects.all()
-    # reviews = Review.objects.all()
+    reviews = Review.objects.all()
     if services:
-        return render(request, 'main_app/services.html', {'services': services})
+        return render(request, 'main_app/services.html', {'services': services, 'reviews': reviews})
     else:
         return render(request, 'service_app/add_service.html')
 

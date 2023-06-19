@@ -42,16 +42,8 @@ class SubService(models.Model):
         return self.name_service
 
 
-# class Review(models.Model):
-#     name = models.CharField(max_length=100)
-#     content = models.TextField()
-#     rating = models.FloatField()
-#     created_at = models.DateTimeField(auto_now_add=True)
-
-
-# class SubServiceRequest(models.Model):
-#     sub_service = models.ForeignKey(SubService, on_delete=models.CASCADE)#The sub service have a relation to the SubService class
-#     room = models.ForeignKey(Room,  on_delete=models.CASCADE )
-#     quantity = models.IntegerField()
-#     is_delivered = models.BooleanField(default=False)
-#     created_at = models.DateTimeField(auto_now_add=True)
+class Review(models.Model):
+    name = models.CharField(max_length=100)
+    content = models.TextField()
+    rating = models.FloatField()
+    created_at = models.DateTimeField(auto_now_add=True)
