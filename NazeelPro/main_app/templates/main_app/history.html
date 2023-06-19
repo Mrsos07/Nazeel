@@ -67,4 +67,45 @@
             </table>
         </div>
     </section>
+
+    <!-- Add Review Section -->
+    <section>
+        <form action="{% url 'main_app:add_review' %} " method="POST">
+            {% csrf_token %}
+    
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Your name matters</label>
+                <input class="form-control" id="exampleFormControlInput1" placeholder="Describe your experience" name="name"></input>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Your opinion matters</label>
+                <textarea class="form-control" id="exampleFormControlInput1" placeholder="Describe your experience" name="content"></textarea>
+            </div>
+    
+            <div class="menu-price">
+                        <label for="#">Rating</label>
+                        <select name="rating" id="" class="form-select">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+
+                    <div class="menu-price">
+                        <label for="#">Rating</label>
+                        <select name="" id="" class="form-select">
+                            {% for service in main_services%}
+                            <option value="{{service.id}}">{{service.name_service}}</option>
+                           {% endfor %}
+                        </select>
+                    </div>
+            
+    
+            <input type="submit" class="btn1" value="add comment" />
+    
+        </form>
+        </section>
 {% endblock %}
