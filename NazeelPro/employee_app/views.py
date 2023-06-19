@@ -1,7 +1,7 @@
 
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.models import User
 from guest_app.models import Guest, Stay, Room
 from employee_app.models import Employee
@@ -37,6 +37,7 @@ def employee(request):
 
 
 @login_required
+@permission_required('guest_app.add_guest', raise_exception=True)
 def add_guest(request: HttpRequest,):
     if request.method == 'POST' and request.user.is_authenticated:
         # get the Employee instance linked to the User

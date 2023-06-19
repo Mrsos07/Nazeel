@@ -4,4 +4,169 @@
 {% block title %} Nazeel | Home page {% endblock %}
 
 {% block content %}
+<!-- hero sectoin -->
+    <!-- background video -->
+    <video autoplay muted loop class="aboutVideo">
+        <source src="{% static 'video/home.mp4' %}" type="video/mp4">
+      </video>
+      <section class="home" id="home">
+          <div class="head_container">
+            <div class="box">
+                <div class="text">
+                <h1>Welcom </h1>
+                <p>
+                    Stay in our stylish hotel in an enviable city center location in Riyadh. Our hotel is Riyadh’s unique design is inspired by local architecture, mixed with modern interior design. Choose from 192 rooms with different views and state-of-the-art facilities convenient for business and leisure travelers. Our rooms are also equipped with free Wi-Fi and coffee and tea provisions. 
+                </p>
+                <button><a href="{% url 'main_app:about' %}" style="color: #fff;">Read More</a></button>
+                </div>
+            </div>
+            <!--
+            <div class="image">
+                <img src="{% static 'images/hero4.jpg' %}" class="slide">
+            </div>
+            -->
+          </div>
+      </section>
+      <script>
+          function img(anything) {
+          document.querySelector('.slide').src = anything;
+          }
+  
+          function change(change) {
+          const line = document.querySelector('.image');
+          line.style.background = change;
+          }
+      </script>
+
+      
+<!-- facilities sections -->
+<div class="container">
+    <div class="heading_top flex1 marg-t">
+      <div class="heading">
+      <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
+      <h2>facilities</h2>
+      </div>
+    </div>
+  </div>
+  <!-- facilities one -->
+  <section class="wrapper top" style="margin-top: 5%;">
+      <div class="container">
+        <div class="text">
+          <h2>Fitness Center</h2>
+          <p>The Huff-and-Puff Fitness Center offers a unique and tranquil environment for your workout—only in much lovelier surroundings than your usual daily exercise location.</p>
+  
+          <div class="content">
+            <div class="box flex">
+              <i class="fas fa-swimming-pool"></i>
+              <span>Swimming pool</span>
+            </div>
+            <div class="box flex">
+              <i class="fas fa-dumbbell"></i>
+              <span>Gym & yogo</span>
+            </div>
+            <div class="box flex">
+              <i class="fas fa-spa"></i>
+              <span>Spa & massage</span>
+            </div>
+            <div class="box flex">
+              <i class="fas fa-ship"></i>
+              <span>Boat Tours</span>
+            </div>
+            <div class="box flex">
+              <i class="fas fa-swimmer"></i>
+              <span>Surfing Lessons</span>
+            </div>
+            <div class="box flex">
+              <i class="fas fa-microphone"></i>
+              <span>Conference room</span>
+            </div>
+            <div class="box flex">
+              <i class="fas fa-water"></i>
+              <span>Diving & smorking</span>
+            </div>
+            <div class="box flex">
+              <i class="fas fa-umbrella-beach"></i>
+              <span>Private Beach</span>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <!-- facilities two -->
+  <section class="wrapper-r top">
+      <div class="container">
+        <div class="text">
+          <h2>Dine</h2>
+          <p>Long considered among the best in Riyadh, the restaurants our Hotel offer exciting dining experiences from around the globe, using the highest quality and freshest produce.</p>
+  
+          <div class="content">
+            <div class="box flex" style="gap: 14px;">
+              <span class="material-symbols-outlined">bakery_dining</span>
+              <span>Breakfast</span>
+            </div>
+            <div class="box flex" style="gap: 14px;">
+              <span class="material-symbols-outlined">brunch_dining</span>
+              <span>Brunch</span>
+            </div>
+            <div class="box flex" style="gap: 14px;">
+              <span class="material-symbols-outlined">cake</span>
+              <span>Dessert</span>
+            </div>
+            <div class="box flex" style="gap: 14px;">
+              <span class="material-symbols-outlined">lunch_dining</span>
+              <span>Lunch</span>
+            </div>
+            <div class="box flex" style="gap: 14px;">
+              <span class="material-symbols-outlined">coffee</span>
+              <span>Coffee</span>
+            </div>
+            <div class="box flex" style="gap: 14px;">
+              <span class="material-symbols-outlined">nutrition</span>
+              <span>Fruits</span>
+            </div>
+            <div class="box flex" style="gap: 14px;">
+              <span class="material-symbols-outlined">dinner_dining</span>
+              <span>Dinner</span>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <!-- facilities three -->
+  <section class="wrapper-z top">
+      <div class="container" >
+        <div class="text">
+          <h2>Swimmers</h2>
+          <p>Our hotel is opening its doors to swimmers with special day access rates, so there’s no need to check-in for the night to take advantage of those cooling waters. Slap on the sunscreen, grab a towel and make a splash at these pool days for men.</p>
+  
+          <div class="content">
+            <div class="box flex">
+              <i class="fas fa-swimming-pool"></i>
+              <span>Swimming pool</span>
+            </div>
+            
+            <div class="box flex">
+              <i class="fas fa-spa"></i>
+              <span>Spa & massage</span>
+            </div>
+            
+            <div class="box flex">
+              <i class="fas fa-swimmer"></i>
+              <span>Surfing Lessons</span>
+            </div>
+            <div class="box flex">
+              <i class="fas fa-microphone"></i>
+              <span>Conference room</span>
+            </div>
+            <div class="box flex">
+              <i class="fas fa-water"></i>
+              <span>Diving & smorking</span>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+  <!-- End Of facilities sections -->
 {% endblock %}

@@ -16,7 +16,7 @@
 
 /* CONTENT IS CLOSE */
 .chatbox__support {
-    display: flex;
+    display: none;
     flex-direction: column;
     background: #eee;
     width: 300px;
@@ -31,7 +31,6 @@
     transform: translateY(-40px);
     z-index: 123456;
     opacity: 1;
-
 }
 
 /* BUTTON */

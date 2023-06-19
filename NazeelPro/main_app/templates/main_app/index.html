@@ -46,20 +46,49 @@
             {% endblock %}
     
             <!-- navbar -->
-            <ul class="nav-menu">
-              <li> <a href="{% url 'main_app:home' %}" class="nav-link">Home</a> </li>
-              <li> <a href="{% url 'service_app:service' %}" class="nav-link">Services</a> </li>
-              <li> <a href="{% url 'service_app:manager_services' %}" class="nav-link">Manger</a> </li>
-              <li> <a href="{% url 'main_app:history' %}" class="nav-link">My oreder</a> </li>
-              <li> <a href="{% url 'main_app:about' %}" class="nav-link">About</a> </li>
-              <li> <a href="{% url 'main_app:maps' %}" class="nav-link">Map</a> </li>
-            </ul>
+            {% if request.user.is_authenticated %}
+              <ul class="nav-menu">
+                <li> <a href="{% url 'main_app:home' %}" class="nav-link">Home</a> </li>
+                <li> <a href="{% url 'service_app:service' %}" class="nav-link">Services</a> </li>
+                {% if request.user.is_staff %}
+                  <li> <a href="{% url 'service_app:manager_services' %}" class="nav-link">Manger</a> </li>
+                {% endif %}
+                <li> <a href="{% url 'main_app:history' %}" class="nav-link">My oreder</a> </li>
+                <li> <a href="{% url 'main_app:about' %}" class="nav-link">About</a> </li>
+                <li> <a href="{% url 'main_app:maps' %}" class="nav-link">Hotel Guide</a> </li>
+              </ul>
+            {% endif %}
             <!-- navbar mobile -->
             <div class="hambuger">
               <span class="bar"></span>
               <span class="bar"></span>
               <span class="bar"></span>
             </div>
+
+            <!-- user bar -->
+            {% if request.user.is_authenticated %}
+              <div class="log-hov">
+                <ul>
+                  <li>{{request.user.username}}</li>
+                  <li style="margin-left: 1rem;">
+                    <button class="btn1" style="margin-top: 0; padding: 10px 20px;">
+                      <a style="font-size: 14px;" href="{% url 'main_app:logout_page' %}">Log out</a>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            {% else %}
+              <div class="log-hov">
+                <ul>
+                  <li>{{request.user.username}}</li>
+                  <li style="margin-left: 1rem;">
+                    <button class="btn1" style="margin-top: 0; padding: 10px 20px;">
+                      <a style="font-size: 14px;" href="{% url 'guest_app:sign_in' %}">Log in</a>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            {% endif %}
           </nav>
         </div>
       </header>
@@ -128,14 +157,21 @@
     
           <!-- footer links -->
           <div class="box">
-            <h3>Links</h3>
+            <h3>Sit map</h3>
+            {% if request.user.is_authenticated %}
             <ul>
               <a href="{% url 'main_app:home' %}"  style="color: #000;"><li>Home</li></a>
               <a href="{% url 'service_app:service' %}"  style="color: #000;"><li>Services</li></a>
               <a href="{% url 'main_app:history' %}"  style="color: #000;"><li>My order</li></a>
               <a href="{% url 'main_app:about' %}"  style="color: #000;"><li>About</li></a>
-              <a href="{% url 'main_app:maps' %}"  style="color: #000;"><li>Map</li></a>
+              <a href="{% url 'main_app:maps' %}"  style="color: #000;"><li>Hotel Guide</li></a>
             </ul>
+            {% else %}
+              <ul>
+                <a href="{% url 'main_app:about' %}"  style="color: #000;"><li>About</li></a>
+                <a href="{% url 'guest_app:sign_in' %}"  style="color: #000;"><li>Log in</li></a>
+              </ul>
+            {% endif %}
             
           </div>
 

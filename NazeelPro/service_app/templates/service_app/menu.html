@@ -51,6 +51,15 @@
     
         <!-- service menu -->
         <div class="menu-continer">
+            <!-- button dev -->
+            <div class="service-catogres">
+                <div class="complet-order-btn">
+                    <div class="order-btn">
+                        <a href="{% url 'service_app:edit_items' main_services.id%}" >Edit</a>
+                    </div>
+                </div>
+            </div>
+
             {% for sub in sub_service %}
                 <div class="service-menu">
                     <img src="{{sub.image.url}}" alt="">
@@ -63,15 +72,6 @@
                     </div>
                 </div>
             {% endfor%}
-
-            <!-- button dev -->
-            <div class="service-catogres">
-                <div class="cat-ser">
-                    <div class="order-btn">
-                        <a href="{% url 'service_app:edit_items' main_services.id%}" >Edit</a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 {% endblock %}

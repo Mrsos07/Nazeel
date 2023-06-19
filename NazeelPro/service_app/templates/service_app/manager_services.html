@@ -27,6 +27,10 @@
     <!-- manager bar -->
     <div class="container-manager">
         <div class="mange-btn">
+            <!-- back to maneger page -->
+            <div class="order-btn">
+                <a href="{% url 'service_app:manager_services' %}" >Maneger page</a>
+            </div>
             <!-- To add new service -->
             <div class="order-btn">
                 <a href="{% url 'service_app:add_service' %}" >Add Services</a>
@@ -43,7 +47,7 @@
     </div>
 
     <!-- Display the services -->
-    <section class="room top" id="services">
+    <section class="room top" id="services" style="margin-top: 7%;">
         <div class="container">
             <div class="content grid">
                 <!-- start box -->

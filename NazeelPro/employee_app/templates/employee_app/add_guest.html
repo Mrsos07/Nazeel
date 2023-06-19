@@ -23,44 +23,68 @@
         }
     </script>
 
-  <!-- add form -->
-  <div class="container">
-    <div class="sign-form">
-        <form action="{% url 'employee_app:add_guest' %}" method="POST" enctype="multipart/form-data" style="margin-top:5px;padding:10px;display:block; justify-content:center; gap: 6px;">
-            {% csrf_token %}
-            <h1>Add guest</h1>
-            <div class="mb-3 mt-3" style="margin-top:20px;">
-                <label for="exampleFormControlInput1" class="form-label">Guest Name</label>
-                <input type="text" name="guest_name" class="form-control" id="exampleFormControlInput1" placeholder="fill in course title" >
+    <!-- manager bar -->
+    <div class="container-manager">
+        <div class="mange-btn">
+            <!-- back to maneger page -->
+            <div class="order-btn">
+                <a href="{% url 'service_app:manager_services' %}" >Maneger page</a>
             </div>
-    
-            <div class="mb-3" style="margin-top:20px;">
-                <label for="exampleFormControlInput1" class="form-label">Guest Phone number</label>
-                <input type="text" name="guest_phone_number" class="form-control" id="exampleFormControlInput1" placeholder="fill in course hours" >
+            <!-- To add new service -->
+            <div class="order-btn">
+                <a href="{% url 'service_app:add_service' %}" >Add Services</a>
             </div>
-    
-            <div style="margin-top:20px;">
-                <label for="room_number">Room:</label>
-                <select id="room_number" name="guest_room_number">
-                    {% for room in available_rooms %}
-                        <option value="{{ room.room_number }}">{{ room.room_number }}</option>
-                    {% endfor %}
-                </select>
+            <!-- To add new room -->
+            <div class="order-btn">
+                <a href="{% url 'employee_app:add_room' %}" >Add Rooms</a>
             </div>
-    
-            <div class="mb-3" style="margin-top:20px;">
-                <label for="exampleFormControlInput1" class="form-label">check in date</label>
-                <input type="date" name="check_in_date"  />
+            <!-- To add new guest -->
+            <div class="order-btn">
+                <a href="{% url 'employee_app:add_guest' %}" >Add Guest</a>
             </div>
-    
-            <div class="mb-3" style="margin-top:20px;">
-                <label for="exampleFormControlInput1" class="form-label">check out date</label>
-                <input type="date" name="check_out_date"  />
-            </div>
-            <div class="btn-form">
-                <button type="submit" class="btn1">Add Guest</button>
-            </div>
-        </form>
+        </div>
     </div>
-  </div>
+
+  <!-- add form -->
+  {% if perms.guest_app.add_guest %}
+    <div class="container">
+        <div class="sign-form" style="margin-top: 125px;">
+            <form action="{% url 'employee_app:add_guest' %}" method="POST" enctype="multipart/form-data" style="margin-top:5px;padding:10px;display:block; justify-content:center; gap: 6px;">
+                {% csrf_token %}
+                <h1>Add guest</h1>
+                <div class="mb-3 mt-3" style="margin-top:20px;">
+                    <label for="exampleFormControlInput1" class="form-label">Guest Name</label>
+                    <input type="text" name="guest_name" class="form-control" id="exampleFormControlInput1" placeholder="fill in course title" >
+                </div>
+        
+                <div class="mb-3" style="margin-top:20px;">
+                    <label for="exampleFormControlInput1" class="form-label">Guest Phone number</label>
+                    <input type="text" name="guest_phone_number" class="form-control" id="exampleFormControlInput1" placeholder="fill in course hours" >
+                </div>
+        
+                <div style="margin-top:20px;">
+                    <label for="room_number">Room:</label>
+                    <select id="room_number" name="guest_room_number">
+                        {% for room in available_rooms %}
+                            <option value="{{ room.room_number }}">{{ room.room_number }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+        
+                <div class="mb-3" style="margin-top:20px;">
+                    <label for="exampleFormControlInput1" class="form-label">check in date</label>
+                    <input type="date" name="check_in_date"  />
+                </div>
+        
+                <div class="mb-3" style="margin-top:20px;">
+                    <label for="exampleFormControlInput1" class="form-label">check out date</label>
+                    <input type="date" name="check_out_date"  />
+                </div>
+                <div class="btn-form">
+                    <button type="submit" class="btn1">Add Guest</button>
+                </div>
+            </form>
+        </div>
+    </div>
+  {% endif %}
 {% endblock %}

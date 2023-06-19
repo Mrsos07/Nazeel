@@ -18,7 +18,11 @@
             <p>
                 Our Hotel offering a comfortable stay with 120 luxurious rooms & suites. Our rooms are exquisite in design and great in facilities.All rooms are equipped with luxury furniture, flat TV with satellite channels, convenient seating area, room service is available 24 hours a day for in-room dining.
             </p>
-            <button><a href="{% url 'service_app:service' %}" style="color: #fff;">Explore Services</a></button>
+            {% if request.user.is_authenticated %}
+                <button><a href="{% url 'service_app:service' %}" style="color: #fff;">Explore Services</a></button>
+            {% else %}
+                <button><a href="{% url 'guest_app:sign_in' %}" style="color: #fff;">Log in</a></button>
+            {% endif %}
             
             </div>
         </div>

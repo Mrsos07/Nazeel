@@ -46,6 +46,7 @@
     flex-direction: column;
     align-items: start;
     gap: 20px;
+    width: 800px;
 }
 .menu-detile p{
     width: 80%;

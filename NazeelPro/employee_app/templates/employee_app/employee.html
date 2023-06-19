@@ -30,6 +30,10 @@
         {% csrf_token %}
         <h1>Please sign in</h1>
 
+        {% if error_message %}
+            <div class="alert alert-danger" style="color: red; margin-top: 10px;">{{ error_message }}</div>
+        {% endif %}
+
         <div style="margin-top:20px;width:250px;">
           <label for="floatingInput">Username</label>
           <input type="text" class="form-control" name="username" placeholder="username" required>
@@ -48,9 +52,6 @@
         <div class="btn-form">
           <button type="submit" class="btn1">Submit</button>
         </div>
-        {% if error_message %}
-            <div class="alert alert-danger">{{ error_message }}</div>
-        {% endif %}
       </form>
     </div>
   </div>
