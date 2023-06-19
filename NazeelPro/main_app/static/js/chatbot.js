@@ -27,11 +27,19 @@ class Chatbox {
     toggleState(chatbox) {
         this.state = !this.state;
 
-        // show or hide the box
-        if (this.state) {
-            chatbox.classList.add('chatbox--active');
+        // show or hides the box
+        if(this.state) {
+            chatbox.style.display = "flex"
+            setTimeout(() => {
+                chatbox.classList.add('chatbox--active')
+            }, 200);
+            
+
         } else {
-            chatbox.classList.remove('chatbox--active');
+            chatbox.classList.remove('chatbox--active')
+            setTimeout(() => {
+                chatbox.style.display = "none" 
+            }, 1000);
         }
     }
 

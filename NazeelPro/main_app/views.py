@@ -3,7 +3,9 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect
 from django.http import HttpRequest
-from service_app.models import MainService, SubService, Review
+from service_app.models import MainService , SubService, Review
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required, permission_required
 
 # Create your views here.
 
@@ -119,6 +121,9 @@ def about(request: HttpRequest):
 
 
 
+def logout_page(request: HttpRequest):
+    logout(request)
+    return redirect('main_app:home')
 
 def add_review(request: HttpRequest):
 
@@ -127,6 +132,7 @@ def add_review(request: HttpRequest):
         new_review = Review(
             name=request.POST["name"], content=request.POST["content"], rating=request.POST["rating"])
         new_review.save()
+
 
         return redirect("service_app:service")
 

@@ -1,12 +1,19 @@
 {% extends "main_app/index.html" %}
 {% load static %}
 
-{% block title %}map Hotel{% endblock%}
+{% block title %} Hotel maps {% endblock%}
 
 {% block style %}
     <style>
+        header ul li,
         header ul li a{
         color: #000;
+        }
+        .log-hov button.btn1:hover{
+            border: 2px solid #000;
+        }
+        .log-hov button.btn1 a:hover{
+            color: #000;
         }
     </style>
 {% endblock %}
@@ -18,10 +25,11 @@
 {% block content %}
     <!-- map content -->
     <div class="container">
-        <div class="heading_top flex1 marg-t">
+        <div class="heading_top flex1 marg-t" style="margin-top: 200px;">
             <div class="heading">
             <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
-            <h2>maps</h2>
+            <h2>Hotel Guide</h2>
+            <p style="width: 50%;">Explore our hotel like never before with our comprehensive guide map, featuring all the best amenities and local attractions. Plan your stay with ease and make unforgettable memories with our expertly designed guide.</p>
             </div>
         </div>
         <div class="map-content">
@@ -39,12 +47,6 @@
                     <input type="radio" id="c5" name="ts"/>
                     <label class="t" for="c5"><img src="{% static 'images/map.png' %}"/></label>
                 </div>
-            </div>
-
-            <!-- map decsription -->
-            <div style="margin-left: 80px; margin-top: 75px;">
-                <h1>floor 1</h1>
-                <p> discripton </p>
             </div>
         </div>
     </div>

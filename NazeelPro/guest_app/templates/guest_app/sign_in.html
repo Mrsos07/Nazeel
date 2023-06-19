@@ -1,7 +1,7 @@
 {% extends 'main_app/index.html' %}
 {% load static %}
 
-{% block title %} Sign in  {% endblock %}
+{% block title %} Nazeel | Sign in  {% endblock %}
 
 {% block content %}
   <!-- hero sectoin -->
@@ -30,6 +30,14 @@
         {% csrf_token %}
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
+        {% if messages %}
+          <ul class="messages" style="color: red; margin-top: 10px;">
+            {% for message in messages %}
+              <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
         <div style="margin-top:20px;width:250px;">
           <label for="floatingInput">Room Number</label>
           <input type="text" class="form-control" name="room_number" placeholder="XXXX" required>
@@ -48,14 +56,6 @@
         <div class="btn-form">
           <button type="submit" class="btn1">Submit</button>
         </div>
-        {% if messages %}
-          <ul class="messages">
-            {% for message in messages %}
-              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-          </ul>
-        {% endif %}
-
       </form>
     </div>
   </div>

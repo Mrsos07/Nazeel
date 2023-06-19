@@ -9,6 +9,9 @@ from employee_app.models import Employee
 
 
 # show the hotel information in the admin panel
+from service_app.models import Review
+
+
 class HotelAdmin(admin.ModelAdmin):
     list_display = ('name', 'city', 'location', 'image')
 
@@ -36,7 +39,7 @@ admin.site.register(MainService, MainServiceAdmin)
 
 
 class GuestAdmin(admin.ModelAdmin):
-    list_display = ('name', 'room', 'phone_number')
+    list_display = ('name','room', 'phone_number')
 
 
 admin.site.register(Guest, GuestAdmin)
@@ -66,3 +69,4 @@ admin.site.register(Room, RoomAdmin)
 
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ('name', 'content', 'rating', "created_at")
+admin.site.register(Review,ReviewAdmin)

@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from main_app.models import Hotel
 from employee_app.models import Employee
@@ -20,7 +21,6 @@ class Guest(models.Model):
     # the name of the guest # the room number
     name = models.CharField(max_length=50)
     phone_number = models.IntegerField()  # the phone number of the guest
-
     def __str__(self):
         """Returns a string representation of"""
         return f"{self.name}"

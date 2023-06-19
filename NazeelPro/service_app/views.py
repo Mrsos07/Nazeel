@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from .models import MainService, SubService, Review
 from main_app.models import Hotel
 from django.http import HttpRequest
+from django.contrib.auth.decorators import login_required, permission_required
 
 
 # Create your views here.
@@ -18,12 +19,12 @@ def service(request: HttpRequest):
     else:
         return render(request, 'service_app/add_service.html')
 
-
+@permission_required('service_app.add_mainservice', raise_exception=True)
 def manager_services(request: HttpRequest):
     main_services = MainService.objects.all()
     return render(request, "service_app/manager_services.html", {'main_services': main_services})
 
-
+@permission_required('service_app.add_mainservice', raise_exception=True)
 def add_service(request: HttpRequest):
     """"Add a new service to the database and redirect to the service page"""
     hotels = Hotel.objects.all()
@@ -50,14 +51,13 @@ def add_service(request: HttpRequest):
 
     return render(request, 'service_app/add_service.html', {'hotels': hotels})
 
-
+@permission_required('service_app.add_mainservice', raise_exception=True)
 def menu(request: HttpRequest, main_services_id):
     main_services = MainService.objects.get(id=main_services_id)
     sub_service = SubService.objects.filter(main_service=main_services)
-
     return render(request, "service_app/menu.html", {'main_services': main_services, 'sub_service': sub_service})
 
-
+@permission_required('service_app.change_subservice', raise_exception=True)
 def edit_items(request: HttpRequest, main_services_id):
     if request.method == 'POST':
         main_services_object = MainService.objects.get(id=main_services_id)
@@ -67,17 +67,15 @@ def edit_items(request: HttpRequest, main_services_id):
         new_sub_service.save()
         return redirect("service_app:edit_items", main_services_id=main_services_id)
 
-    main_services = MainService.objects.get(id=main_services_id)
-    delete_items = SubService.objects.filter(main_service=main_services_id)
-
     return render(request, "service_app/edit_items.html", {"delete_items": delete_items, "main_services": main_services})
 
 
+@permission_required('service_app.delete_mainservice', raise_exception=True)
 def delete_items(request: HttpRequest, item_id):
     deleted_items = SubService.objects.get(id=item_id)
 
-    main_services_id = MainService.objects.get(
-        id=deleted_items.main_service.id)
+    main_services_id = MainService.objects.get(id=deleted_items.main_service.id)
+
     deleted_items.delete()
     return redirect('service_app:edit_items', main_services_id=main_services_id.id)
 
