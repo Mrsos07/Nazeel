@@ -1,5 +1,6 @@
 from django.db import models
-
+from django.utils import timezone
+import datetime
 from main_app.models import Hotel
 
 # Create your models here.
@@ -9,8 +10,8 @@ class MainService(models.Model):
     hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE)#The name of the hotel have a relation to the Hotel class
     name_service = models.CharField(max_length=100)#The name of the service
     description_service = models.CharField(max_length=1000)#The description of the service
-    time_on = models.DateTimeField()#The time on which the service was created
-    time_off = models.DateTimeField()#The time off which the service was created
+    time_on = models.DateTimeField(default=timezone.now())#The time on which the service was created
+    time_off = models.DateTimeField(default=timezone.now())#The time off which the service was created
 
     image = models.ImageField(upload_to="images/", default="images/default.jpg")#The image of the service 
 
