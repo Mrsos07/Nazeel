@@ -1,48 +1,46 @@
-from django.shortcuts import render
 from django.http import HttpRequest, JsonResponse
-from service_app.models import SubService , MainService
 import json
-import openai
 from django.views.decorators.csrf import csrf_exempt
-
-
+from django.shortcuts import render, redirect
+from django.http import HttpRequest
+from service_app.models import MainService, SubService, Review
 
 # Create your views here.
 
-def home(request:HttpRequest):
+
+def home(request: HttpRequest):
     """Rendering the home page template"""
     services = MainService.objects.all()[:3]
-    return render(request,'main_app/home.html',{"services":services})
+    return render(request, 'main_app/home.html', {"services": services})
 
-def history(request:HttpRequest):
-    return render(request,'main_app/history.html')
 
-def services(request:HttpRequest):
-    return render(request,'main_app/services.html')
+def history(request: HttpRequest):
+    """Rendering the history page template"""
+    main_services = MainService.objects.all()
 
-def about(request:HttpRequest):
-    return render(request,'main_app/about.html')
+    return render(request, 'main_app/history.html', {"main_services": main_services})
 
-def order(request:HttpRequest,main_services_id):
+def order(request: HttpRequest, main_services_id):
     sub_services_all = SubService.objects.all()
-    main_services = MainService.objects.get( id = main_services_id )
+    main_services = MainService.objects.get(id=main_services_id)
     sub_service = SubService.objects.filter(main_service=main_services)
     total_price = 0
 
     if request.method == 'POST':
         selected_items = request.POST.getlist('selected_items')
 
+        total_price = 0
+
         for item_id in selected_items:
             sub_service = SubService.objects.get(id=item_id)
             quantity = int(request.POST.get(f'quantity_{item_id}', 1))
-
             total_price += sub_service.price * quantity
 
     context = {
         'sub_service': sub_service,
         'total_price': total_price,
-        'sub_service_all':sub_services_all,
-        'main_service':main_services,
+        'sub_service_all': sub_services_all,
+        'main_service': main_services,
     }
 
     return render(request, 'main_app/order.html', context)
@@ -52,7 +50,7 @@ def maps(request:HttpRequest):
     return render(request,'main_app/maps.html')
 
 
-
+@csrf_exempt
 def chatbot(request):
             if request.method == 'POST':
                 data = json.loads(request.body)
@@ -66,6 +64,13 @@ def chatbot(request):
                 user_input = request.POST.get('message')
                 print(clean_text)
                 # Define the chatbot's responses for different questions
+                answer_list=['please choose one :\n'
+                             'check in time\n'
+                             'check out time\n'
+                             'breakfast\n'
+                             'wifi\n'
+                             'room service\n']
+
                 responses = {
                     'hi': 'Hello! How can I assist you today?',
                     'hello': 'Hello! How can I assist you today?',
@@ -99,8 +104,29 @@ def chatbot(request):
                     return JsonResponse({'response': responses_more[clean_text]})
 
                 # If the user's message doesn't match any predefined questions, provide a default response
-                return JsonResponse({'response': 'I\'m sorry, I couldn\'t understand your question. Please try again.'})
+                return JsonResponse({'response': answer_list})
 
             return render(request, 'main_app/chatbot.html')
 
+
+
+def services(request: HttpRequest):
+    return render(request, 'main_app/services.html')
+
+
+def about(request: HttpRequest):
+    return render(request, 'main_app/about.html')
+
+
+
+
+def add_review(request: HttpRequest):
+
+    if request.method == "POST":
+
+        new_review = Review(
+            name=request.POST["name"], content=request.POST["content"], rating=request.POST["rating"])
+        new_review.save()
+
+        return redirect("service_app:service")
 
