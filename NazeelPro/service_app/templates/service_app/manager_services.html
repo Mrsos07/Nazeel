@@ -24,30 +24,34 @@
     </script>
     <!-- End of hero sectoin -->
 
-<div class="container">
-<div class="container-manager">
+    <!-- manager bar -->
+    <div class="container-manager">
+        <div class="mange-btn">
+            <!-- back to maneger page -->
+            <div class="order-btn">
+                <a href="{% url 'service_app:manager_services' %}" >Maneger page</a>
+            </div>
+            <!-- To add new service -->
+            <div class="order-btn">
+                <a href="{% url 'service_app:add_service' %}" >Add Services</a>
+            </div>
+            <!-- To add new room -->
+            <div class="order-btn">
+                <a href="{% url 'employee_app:add_room' %}" >Add Rooms</a>
+            </div>
+            <!-- To add new guest -->
+            <div class="order-btn">
+                <a href="{% url 'employee_app:add_guest' %}" >Add Guest</a>
+            </div>
+        </div>
+    </div>
 
-
-<!-- To add new service -->
-<div class="order-btn">
-    <a href="{% url 'service_app:add_service' %}" >Add Services</a>
-</div>
-<!-- To add new room -->
-<div class="order-btn">
-    <a href="{% url 'employee_app:add_room' %}" >Add Rooms</a>
-</div>
-<!-- To add new guest -->
-<div class="order-btn">
-    <a href="{% url 'employee_app:add_guest' %}" >Add Guest</a>
-</div>
-        
-
-
-<!-- Display the services -->
-<section class="room top" id="services">
+    <!-- Display the services -->
+    <section class="room top" id="services" style="margin-top: 7%;">
         <div class="container">
-        {% for service in main_services %}
             <div class="content grid">
+                <!-- start box -->
+                {% for service in main_services %}
                 <div class="box">
                     <div class="img">
                         <img src="{{ service.image.url }}" alt="{{ service.name_service }}">
@@ -67,8 +71,5 @@
             </div>
         </div>
     </section>
-<!-- End of Display the services -->
-</div>
-</div>
-<!-- End of Container -->
+    <!-- End of Display the services -->
 {% endblock %}

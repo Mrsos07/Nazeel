@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpRequest
-from service_app.models import MainService, SubService, Review
+from service_app.models import MainService , SubService, Review
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required, permission_required
 
 # Create your views here.
 
@@ -31,10 +33,13 @@ def order(request: HttpRequest, main_services_id):
     sub_service = SubService.objects.filter(main_service=main_services)
     return render(request, 'main_app/order.html', {'main_services': main_services, 'sub_service': sub_service})
 
+def maps(request:HttpRequest):
+    return render(request,'main_app/maps.html')
 
-def maps(request: HttpRequest):
-    return render(request, 'main_app/maps.html')
+def logout_page(request: HttpRequest):
+    logout(request)
 
+    return redirect('main_app:home')
 
 def add_review(request: HttpRequest):
 

@@ -1,7 +1,7 @@
 {% extends 'main_app/index.html' %}
 {% load static %}
 
-{% block title %} Services page {% endblock %}
+{% block title %} Nazeel | Services page {% endblock %}
 
 {% block content %}
 
@@ -34,14 +34,14 @@
     <!-- Services section -->
     <section class="room top" id="services">
         <div class="container">
-        <div class="heading_top flex1">
-            <div class="heading">
-            <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
-            <h2>Services</h2>
+            <!-- titale section -->
+            <div class="heading_top flex1">
+                <div class="heading">
+                <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
+                <h2>Services</h2>
+                </div>
             </div>
-        </div>
             <div class="content grid">
-                <!-- service box -->
                 <!-- service box -->
                 {% for service in services %}
                 <div class="box">
@@ -51,7 +51,7 @@
                     <div class="text text-row">
                         <div>
                             <h3>{{ service.name_service }}</h3>
-                            <p>{{ service.description_service }}</p>
+                            <p>{{ service.description_service|truncatewords:14 }}</p>
                             <p>Time: {{ service.time_on }} - {{ service.time_off }}</p>
                             <!-- rateing --> <!--
                             <div style="display: flex;">
@@ -72,18 +72,19 @@
 
     <!-- reviews section -->
     <div class="container">
+        <!-- titale section -->
         <div class="heading_top flex1 marg-t">
             <div class="heading">
-            <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
-            <h2>reviews</h2>
+                <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
+                <h2>reviews</h2>
             </div>
         </div>
         <div class='reviews'>
-            <!-- Panel -->
+            <!-- reviwe Panel -->
             {%for review in reviews%}
             <div class='panel'>
-                <div style="display: flex; gap: 5px; align-items: center; margin-top: 20px;">
-                    <h7 style="width: 100px;">{{review.name}}</h7>
+                <div style="display: flex; gap: 5px; align-items: center; margin-top: 50px;">
+                    <h7 style="width: 180px;">{{review.name}}</h7>
                     <span class="material-symbols-outlined">star</span>
                     <p>{{review.rating}}</p>
                 </div>
@@ -98,7 +99,6 @@
     <script>
         speed = 600
     </script>
-
 {% endblock %}
 
 {% block script %}

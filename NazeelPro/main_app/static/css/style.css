@@ -74,7 +74,18 @@ header ul {
 header ul li {
   margin-left: 3rem;
 }
+.log-hov button.btn1{
+  border: 2px solid #806941;
+}
+.log-hov button.btn1 a{
+  color: #fff;
+}
+.log-hov button.btn1:hover{
+  background: none;
+  border: 2px solid #f8f2e8;
+}
 
+header ul li,
 header ul li a {
   font-size: 1.2rem;
   font-weight: 400;
@@ -339,7 +350,7 @@ input {
   margin-bottom: 20px;
   line-height: 25px;
   color: #5f5f5f;
-  margin: 0 0 20px 50px;
+  margin: 0 0 20px 0;
 }
 
 .heading .btn1 {
@@ -547,8 +558,9 @@ input {
 }
 
 .room img {
-  width: 100%;
-  height: 100%;
+  width: 390px;
+  height: 300px;
+  object-fit: cover;
 }
 
 .room .box {
@@ -724,6 +736,22 @@ footer li {
 footer li:hover {
   color: #806941;
   cursor: pointer;
+}
+.top-fot{
+  padding-top: 15%;
+}
+.footing{
+  position: relative;
+}
+.footing::after {
+  position: absolute;
+  top: 200px;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: #806941;
+  opacity: 0.6;
 }
 
 /*--------------footer--------*/

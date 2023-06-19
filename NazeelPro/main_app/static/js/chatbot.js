@@ -30,9 +30,17 @@ class Chatbox {
 
         // show or hides the box
         if(this.state) {
-            chatbox.classList.add('chatbox--active')
+            chatbox.style.display = "flex"
+            setTimeout(() => {
+                chatbox.classList.add('chatbox--active')
+            }, 200);
+            
+
         } else {
             chatbox.classList.remove('chatbox--active')
+            setTimeout(() => {
+                chatbox.style.display = "none" 
+            }, 1000);
         }
     }
 
