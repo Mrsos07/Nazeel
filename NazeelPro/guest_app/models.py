@@ -1,11 +1,10 @@
 from django.db import models
-from django.contrib.auth.models import User
 from main_app.models import Hotel
 from employee_app.models import Employee
 
-
-
 # Create your models here.
+
+
 class Room(models.Model):
     # the hotel have relationship with Hotel class that we import from main_app
     hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE)
@@ -18,13 +17,13 @@ class Room(models.Model):
 class Guest(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     created_by = models.ForeignKey(Employee, on_delete=models.CASCADE)
-    name = models.CharField(max_length=50)  # the name of the guest # the room number
+    # the name of the guest # the room number
+    name = models.CharField(max_length=50)
     phone_number = models.IntegerField()  # the phone number of the guest
 
     def __str__(self):
         """Returns a string representation of"""
         return f"{self.name}"
-
 
 
 # create stay model
@@ -42,4 +41,3 @@ class Stay(models.Model):
     def __str__(self):
         """Returns a string representation of """
         return f"{self.guest} - {self.check_in_date} - {self.check_out_date}"
-
