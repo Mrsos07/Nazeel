@@ -1,11 +1,11 @@
 {% extends "main_app/index.html" %}
 {% load static %}
 
-{% block title %}Order Request Page{% endblock%}
+{% block title %} Order Request Page {% endblock%}
 
 {% block content %} 
 
-<!-- hero sectoin -->
+    <!-- hero sectoin -->
     <section class="home" id="home">
         <div class="head_container">
         <div class="image">
@@ -24,53 +24,56 @@
         }
     </script>
     <!-- End of hero sectoin -->
-<div class="container">
-<div class="container-manager">
 
-<div class="order-btn">
-    <a href="{% url 'service_app:menu' main_services.id %}" >Menu</a>
-</div>
-<div class="order-btn">
-    <a href="{% url 'service_app:order_request' main_services.id %}" >Order Request</a>
-</div>
-<div class="order-btn">
-    <a href="{% url 'service_app:active_order' main_services.id%}" >Active Order</a>
-</div>
-
-
-
-
-
-<div class="card mb-3" >
-    
-    <div class="menu-continer">
-    <p>َRoom number:</p>
-    <p>Delving Time: 00:00</p>
-            <div class="service-menu">
-                <img src="{% static 'images/restorant2.jpg' %}" alt="">
-                <div class="menu-detile">
-                    <h4>Item name</h4>
-                    <p>Quantity: 0000000000000</p>
+    <!-- order section -->
+    <div class="container">
+        <!-- manager bar -->
+        <div class="container-manager">
+            <div class="mange-btn">
+                <div class="order-btn">
+                    <a href="{% url 'service_app:menu' main_services.id %}" >Menu</a>
+                </div>
+                <div class="order-btn">
+                    <a href="{% url 'service_app:order_request' main_services.id %}" >Order Request</a>
+                </div>
+                <div class="order-btn">
+                    <a href="{% url 'service_app:active_order' main_services.id %}" >Active Order</a>
                 </div>
             </div>
-            <p>َTotal price:</p>
-            
-    <div class="order-btn">
-        <a href="#" >Refuse</a>
-    </div>
+        </div> 
 
-    <div class="order-btn">
-        <a href="#" >Accept</a>
-    </div>
-    </div>
-          
-          
+        <!-- order card -->
+        <div class="card mb-3" style="margin-top: 30px;">
+            <div class="menu-continer">
+                <p>َRoom number:</p>
+                <p>Delving Time: 00:00</p>
+                
+                <!-- order content -->
+                <div class="service-menu" style="margin-top: 25px;">
+                    <img src="{% static 'images/restorant2.jpg' %}" alt="">
+                    <div class="menu-detile">
+                        <h4>Item name</h4>
+                        <p>Quantity: 0000000000000</p>
+                    </div>
+                </div>
+                <from method="post">
+                    <p>َTotal price:</p>
+                    <p class="total-price "  style="margin-top: 1px;">Total Price: <span id="total_price" >0</span> $</p>
+                </from>
+
+
+                <!-- butoon div-->
+                <div class="service-catogres" style="margin-top: 25px;">
+                    <div class="cat-ser">
+                        <div class="order-btn">
+                            <a href="#" >Refuse</a>
+                        </div>
+                        <div class="order-btn">
+                            <a href="#" >Accept</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    
-      </div>
-    </div>
-  </div>
-
-
 {% endblock %}

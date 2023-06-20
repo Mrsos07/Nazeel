@@ -1,7 +1,7 @@
 {% extends 'main_app/index.html' %}
 {% load static %}
 
-{% block title %}  {% endblock %}
+{% block title %} Add service page {% endblock %}
 
 {% block content %}
   <!-- hero sectoin -->
@@ -23,51 +23,75 @@
     }
   </script>
 
-  <!-- sign form -->
-  <div class="container">
-    <div class="sign-form">
-      <form action="{% url 'service_app:add_service' %}" method="POST" style="margin-top:5px;padding:10px;display:block; justify-content:center; gap: 6px;" enctype="multipart/form-data">
-          {% csrf_token %}
-          <h1 class="h3 mb-3 fw-normal">Add</h1>
-
-          <div style="margin-top:20px;">
-            <label for="exampleFormControlInput1" class="form-label">service name:</label>
-            <input name="name_service" type="text" class="">
-          </div>
-
-          <div style="margin-top:20px; display: flex; flex-direction: column;">
-              <label class="input-group-text">service description:</label>
-              <textarea style="max-width: 450px; margin-top: 20px;" name="description_service" aria-label="With textarea"></textarea>
-          </div>
-
-          <div style="margin-top:20px;">
-              <label for="exampleFormControlInput1" class="form-label">Open time:</label>
-              <input type="time" name="time_on"/>
-          </div>
-
-          <div style="margin-top:20px;">
-              <label for="exampleFormControlInput1" class="form-label">Close time:</label>
-              <input type="time" name="time_off"/>
-          </div>
-
-          <div style="margin-top:20px;">
-              <label for="exampleFormControlInput1" class="form-label">Service image:</label>
-              <input type="file" name="image"/>
-          </div>
-
-          <div style="margin-top:20px; display: flex; gap: 15px;">
-              <label for="hotel">Hotel:</label>
-              <select name="hotel" required>
-                {% for hotel in hotels %}
-                  <option value="{{ hotel.id }}">{{ hotel.name }}</option>
-                {% endfor %}
-              </select>
-            </div>
-
-            <div class="btn-form">
-              <button class="btn1" type="submit" fdprocessedid="1isj6h">Add Service</button>
-            </div>
-      </form>
+  <!-- manager bar -->
+  <div class="container-manager">
+    <div class="mange-btn">
+      <!-- back to maneger page -->
+      <div class="order-btn">
+        <a href="{% url 'service_app:manager_services' %}" >Maneger page</a>
+      </div>
+      <!-- To add new service -->
+      <div class="order-btn">
+          <a href="{% url 'service_app:add_service' %}" >Add Services</a>
+      </div>
+      <!-- To add new room -->
+      <div class="order-btn">
+          <a href="{% url 'employee_app:add_room' %}" >Add Rooms</a>
+      </div>
+      <!-- To add new guest -->
+      <div class="order-btn">
+          <a href="{% url 'employee_app:add_guest' %}" >Add Guest</a>
+      </div>
     </div>
   </div>
+
+  <!-- add form -->
+  {% if perms.service_app.add_mainservice %}
+    <div class="container">
+      <div class="sign-form" style="margin-top: 125px;">
+        <form action="{% url 'service_app:add_service' %}" method="POST" style="margin-top:5px;padding:10px;display:block; justify-content:center; gap: 6px;" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h1 class="h3 mb-3 fw-normal">Add service</h1>
+
+            <div style="margin-top:20px;">
+              <label for="exampleFormControlInput1" class="form-label">service name:</label>
+              <input name="name_service" type="text" class="">
+            </div>
+
+            <div style="margin-top:20px; display: flex; flex-direction: column;">
+                <label class="input-group-text">service description:</label>
+                <textarea style="max-width: 450px; margin-top: 20px;" name="description_service" aria-label="With textarea"></textarea>
+            </div>
+
+            <div style="margin-top:20px;">
+                <label for="exampleFormControlInput1" class="form-label">Open time:</label>
+                <input type="time" name="time_on"/>
+            </div>
+
+            <div style="margin-top:20px;">
+                <label for="exampleFormControlInput1" class="form-label">Close time:</label>
+                <input type="time" name="time_off"/>
+            </div>
+
+            <div style="margin-top:20px;">
+                <label for="exampleFormControlInput1" class="form-label">Service image:</label>
+                <input type="file" name="image"/>
+            </div>
+
+            <div style="margin-top:20px; display: flex; gap: 15px;">
+                <label for="hotel">Hotel:</label>
+                <select name="hotel" required>
+                  {% for hotel in hotels %}
+                    <option value="{{ hotel.id }}">{{ hotel.name }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+
+              <div class="btn-form">
+                <button class="btn1" type="submit" fdprocessedid="1isj6h">Add service</button>
+              </div>
+        </form>
+      </div>
+    </div>
+  {% endif %}
 {% endblock %}

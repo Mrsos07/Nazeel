@@ -1,0 +1,33 @@
+{% extends 'main_app/index.html' %}
+{% load static %}
+
+<!-- Your existing HTML code for the main content -->
+
+{% block chatbox %}
+<div class="container">
+  <div class="chatbox">
+    <div class="chatbox__support">
+      <div class="chatbox__header">
+        <div class="chatbox__image--header">
+          <img src="{% static 'images/chatbot-icon.jpg' %}" style="max-width: 100px; border-radius: 50%;" alt="image">
+        </div>
+        <div class="chatbox__content--header">
+          <h4 class="chatbox__heading--header">Chat support</h4>
+          <p class="chatbox__description--header">Hi. My name is Nazeel. How can I help you?</p>
+        </div>
+      </div>
+      <div class="chatbox__messages">
+        <!-- Messages will be dynamically added here -->
+      </div>
+      <div class="chatbox__footer">
+        <input type="text" placeholder="Write a message..." name="message">
+        <button class="chatbox__send--footer send__button">Send</button>
+      </div>
+      </div>
+    <div class="chatbox__button">
+      <button><img src="{% static 'images/chatbox-icon.svg' %}" /></button>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

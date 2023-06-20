@@ -16,6 +16,7 @@ def sign_in(request: HttpRequest,):
         room_number = request.POST["room_number"]
         phone_number = request.POST["phone_number"]
 
+
         # check if a Room with this room_number exists
         try:
             room = Room.objects.get(room_number=room_number)
@@ -26,10 +27,13 @@ def sign_in(request: HttpRequest,):
         # check if a Guest with this room and phone_number exists
         try:
             guest = Guest.objects.get(room=room, phone_number=phone_number)
+            user, created = User.objects.get_or_create(username=guest.name, defaults={'password': 'Mm112233'})
+            user.save()
+            if guest and user.is_authenticated:
+                login(request,user)
             # guest found, redirect to home
-            return redirect("main_app:home")
-        except Guest.DoesNotExist:
-            # guest not found, send error message and show the sign_in page again
+                return redirect("main_app:home")
+        except Guest.DoesNotExist:    # guest not found, send error message and show the sign_in page again
             messages.error(request, "Incorrect phone number")
 
     # if request.method is not POST or if login failed

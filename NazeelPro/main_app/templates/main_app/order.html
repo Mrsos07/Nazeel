@@ -4,66 +4,123 @@
 {% block title %} Nazeel | order page {% endblock %}
 
 {% block content %}
-    <!-- hero sectoin -->
+    <!-- hero section -->
     <section class="home" id="home">
         <div class="head_container">
-        <div class="image">
-            <img src="{% static 'images/restorant3.jpg' %}" style="height: 50vh; object-fit: cover;" class="slide">
-        </div>
+            <div class="image">
+                <img src="{% static 'images/restorant3.jpg' %}" style="height: 50vh; object-fit: cover;" class="slide">
+            </div>
         </div>
     </section>
     <script>
         function img(anything) {
-        document.querySelector('.slide').src = anything;
+            document.querySelector('.slide').src = anything;
         }
 
         function change(change) {
-        const line = document.querySelector('.image');
-        line.style.background = change;
+            const line = document.querySelector('.image');
+            line.style.background = change;
         }
     </script>
 
     <!-- menu section -->
     <div class="container">
-        <!-- descripion -->
-        <div class="service-titel">
-            <h1>{{main_services.name_service}}</h1>
-            <p>{{main_services.description_service}}</p>
+        <!-- description -->
+            <div class="service-titel">
+                <h2>{{main_service.name_service}}</h2>
+                <p>{{main_service.description_service}}</p>
+                <div class="menu-continer">
+                    <!-- categories bar -->
+                    <div class="service-catogres">
+                        <div class="cat-ser">
+                            <a href="#id" class="order-btn">Category 1</a>
+                            <a href="#id" class="order-btn">Category 2</a>
+                            <a href="#id" class="order-btn">Category 3</a>
+                            <a href="#id" class="order-btn">Category 4</a>
+                        </div>
+                        <div class="complet-order-btn">
+                            <a href="{% url 'main_app:history' %}" class="order-btn">order</a>
+                        </div>
+                        <p class="total-price" style="margin-top: 1px;">Total Price: <span id="total_price">0</span> $</p>
+
+                    </div>
+                    <!-- menu -->
+                    {% for sub in sub_service %}
+                        <div class="service-menu">
+                            <img src="{{ sub.image.url }}" alt="{{ sub.name_service }}">
+                            <div class="menu-detile">
+                                <h4>{{ sub.name_service }}</h4>
+                                <p>{{ sub.catogory }}</p>
+                                <a href="#" class="order-btn" onclick="addToCart({{ sub.id }}, '{{ sub.name_service }}', {{ sub.price }})">Add</a>
+                            </div>
+                            <div class="menu-price">
+                                <p>Price: {{ sub.price }} $</p>
+                                <label for="quantity_{{ sub.id }}">Quantity</label>
+                                <select name="quantity_{{ sub.id }}" id="quantity_{{ sub.id }}" class="form-select" onchange="updateTotalPrice({{ sub.id }})">
+                                    <option value="1" selected>1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                            </div>
+                        </div>
+                    {% endfor %}
         </div>
-        <div class="menu-continer">
-            <!-- catogores bar -->
-            <div class="service-catogres">
-                <div class="cat-ser">
-                    <a href="#id" class="order-btn">asd</a>
-                    <a href="#id" class="order-btn">asd</a>
-                    <a href="#id" class="order-btn">asd</a>
-                    <a href="#id" class="order-btn">asd</a>
-                </div>
-                <div class="complet-order-btn">
-                    <a href="{% url 'main_app:history' %}" class="order-btn">order</a>
-                </div>
-            </div>
-            <!-- menu -->
-            {% for sub in sub_service %}
-            <div class="service-menu">
-                <img src="{{sub.image.url}}" alt="">
-                <div class="menu-detile">
-                     <h4>{{sub.name_service}}</h4>
-                    <p>{{sub.catogory}}</p>
-                    <a href="#" class="order-btn">add</a>
-                </div>
-                <div class="menu-price">
-                    <p>price: {{sub.price}} $</p>
-                    <label for="#">Quantity</label>
-                    <select name="" id="" class="form-select">
-                        <option value="1" selected>1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
-                </div>
-            </div>
-            {% endfor%}
-        </div>
+    </div>
+
+    <script>
+        var cart = {};
+
+        function addToCart(serviceId, serviceName, servicePrice) {
+            var quantity = document.getElementById('quantity_' + serviceId).value;
+            if (cart.hasOwnProperty(serviceId)) {
+                cart[serviceId].quantity += parseInt(quantity);
+            } else {
+                cart[serviceId] = {
+                    name: serviceName,
+                    price: servicePrice,
+                    quantity: parseInt(quantity)
+                };
+            }
+            calculateTotalPrice();
+        }
+
+        function updateTotalPrice(serviceId) {
+            var quantity = document.getElementById('quantity_' + serviceId).value;
+            if (cart.hasOwnProperty(serviceId)) {
+                cart[serviceId].quantity = parseInt(quantity);
+            }
+            calculateTotalPrice();
+        }
+
+        function calculateTotalPrice() {
+            var totalPrice = 0;
+            for (var serviceId in cart) {
+                var service = cart[serviceId];
+                totalPrice += service.price * service.quantity;
+            }
+            document.getElementById('total_price').innerText = totalPrice.toFixed(2);
+        }
+
+        function saveCart() {
+      var cartData = JSON.stringify(cart); // Convert cart object to JSON string
+
+      // Make an AJAX request to your Django view
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', '/save_cart/', true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          // Cart data saved successfully
+          console.log('Cart data saved');
+        } else {
+          // Error occurred while saving cart data
+          console.error('Error saving cart data');
+        }
+      };
+      xhr.send(cartData);
+    }
+
+    </script>
     </div>
 {% endblock %}
