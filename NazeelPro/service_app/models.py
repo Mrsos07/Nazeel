@@ -36,23 +36,15 @@ class SubService(models.Model):
 
     def __str__(self):
         """Return the model as a string"""
-        return self.price , self.name_service
+        return str(f"{self.price},{ self.name_service}")
 
-class OrderItm(models.Model):
-    sub_service= models.ForeignKey(SubService,on_delete=models.CASCADE)
-    guest= models.ForeignKey(Guest, on_delete=models.CASCADE)
-    total_price = models.IntegerField(blank=True)
-
-
-
-
-class TotalPrice:
-    total_price= models.FloatField(default=0.0)
-
-    def __str__(self):
-        """Return the model as a string"""
-        return self.total_price
-
+class SubServiceRequest(models.Model):
+    # The sub service have a relation to the SubService class
+    sub_service = models.ForeignKey(SubService, on_delete=models.CASCADE)
+    room = models.ForeignKey(Room,  on_delete=models.CASCADE)
+    quantity = models.IntegerField()
+    is_delivered = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 

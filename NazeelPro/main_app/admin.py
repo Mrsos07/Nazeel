@@ -3,13 +3,10 @@ from . models import Hotel
 from service_app.models import MainService
 from guest_app.models import Guest
 from service_app.models import SubService
-
 from guest_app.models import Guest, Stay, Room
 from employee_app.models import Employee
-
 from service_app.models import Review
 
-from service_app.models import OrderItm , TotalPrice
 
 
 class HotelAdmin(admin.ModelAdmin):
@@ -67,16 +64,8 @@ class RoomAdmin(admin.ModelAdmin):
 admin.site.register(Room, RoomAdmin)
 
 
-#class ReviewAdmin(admin.ModelAdmin):
- #   list_display = ('name', 'content', 'rating', "created_at")
-#admin.site.register(Review,ReviewAdmin)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ('name', 'content', 'rating', "created_at")
+admin.site.register(Review,ReviewAdmin)
 
-
-
-
-
-class OrderItmAdmin(admin.ModelAdmin):
-    list_display = ('sub_service','guest','total_price')
-
-admin.site.register(OrderItm,OrderItmAdmin)
 

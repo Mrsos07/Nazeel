@@ -26,7 +26,23 @@
     
     <!-- history details -->
     <section class="container">
+
         <div class="heading_top flex1 marg-t" style="margin-top: 400px;">
+            <div>
+
+            {% for order in user_requests %}
+                <h3>Order name: {{order.sub_service.name_service}}</h3>
+                <h3>Quantity: {{order.quantity}}</h3>
+                <h3>Delivered: {{order.is_delivered}} </h3>
+                <h3>Room Number: {{order.room.room_number}} </h3>
+                <h3>Guest Name: {{request.user.username}}</h3>
+                <h3> price:{{order.sub_service.price}}</h3>
+
+
+
+
+            {% endfor %}
+            </div>
             <div class="heading">
             <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
             <h2>my orders</h2>
@@ -48,7 +64,7 @@
                     <td>123513</td>
                     <td>2.54</td>
                     <td>asfwetjklanskfhio</td>
-                    <td><p class="total-price" style="margin-top: 1px;">Total Price: <span id="total_price">0</span> $</p></td>
+                    <td><p class="total-price" style="margin-top: 1px;">Total Price: <span id="total_price"><p>Total Price: {{ total_price }}</p></span> $</p></td>
                 </tr>
                 <tr>
                     <td>rerer</td>
@@ -75,8 +91,8 @@
             {% csrf_token %}
     
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Your name matters</label>
-                <input class="form-control" id="exampleFormControlInput1" placeholder="Describe your experience" name="name"></input>
+                <label for="exampleFormControlInput1" class="form-label">{{request.user.username}}</label>
+                 <input type="hidden" value="{{request.user.username}}" name="name" />
             </div>
 
             <div class="mb-3">
@@ -95,14 +111,7 @@
                         </select>
                     </div>
 
-                    <div class="menu-price">
-                        <label for="#">Rating</label>
-                        <select name="" id="" class="form-select">
-                            {% for service in main_services%}
-                            <option value="{{service.id}}">{{service.name_service}}</option>
-                           {% endfor %}
-                        </select>
-                    </div>
+
             
     
             <input type="submit" class="btn1" value="add comment" />
