@@ -24,6 +24,8 @@ def history(request: HttpRequest):
 
     return render(request, 'main_app/history.html', {"main_services": main_services})
 
+# def services(request:HttpRequest):
+#     return render(request,'main_app/services.html')
 
 
 def order(request: HttpRequest, main_services_id):

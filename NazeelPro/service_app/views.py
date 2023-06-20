@@ -14,10 +14,7 @@ def service(request: HttpRequest):
 
     services = MainService.objects.all()
     reviews = Review.objects.all()
-    if services:
-        return render(request, 'main_app/services.html', {'services': services, 'reviews': reviews})
-    else:
-        return render(request, 'service_app/add_service.html')
+    return render(request, 'main_app/services.html', {'services': services, 'reviews': reviews})
 
 @permission_required('service_app.add_mainservice', raise_exception=True)
 def manager_services(request: HttpRequest):
@@ -51,23 +48,55 @@ def add_service(request: HttpRequest):
 
     return render(request, 'service_app/add_service.html', {'hotels': hotels})
 
-@permission_required('service_app.add_mainservice', raise_exception=True)
-def menu(request: HttpRequest, main_services_id):
+def edit_main_service(request: HttpRequest, main_services_id):
+    main_services = MainService.objects.get(id = main_services_id)
+    #hotel = Hotel.objects.get(id=request.POST['hotel'])
+    # Get the user input for the `time_on` field
+    if request.method == 'POST':
+        time_on = request.POST['time_on']
+        time_off = request.POST['time_off']
+
+        # Convert the input string to a datetime object
+        time__on = datetime.strptime(time_on,  '%H:%M')
+        time__off = datetime.strptime(time_off,  '%H:%M')  
+        main_services.name_service = request.POST["name_service"]
+        main_services.description_service = request.POST["description_service"]
+        main_services.time_on = time__on
+        main_services.time_off = time__off
+        # main_services.hotel=hotel 
+        if "image" in request.FILES:
+            main_services.image = request.FILES["image"]
+        main_services.save()
+        return redirect('service_app:manager_services')
+    return render(request, "service_app/edit_main_service.html",{"main_services":main_services})
+
+def delete_service(request:HttpRequest, main_services_id):
     main_services = MainService.objects.get(id=main_services_id)
+    main_services.delete()
+    return redirect('service_app:manager_services')
+
+@permission_required('service_app.add_mainservice', raise_exception=True)
+def menu(request:HttpRequest, main_services_id):
+    main_services = MainService.objects.get( id = main_services_id )
     sub_service = SubService.objects.filter(main_service=main_services)
     return render(request, "service_app/menu.html", {'main_services': main_services, 'sub_service': sub_service})
 
-@permission_required('service_app.change_subservice', raise_exception=True)
+
 def edit_items(request: HttpRequest, main_services_id):
     if request.method == 'POST':
         main_services_object = MainService.objects.get(id=main_services_id)
 
         new_sub_service = SubService(main_service=main_services_object, name_service=request.POST["name_service"], catogory=request.POST[
-                                     "catogory"], price=request.POST["price"], image=request.FILES["image"], delivery_time=request.POST["delivery_time"])
+                                     "catogory"], price=request.POST["price"], image=request.FILES["image"])
         new_sub_service.save()
         return redirect("service_app:edit_items", main_services_id=main_services_id)
-
+    main_services = MainService.objects.get(id=main_services_id)
+    delete_items = SubService.objects.filter(main_service=main_services_id)
     return render(request, "service_app/edit_items.html", {"delete_items": delete_items, "main_services": main_services})
+
+
+
+
 
 
 @permission_required('service_app.delete_mainservice', raise_exception=True)

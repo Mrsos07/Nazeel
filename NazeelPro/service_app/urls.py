@@ -12,4 +12,6 @@ urlpatterns = [
     path("order/request/<main_services_id>/",views.order_request,name='order_request'),
     path("active/order/<main_services_id>/",views.active_order,name='active_order'),
     path("delete/item/<item_id>/",views.delete_items,name='delete_items'),
+    path("edit/<main_services_id>/",views.edit_main_service,name='edit_main_service'),
+    path("delete/service/<main_services_id>/",views.delete_service,name='delete_service'),
 ]

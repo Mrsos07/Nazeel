@@ -1,0 +1,74 @@
+{% extends 'main_app/index.html' %}
+{% load static %}
+
+{% block title %}  {% endblock %}
+
+{% block content %}
+  <!-- hero sectoin -->
+  <section class="home" id="home">
+    <div class="head_container">
+    <div class="image">
+        <img src="{% static 'images/black-bg.jpg' %}" style="height: 24vh; object-fit: cover;" class="slide">
+    </div>
+    </div>
+  </section>
+  <script>
+    function img(anything) {
+    document.querySelector('.slide').src = anything;
+    }
+
+    function change(change) {
+    const line = document.querySelector('.image');
+    line.style.background = change;
+    }
+  </script>
+
+  <!-- sign form -->
+  <div class="container">
+    <div class="sign-form">
+      <form action="{% url 'service_app:edit_main_service' main_services.id %}" method="POST" style="margin-top:5px;padding:10px;display:block; justify-content:center; gap: 6px;" enctype="multipart/form-data">
+          {% csrf_token %}
+          <h1 class="h3 mb-3 fw-normal">Update</h1>
+
+          <div style="margin-top:20px;">
+            <label for="exampleFormControlInput1" class="form-label">service name:</label>
+            <input name="name_service" value="{{main_services.name_service}}" type="text" class="">
+          </div>
+
+          <div style="margin-top:20px; display: flex; flex-direction: column;">
+              <label class="input-group-text">service description:</label>
+              <textarea style="max-width: 450px; margin-top: 20px;" name="description_service" aria-label="With textarea">{{main_services.description_service}}</textarea>
+          </div>
+
+          <div style="margin-top:20px;">
+              <label for="exampleFormControlInput1" class="form-label">Open time:</label>
+              <input type="time" name="time_on" value="{{main_services.time_on}}"/>
+          </div>
+
+          <div style="margin-top:20px;">
+              <label for="exampleFormControlInput1" class="form-label">Close time:</label>
+              <input type="time" name="time_off" value="{{main_services.time_off}}"/>
+          </div>
+
+          <div style="margin-top:20px;">
+              <label for="exampleFormControlInput1" class="form-label">Service image:</label>
+              <img src="{{ main_services.image.url }}" class="card-img-top rounded-5 " style="width: 120px; height:auto ;" alt="...">
+              <input type="file" name="image"/>
+          </div>
+
+          <div style="margin-top:20px; display: flex; gap: 15px;">
+              <label for="hotel">Hotel:</label>
+              <select name="hotel" >
+                {% for hotel in hotels %}
+                  <option value="{{ hotel.id }}">{{ hotel.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="btn-form">
+              <button class="btn1" type="submit" fdprocessedid="1isj6h">Update Service</button>
+            </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}
