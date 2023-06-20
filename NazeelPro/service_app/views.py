@@ -1,6 +1,6 @@
 from datetime import datetime
 from django.shortcuts import render, redirect
-from .models import MainService, SubService, Review
+from .models import MainService, SubService, Review , Room , SubServiceRequest
 from main_app.models import Hotel
 from django.http import HttpRequest
 from django.contrib.auth.decorators import login_required, permission_required
@@ -48,6 +48,17 @@ def add_service(request: HttpRequest):
 
     return render(request, 'service_app/add_service.html', {'hotels': hotels})
 
+
+def submit_request(request: HttpRequest):
+
+    sub_service = SubService.objects.get(id=request.POST["sub_services_id"])
+    room = Room.objects.get(id=request.POST["room_id"])
+    new_request = SubServiceRequest(
+        sub_service=sub_service, room=room, quantity=request.POST["quantity"])
+    new_request.save()
+
+    return redirect("main_app:history")
+
 def edit_main_service(request: HttpRequest, main_services_id):
     main_services = MainService.objects.get(id = main_services_id)
     #hotel = Hotel.objects.get(id=request.POST['hotel'])
@@ -81,7 +92,7 @@ def menu(request:HttpRequest, main_services_id):
     sub_service = SubService.objects.filter(main_service=main_services)
     return render(request, "service_app/menu.html", {'main_services': main_services, 'sub_service': sub_service})
 
-
+@permission_required('service_app.edit_items', raise_exception=True)
 def edit_items(request: HttpRequest, main_services_id):
     if request.method == 'POST':
         main_services_object = MainService.objects.get(id=main_services_id)

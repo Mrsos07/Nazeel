@@ -1,17 +1,17 @@
+
 from django.contrib.auth.models import User
 from django.http import HttpRequest, JsonResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect
 from django.http import HttpRequest
-from service_app.models import MainService , SubService, Review , OrderItm
+from service_app.models import MainService , SubService, Review , SubServiceRequest
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, permission_required
-
+from django.contrib import messages
 # Create your views here.
 from guest_app.models import Guest
 
-from service_app.models import TotalPrice
 
 
 def home(request: HttpRequest):
@@ -22,45 +22,35 @@ def home(request: HttpRequest):
 
 def history(request: HttpRequest):
     """Rendering the history page template"""
-    main_services = MainService.objects.all()
+    guest = Guest.objects.get(name=request.user.username)
+    user_requests = SubServiceRequest.objects.filter(room=guest.room)
 
-    return render(request, 'main_app/history.html', {"main_services": main_services})
+    return render(request, 'main_app/history.html', {"user_requests": user_requests})
 
 # def services(request:HttpRequest):
 #     return render(request,'main_app/services.html')
 
-
+@login_required
 def order(request: HttpRequest, main_services_id):
     sub_services_all = SubService.objects.all()
     main_services = MainService.objects.get(id=main_services_id)
     sub_service = SubService.objects.filter(main_service=main_services)
-    guest= Guest.objects.all()
+    guest = Guest.objects.get(name=request.user.username)
+
+
     total_price = 0
-
-    if request.method == 'POST':
-        selected_items = request.POST.getlist('selected_items')
-        total_price = 0
-
-        for item_id in selected_items:
-            sub_service = SubService.objects.get(id=item_id)
-            quantity = int(request.POST.get(f'quantity_{item_id}', 1))
-            print(quantity)
-            total_price += sub_service.price * quantity
-            print(total_price)
-            order_item= TotalPrice.objects.create(total_price=total_price)
-            order_item.save()
     context = {
         'sub_service': sub_service,
         'total_price': total_price,
         'sub_service_all': sub_services_all,
         'main_service': main_services,
+        "guest": guest
     }
+   # try:
 
     return render(request, 'main_app/order.html', context)
-
-
-
-
+    #except:
+     #   messages.error(request,'please sign in ...')
 
 def maps(request:HttpRequest):
     return render(request,'main_app/maps.html')

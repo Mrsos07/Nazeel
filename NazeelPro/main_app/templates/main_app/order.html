@@ -43,26 +43,35 @@
 
                     </div>
                     <!-- menu -->
-                    {% for sub in sub_service %}
+ <!-- menu -->
+                    <form action="{% url 'service_app:order_request' %}"  method="post">
+                        {% csrf_token %}
+                        {% for sub in sub_service %}
                         <div class="service-menu">
                             <img class="left-ainme" src="{{ sub.image.url }}" alt="{{ sub.name_service }}">
                             <div class="menu-detile left-ainme">
                                 <h4>{{ sub.name_service }}</h4>
                                 <p>{{ sub.catogory }}</p>
-                                <a href="#" class="order-btn" onclick="addToCart({{ sub.id }}, '{{ sub.name_service }}', {{ sub.price }})">Add</a>
+                                <!-- <a href="#" class="order-btn" onclick="addToCart({{ sub.id }}, '{{ sub.name_service }}', {{ sub.price }})">Add</a> -->
                             </div>
                             <div class="menu-price rigt-anime">
                                 <p>Price: {{ sub.price }} $</p>
                                 <label for="quantity_{{ sub.id }}">Quantity</label>
-                                <select name="quantity_{{ sub.id }}" id="quantity_{{ sub.id }}" class="form-select" onchange="updateTotalPrice({{ sub.id }})">
+                                <select name="quantity" id="quantity_{{ sub.id }}" class="form-select" >
                                     <option value="1" selected>1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
                                 </select>
                             </div>
+
+                            <input type="hidden" value="{{sub.id}}" name="sub_services_id" />
+                            <input type="hidden" value="{{guest.room.id}}" name="room_id" />
+                            <input type="submit" value="Add" />
                         </div>
+                    </form>
                     {% endfor %}
+
         </div>
     </div>
 
