@@ -28,7 +28,7 @@
     <section class="container">
 
         <div class="heading_top flex1 marg-t" style="margin-top: 400px;">
-            <div class="heading">
+            <div class="heading top-anime">
             <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
             <h2>my orders</h2>
             </div>
@@ -76,16 +76,19 @@
             {% csrf_token %}
             <h1 class="left-ainme">Rate Us</h1>
     
-            <div class="mb-3">
+            <div style="display: flex; margin-top: 25px;">
+            <div class="bottom-anime">
+            <div class="mb-3" style="margin-top: 25px;">
                 <label for="exampleFormControlInput1" class="form-label">Your name matters</label>
-                <input class="form-control" id="exampleFormControlInput1" placeholder="Describe your experience" name="name"></input>
+                <input class="form-control" id="exampleFormControlInput1" placeholder="Type your name" name="name"></input>
             </div>
-
+            
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Your opinion matters</label>
-                <textarea class="form-control" id="exampleFormControlInput1" placeholder="Describe your experience" name="content"></textarea>
+                <label for="exampleFormControlInput1" class="form-label" style="display: flex; flex-direction: column; margin-top: 25px;">Your opinion matters</label>
+                <textarea style="max-width: 450px; margin-top: 20px; resize: none;" class="form-control" id="exampleFormControlInput1" placeholder="Describe your experience" name="content"></textarea>
             </div>
     
+            <div style="display: flex; margin-top: 25px; justify-content: center;">
             <div class="menu-price">
                         <label for="#">Rating</label>
                         <select name="rating" id="" class="form-select">
@@ -98,18 +101,20 @@
                     </div>
 
                     <div class="menu-price">
-                        <label for="#">Rating</label>
+                        <label for="#">Service</label>
                         <select name="" id="" class="form-select">
                             {% for service in main_services%}
                             <option value="{{service.id}}">{{service.name_service}}</option>
                            {% endfor %}
                         </select>
                     </div>
+                    </div>
             
     
                     <div class="btn-form">
                         <button type="submit" class="btn1">Add comment</button>
                       </div>
+                    </div>
             </div>
     
         </form>
