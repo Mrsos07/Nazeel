@@ -1,13 +1,15 @@
+from django.contrib.auth.models import User
 from django.http import HttpRequest, JsonResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect
 from django.http import HttpRequest
-from service_app.models import MainService , SubService, Review
+from service_app.models import MainService , SubService, Review , OrderItm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, permission_required
 
 # Create your views here.
+from guest_app.models import Guest
 
 
 def home(request: HttpRequest):
@@ -22,22 +24,26 @@ def history(request: HttpRequest):
 
     return render(request, 'main_app/history.html', {"main_services": main_services})
 
+
+
 def order(request: HttpRequest, main_services_id):
     sub_services_all = SubService.objects.all()
     main_services = MainService.objects.get(id=main_services_id)
     sub_service = SubService.objects.filter(main_service=main_services)
+    guest= Guest.objects.all()
     total_price = 0
 
     if request.method == 'POST':
         selected_items = request.POST.getlist('selected_items')
-
         total_price = 0
 
         for item_id in selected_items:
             sub_service = SubService.objects.get(id=item_id)
             quantity = int(request.POST.get(f'quantity_{item_id}', 1))
+            print(quantity)
             total_price += sub_service.price * quantity
-
+            order_item, create=OrderItm.objects.get_or_create(sub_service=sub_service,guest=guest.room_number,total_price=total_price)
+            order_item.save()
     context = {
         'sub_service': sub_service,
         'total_price': total_price,
@@ -52,7 +58,9 @@ def maps(request:HttpRequest):
     return render(request,'main_app/maps.html')
 
 
+
 @csrf_exempt
+@login_required
 def chatbot(request):
             if request.method == 'POST':
                 data = json.loads(request.body)
@@ -66,12 +74,14 @@ def chatbot(request):
                 user_input = request.POST.get('message')
                 print(clean_text)
                 # Define the chatbot's responses for different questions
-                answer_list=['please choose one :\n'
-                             'check in time\n'
-                             'check out time\n'
-                             'breakfast\n'
-                             'wifi\n'
-                             'room service\n']
+                answer_list=['please choose one :\n\n'
+                             '-check in time\n\n\n'
+                             '-check out time\n\n\n'
+                             '-breakfast\n\n\n'
+                             '-wifi\n\n'
+                             '-room service\n\n'
+                             '-pool\n\n'
+                             '-restaurant\n\n']
 
                 responses = {
                     'hi': 'Hello! How can I assist you today?',
@@ -86,6 +96,7 @@ def chatbot(request):
                     'gym': 'Yes, we have a fully equipped gym available for guests to use.',
                     'thank you': 'You\'re welcome! If you have any more questions, feel free to ask.',
                     'bye': 'Goodbye! Have a great day!'
+
                     }
 
                 responses_more={

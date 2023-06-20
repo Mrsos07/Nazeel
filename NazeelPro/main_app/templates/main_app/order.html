@@ -101,6 +101,26 @@
             }
             document.getElementById('total_price').innerText = totalPrice.toFixed(2);
         }
+
+        function saveCart() {
+      var cartData = JSON.stringify(cart); // Convert cart object to JSON string
+
+      // Make an AJAX request to your Django view
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', '/save_cart/', true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          // Cart data saved successfully
+          console.log('Cart data saved');
+        } else {
+          // Error occurred while saving cart data
+          console.error('Error saving cart data');
+        }
+      };
+      xhr.send(cartData);
+    }
+
     </script>
     </div>
 {% endblock %}

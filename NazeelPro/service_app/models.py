@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from main_app.models import Hotel
 from guest_app.models import Guest, Room
+import os
 import datetime
 # Create your models here.
 
@@ -32,16 +33,24 @@ class SubService(models.Model):
     image = models.ImageField(
         upload_to="images/", default="images/default.jpg")
 
+
     def __str__(self):
         """Return the model as a string"""
         return self.price , self.name_service
 
+class OrderItm(models.Model):
+    sub_service= models.ForeignKey(SubService,on_delete=models.CASCADE)
+    guest= models.ForeignKey(Guest,on_delete=models.CASCADE)
+    total_price = models.IntegerField(blank=True)
 
+    def __str__(self:str):
+        return self.format(str)
 
 class Review(models.Model):
     name = models.CharField(max_length=100)
     content = models.TextField()
     rating = models.FloatField()
     created_at = models.DateTimeField(auto_now_add=True)
+
 
 

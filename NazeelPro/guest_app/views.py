@@ -27,7 +27,7 @@ def sign_in(request: HttpRequest,):
         # check if a Guest with this room and phone_number exists
         try:
             guest = Guest.objects.get(room=room, phone_number=phone_number)
-            user= User.objects.create_user(username=guest.name,password='Mm112233')
+            user, created = User.objects.get_or_create(username=guest.name, defaults={'password': 'Mm112233'})
             user.save()
             if guest and user.is_authenticated:
                 login(request,user)

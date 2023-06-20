@@ -67,7 +67,8 @@ def add_guest(request: HttpRequest,):
 
         return render(request, 'employee_app/add_guest.html', {'available_rooms': available_rooms})
 
-
+@login_required
+@permission_required('guest_app.add_room', raise_exception=True)
 def add_room(request: HttpRequest):
     hotels = Hotel.objects.all()
     if request.method == 'POST':
