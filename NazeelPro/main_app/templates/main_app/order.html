@@ -38,9 +38,12 @@
                             <a href="#id" class="order-btn">Category 3</a>
                             <a href="#id" class="order-btn">Category 4</a>
                         </div>
-                        <div class="complet-order-btn">
-                            <a href="{% url 'main_app:history' %}" class="order-btn">order</a>
-                        </div>
+                        <form action="{%url 'main_app:save_cart'%}" method="post">
+                            {%csrf_token %}
+                            <div class="complet-order-btn">
+                                <button type="submit" name="save_cart" class="order-btn">order</button>
+                            </div>
+                        </form>
                         <p class="total-price" style="margin-top: 1px;">Total Price: <span id="total_price">0</span> $</p>
 
                     </div>
