@@ -11,6 +11,8 @@ from django.contrib.auth.decorators import login_required, permission_required
 # Create your views here.
 from guest_app.models import Guest
 
+from service_app.models import TotalPrice
+
 
 def home(request: HttpRequest):
     """Rendering the home page template"""
@@ -44,7 +46,8 @@ def order(request: HttpRequest, main_services_id):
             quantity = int(request.POST.get(f'quantity_{item_id}', 1))
             print(quantity)
             total_price += sub_service.price * quantity
-            order_item, create=OrderItm.objects.get_or_create(sub_service=sub_service,guest=guest.room_number,total_price=total_price)
+            print(total_price)
+            order_item= TotalPrice.objects.create(total_price=total_price)
             order_item.save()
     context = {
         'sub_service': sub_service,
@@ -56,8 +59,13 @@ def order(request: HttpRequest, main_services_id):
     return render(request, 'main_app/order.html', context)
 
 
+
+
+
 def maps(request:HttpRequest):
     return render(request,'main_app/maps.html')
+
+
 
 
 
