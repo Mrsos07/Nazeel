@@ -12,6 +12,7 @@ urlpatterns = [
     path("add/review/", views.add_review, name="add_review"),
     path("chatbot/",views.chatbot,name='chatbot'),
     path('logout/', views.logout_page, name='logout_page'),
+
 ]
 
 
