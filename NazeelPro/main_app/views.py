@@ -11,6 +11,8 @@ from django.contrib.auth.decorators import login_required, permission_required
 # Create your views here.
 from guest_app.models import Guest
 
+from service_app.models import TotalPrice
+
 
 def home(request: HttpRequest):
     """Rendering the home page template"""
@@ -24,6 +26,8 @@ def history(request: HttpRequest):
 
     return render(request, 'main_app/history.html', {"main_services": main_services})
 
+# def services(request:HttpRequest):
+#     return render(request,'main_app/services.html')
 
 
 def order(request: HttpRequest, main_services_id):
@@ -43,9 +47,8 @@ def order(request: HttpRequest, main_services_id):
             print(quantity)
             total_price += sub_service.price * quantity
             print(total_price)
-            order_item, create=OrderItm.objects.get_or_create(sub_service=sub_service,guest=guest.room_number,total_price=total_price)
+            order_item= TotalPrice.objects.create(total_price=total_price)
             order_item.save()
-
     context = {
         'sub_service': sub_service,
         'total_price': total_price,
@@ -57,21 +60,6 @@ def order(request: HttpRequest, main_services_id):
 
 
 
-
-def save_cart(request):
-
-    if request.method == 'POST':
-        save = request.POST['save_cart']
-        print(save)
-    #return render(request,'main_app/order.html')
-#        cart_data = json.loads(request.body)
-     #   print(cart_data)
-        # Perform your logic to save the cart data
-        # ...
-
-      #  return JsonResponse({'message': 'Cart data saved'})
-    #else:
-     #   return JsonResponse({'message': 'Invalid request method'})
 
 
 def maps(request:HttpRequest):

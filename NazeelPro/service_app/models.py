@@ -40,11 +40,22 @@ class SubService(models.Model):
 
 class OrderItm(models.Model):
     sub_service= models.ForeignKey(SubService,on_delete=models.CASCADE)
-    guest= models.ForeignKey(Guest,on_delete=models.CASCADE)
+    guest= models.ForeignKey(Guest, on_delete=models.CASCADE)
     total_price = models.IntegerField(blank=True)
 
-    def __str__(self:str):
-        return self.format(str)
+
+
+
+class TotalPrice:
+    total_price= models.FloatField(default=0.0)
+
+    def __str__(self):
+        """Return the model as a string"""
+        return self.total_price
+
+
+
+
 
 class Review(models.Model):
     name = models.CharField(max_length=100)
