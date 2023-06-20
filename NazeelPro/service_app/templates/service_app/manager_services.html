@@ -26,7 +26,7 @@
 
     <!-- manager bar -->
     <div class="container-manager">
-        <div class="mange-btn">
+        <div class="mange-btn top-anime">
             <!-- back to maneger page -->
             <div class="order-btn">
                 <a href="{% url 'service_app:manager_services' %}" >Maneger page</a>
@@ -52,7 +52,7 @@
             <div class="content grid">
                 <!-- start box -->
                 {% for service in main_services %}
-                <div class="box">
+                <div class="box bottom-anime">
                     <div class="img">
                         <img src="{{ service.image.url }}" alt="{{ service.name_service }}">
                     </div>

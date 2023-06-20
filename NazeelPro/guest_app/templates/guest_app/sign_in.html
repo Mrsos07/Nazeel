@@ -26,9 +26,9 @@
   <!-- sign form -->
   <div class="container">
     <div class="sign-form">
-      <form action="{% url 'guest_app:sign_in' %}" method="POST" style="margin-top:5px;padding:10px;display:block; justify-content:center; gap: 6px;">
+      <form action="{% url 'guest_app:sign_in' %}" method="POST" class="bottom-anime" style="margin-top:5px;padding:10px;display:block; justify-content:center; gap: 6px;">
         {% csrf_token %}
-        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+        <h1 class="h3 mb-3 fw-normal left-ainme">Please sign in</h1>
 
         {% if messages %}
           <ul class="messages" style="color: red; margin-top: 10px;">

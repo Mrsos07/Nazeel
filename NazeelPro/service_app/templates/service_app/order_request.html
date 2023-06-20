@@ -29,7 +29,11 @@
     <div class="container">
         <!-- manager bar -->
         <div class="container-manager">
-            <div class="mange-btn">
+            <div class="mange-btn top-anime">
+                <!-- back to maneger page -->
+            <div class="order-btn">
+                <a href="{% url 'service_app:manager_services' %}" >Maneger page</a>
+            </div>
                 <div class="order-btn">
                     <a href="{% url 'service_app:menu' main_services.id %}" >Menu</a>
                 </div>
@@ -44,7 +48,7 @@
 
         <!-- order card -->
         <div class="card mb-3" style="margin-top: 30px;">
-            <div class="menu-continer">
+            <div class="menu-continer left-ainme">
                 <p>َRoom number:</p>
                 <p>Delving Time: 00:00</p>
                 
@@ -64,7 +68,7 @@
 
                 <!-- butoon div-->
                 <div class="service-catogres" style="margin-top: 25px;">
-                    <div class="cat-ser">
+                    <div class="cat-ser bottom-anime">
                         <div class="order-btn">
                             <a href="#" >Refuse</a>
                         </div>

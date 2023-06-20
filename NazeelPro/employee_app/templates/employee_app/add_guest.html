@@ -25,7 +25,7 @@
 
     <!-- manager bar -->
     <div class="container-manager">
-        <div class="mange-btn">
+        <div class="mange-btn top-anime">
             <!-- back to maneger page -->
             <div class="order-btn">
                 <a href="{% url 'service_app:manager_services' %}" >Maneger page</a>
@@ -49,9 +49,9 @@
   {% if perms.guest_app.add_guest %}
     <div class="container">
         <div class="sign-form" style="margin-top: 125px;">
-            <form action="{% url 'employee_app:add_guest' %}" method="POST" enctype="multipart/form-data" style="margin-top:5px;padding:10px;display:block; justify-content:center; gap: 6px;">
+            <form action="{% url 'employee_app:add_guest' %}" method="POST" enctype="multipart/form-data" class="bottom-anime" style="margin-top:5px;padding:10px;display:block; justify-content:center; gap: 6px;">
                 {% csrf_token %}
-                <h1>Add guest</h1>
+                <h1 class="left-ainme">Add guest</h1>
                 <div class="mb-3 mt-3" style="margin-top:20px;">
                     <label for="exampleFormControlInput1" class="form-label">Guest Name</label>
                     <input type="text" name="guest_name" class="form-control" id="exampleFormControlInput1" placeholder="fill in course title" >

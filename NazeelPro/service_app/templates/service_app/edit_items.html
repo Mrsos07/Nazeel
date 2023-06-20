@@ -28,7 +28,11 @@
     <div class="container">
         <!-- manager bar -->
         <div class="container-manager">
-            <div class="mange-btn">
+            <div class="mange-btn top-anime">
+                <!-- back to maneger page -->
+            <div class="order-btn">
+                <a href="{% url 'service_app:manager_services' %}" >Maneger page</a>
+            </div>
                 <div class="order-btn">
                     <a href="{% url 'service_app:menu' main_services.id %}" >Menu</a>
                 </div>
@@ -44,8 +48,9 @@
         {% if perms.service_app.change_subservice %}
             <!-- edit form -->
             <div class="sign-form" style="margin-top: 80px;" >
-                <form action="{% url 'service_app:edit_items' main_services.id %} " method="POST" enctype="multipart/form-data">
+                <form action="{% url 'service_app:edit_items' main_services.id %} " method="POST" enctype="multipart/form-data" class="bottom-anime">
                     {% csrf_token %}
+                    <h1 class="left-ainme">Add service</h1>
                     <div style="margin-top:20px;">
                         <label for="exampleFormControlInput1" class="form-label">Item name</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="fill in course title" name="name_service">
@@ -78,13 +83,13 @@
             <!-- For Loop Start Here -->
             {% for item in delete_items%}
             <div class="service-menu">
-                <img src="{{item.image.url}}" alt="{{item.name_service}}">
-                <div class="menu-detile">
+                <img src="{{item.image.url}}" class="left-ainme" alt="{{item.name_service}}">
+                <div class="menu-detile left-ainme">
                     <h4>{{item.name_service}}</h4>
                     <p>{{item.catogory}}</p>
                     <a href="{% url 'service_app:delete_items' item.id%}" class="order-btn">Delete</a>
                 </div>
-                <div class="menu-price">
+                <div class="menu-price rigt-anime">
                     <p>price: {{item.price}} $</p>
                 </div>
             </div>
