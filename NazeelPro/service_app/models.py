@@ -1,5 +1,5 @@
 from django.db import models
-
+from guest_app.models import Guest, Room
 from main_app.models import Hotel
 
 # Create your models here.

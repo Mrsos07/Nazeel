@@ -60,6 +60,12 @@
                         <div class="order-btn">
                             <a href="{% url 'service_app:menu' service.id %}" class="btn btn-primary">Detail</a>
                         </div>
+                        <div class="order-btn">
+                            <a href="{% url 'service_app:edit_main_service' service.id %}" class="btn btn-primary">Update</a>
+                        </div>
+                        <div class="order-btn">
+                            <a href="{% url 'service_app:delete_service' service.id %}" class="btn btn-primary">Delete</a>
+                        </div>
                     </div>
                 </div>
                 {%endfor%}

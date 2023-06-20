@@ -12,8 +12,8 @@ def home(request:HttpRequest):
 def history(request:HttpRequest):
     return render(request,'main_app/history.html')
 
-def services(request:HttpRequest):
-    return render(request,'main_app/services.html')
+# def services(request:HttpRequest):
+#     return render(request,'main_app/services.html')
 
 def about(request:HttpRequest):
     return render(request,'main_app/about.html')

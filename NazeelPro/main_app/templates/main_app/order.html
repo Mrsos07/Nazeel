@@ -32,7 +32,6 @@
         </div>
         <div class="menu-continer">
             <!-- catogores bar -->
-            {% for sub in sub_service %}
             <div class="service-catogres">
                 <div class="cat-ser">
                     <a href="#id" class="order-btn">asd</a>
@@ -45,6 +44,7 @@
                 </div>
             </div>
             <!-- menu -->
+            {% for sub in sub_service %}
             <div class="service-menu">
                 <img src="{{sub.image.url}}" alt="">
                 <div class="menu-detile">

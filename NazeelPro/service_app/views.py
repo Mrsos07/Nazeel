@@ -12,12 +12,13 @@ def service(request: HttpRequest):
     """Rendering the service page to show all the services that are available in the database"""
 
     services = MainService.objects.all()
+    # reviews = Review.objects.all()
     if services:
-        return render(request, 'main_app/services.html', {'services': services})
+        return render(request, 'main_app/services.html', {'services': services })
     else:
         return render(request, 'service_app/add_service.html')
 
-
+# Service management page
 def manager_services(request:HttpRequest):
     main_services = MainService.objects.all()
     return render(request, "service_app/manager_services.html",{'main_services': main_services})
@@ -47,6 +48,35 @@ def add_service(request: HttpRequest):
         return redirect('service_app:manager_services')
 
     return render(request, 'service_app/add_service.html', {'hotels': hotels})
+
+
+def edit_main_service(request: HttpRequest, main_services_id):
+    main_services = MainService.objects.get(id = main_services_id)
+    #hotel = Hotel.objects.get(id=request.POST['hotel'])
+    # Get the user input for the `time_on` field
+    if request.method == 'POST':
+        time_on = request.POST['time_on']
+        time_off = request.POST['time_off']
+
+        # Convert the input string to a datetime object
+        time__on = datetime.strptime(time_on,  '%H:%M')
+        time__off = datetime.strptime(time_off,  '%H:%M')  
+        main_services.name_service = request.POST["name_service"]
+        main_services.description_service = request.POST["description_service"]
+        main_services.time_on = time__on
+        main_services.time_off = time__off
+        # main_services.hotel=hotel 
+        if "image" in request.FILES:
+            main_services.image = request.FILES["image"]
+        main_services.save()
+        return redirect('service_app:manager_services')
+    return render(request, "service_app/edit_main_service.html",{"main_services":main_services})
+
+def delete_service(request:HttpRequest, main_services_id):
+    main_services = MainService.objects.get(id=main_services_id)
+    main_services.delete()
+    return redirect('service_app:manager_services')
+
 
 def menu(request:HttpRequest, main_services_id):
     main_services = MainService.objects.get( id = main_services_id )
