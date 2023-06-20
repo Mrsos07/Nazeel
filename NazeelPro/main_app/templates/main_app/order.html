@@ -27,21 +27,19 @@
     <div class="container">
         <!-- description -->
             <div class="service-titel">
+                <div class="top-anime" style="display: flex; flex-direction: column; align-items: center;">
                 <h2>{{main_service.name_service}}</h2>
                 <p>{{main_service.description_service}}</p>
+                    </div>
                 <div class="menu-continer">
                     <!-- categories bar -->
                     <div class="service-catogres">
-                        <div class="cat-ser">
-                            <a href="#id" class="order-btn">Category 1</a>
-                            <a href="#id" class="order-btn">Category 2</a>
-                            <a href="#id" class="order-btn">Category 3</a>
-                            <a href="#id" class="order-btn">Category 4</a>
-                        </div>
-                        <div class="complet-order-btn">
+                        
+                        
+                        <div class="complet-order-btn left-ainme">
                             <a href="{% url 'main_app:history' %}" class="order-btn">order</a>
                         </div>
-                        <p class="total-price" style="margin-top: 1px;">Total Price: <span id="total_price">0</span> $</p>
+                        <p class="total-price rigt-anime" style="margin-top: 1px;">Total Price: <span id="total_price">0</span> $</p>
 
                     </div>
                     <!-- menu -->
@@ -50,13 +48,13 @@
                         {% csrf_token %}
                         {% for sub in sub_service %}
                         <div class="service-menu">
-                            <img src="{{ sub.image.url }}" alt="{{ sub.name_service }}">
-                            <div class="menu-detile">
+                            <img class="left-ainme" src="{{ sub.image.url }}" alt="{{ sub.name_service }}">
+                            <div class="menu-detile left-ainme">
                                 <h4>{{ sub.name_service }}</h4>
                                 <p>{{ sub.catogory }}</p>
                                 <!-- <a href="#" class="order-btn" onclick="addToCart({{ sub.id }}, '{{ sub.name_service }}', {{ sub.price }})">Add</a> -->
                             </div>
-                            <div class="menu-price">
+                            <div class="menu-price rigt-anime">
                                 <p>Price: {{ sub.price }} $</p>
                                 <label for="quantity_{{ sub.id }}">Quantity</label>
                                 <select name="quantity" id="quantity_{{ sub.id }}" class="form-select" >
@@ -77,6 +75,7 @@
         </div>
     </div>
 
+    <!-- price calculater -->
     <script>
         var cart = {};
 

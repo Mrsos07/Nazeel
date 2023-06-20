@@ -28,27 +28,12 @@
     <section class="container">
 
         <div class="heading_top flex1 marg-t" style="margin-top: 400px;">
-            <div>
-
-            {% for order in user_requests %}
-                <h3>Order name: {{order.sub_service.name_service}}</h3>
-                <h3>Quantity: {{order.quantity}}</h3>
-                <h3>Delivered: {{order.is_delivered}} </h3>
-                <h3>Room Number: {{order.room.room_number}} </h3>
-                <h3>Guest Name: {{request.user.username}}</h3>
-                <h3> price:{{order.sub_service.price}}</h3>
-
-
-
-
-            {% endfor %}
-            </div>
-            <div class="heading">
+            <div class="heading top-anime">
             <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
             <h2>my orders</h2>
             </div>
         </div>
-        <div class="history-detail">
+        <div class="history-detail bottom-anime">
             <table class="t-history">
                 <!-- table titel -->
                 <tr>
@@ -86,20 +71,24 @@
     </section>
 
     <!-- Add Review Section -->
-    <section>
-        <form action="{% url 'main_app:add_review' %} " method="POST">
+    <section class="container sign-form" style="margin-top: 150px;">
+        <form action="{% url 'main_app:add_review' %} " method="POST" class="" style="margin-top:5px;padding:10px;display:block; justify-content:center; gap: 6px;">
             {% csrf_token %}
+            <h1 class="left-ainme">Rate Us</h1>
     
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">{{request.user.username}}</label>
-                 <input type="hidden" value="{{request.user.username}}" name="name" />
+            <div style="display: flex; margin-top: 25px;">
+            <div class="bottom-anime">
+            <div class="mb-3" style="margin-top: 25px;">
+                <label for="exampleFormControlInput1" class="form-label">Your name matters</label>
+                <input class="form-control" id="exampleFormControlInput1" placeholder="Type your name" name="name"></input>
             </div>
-
+            
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Your opinion matters</label>
-                <textarea class="form-control" id="exampleFormControlInput1" placeholder="Describe your experience" name="content"></textarea>
+                <label for="exampleFormControlInput1" class="form-label" style="display: flex; flex-direction: column; margin-top: 25px;">Your opinion matters</label>
+                <textarea style="max-width: 450px; margin-top: 20px; resize: none;" class="form-control" id="exampleFormControlInput1" placeholder="Describe your experience" name="content"></textarea>
             </div>
     
+            <div style="display: flex; margin-top: 25px; justify-content: center;">
             <div class="menu-price">
                         <label for="#">Rating</label>
                         <select name="rating" id="" class="form-select">
@@ -111,10 +100,22 @@
                         </select>
                     </div>
 
-
+                    <div class="menu-price">
+                        <label for="#">Service</label>
+                        <select name="" id="" class="form-select">
+                            {% for service in main_services%}
+                            <option value="{{service.id}}">{{service.name_service}}</option>
+                           {% endfor %}
+                        </select>
+                    </div>
+                    </div>
             
     
-            <input type="submit" class="btn1" value="add comment" />
+                    <div class="btn-form">
+                        <button type="submit" class="btn1">Add comment</button>
+                      </div>
+                    </div>
+            </div>
     
         </form>
     </section>

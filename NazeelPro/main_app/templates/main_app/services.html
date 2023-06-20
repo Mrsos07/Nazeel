@@ -9,7 +9,7 @@
     <section class="home" id="home">
         <div class="head_container">
         <div class="box">
-            <div class="text">
+            <div class="text left-ainme">
             <h1>Our Services</h1>
             <p>Explore all our services and order for whatever you want, And we will make sure that we deliver as soon as possible, with the best quality and the most complete service, and that your experience is exceptional and unforgettable.</p>
             <button><a href="#services" style="color: #fff;">View Services</a></button>
@@ -36,7 +36,7 @@
         <div class="container">
             <!-- titale section -->
             <div class="heading_top flex1">
-                <div class="heading">
+                <div class="heading top-anime">
                 <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
                 <h2>Services</h2>
                 </div>
@@ -44,7 +44,7 @@
             <div class="content grid">
                 <!-- service box -->
                 {% for service in services %}
-                <div class="box">
+                <div class="box bottom-anime">
                     <div class="img">
                         <img src="{{ service.image.url }}" alt="{{ service.name_service }}">
                     </div>
@@ -52,7 +52,7 @@
                         <div>
                             <h3>{{ service.name_service }}</h3>
                             <p>{{ service.description_service|truncatewords:14 }}</p>
-                            <p>Time: {{ service.time_on }} - {{ service.time_off }}</p>
+                            <p>Time: {{ service.time_on|time }} - {{ service.time_off|time }}</p>
                             <!-- rateing --> <!--
                             <div style="display: flex;">
                                 <span class="material-symbols-outlined">star</span>
@@ -69,19 +69,19 @@
             </div>
         </div>
     </section>
-        <div class='reviews'>
+        <div class='reviews bottom-anime'>
             <!-- reviwe Panel -->
             {%for review in reviews%}
             <div class='panel'>
                 <div style="display: flex; gap: 5px; align-items: center; margin-top: 50px;">
-                    <h7 style="width: 180px;">{{review.name}}</h7>
+                    <h7 style="width: 180px;">{{review.name|safe}}</h7>
                     <span class="material-symbols-outlined">star</span>
                     <p>{{review.rating}}</p>
                 </div>
-                <p>
+                <div style="height: 120px;"><p>
                    {{review.content}}
-                </p>
-                <h7>{{review.created_at}}</h7>
+                </p></div>
+                <div><h7>{{review.created_at}}</h7></div>
             </div>
             {% endfor %}
         </div>

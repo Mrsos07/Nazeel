@@ -25,10 +25,32 @@
 
   <!-- sign form -->
   <div class="container">
-    <div class="sign-form">
-      <form action="{% url 'service_app:edit_main_service' main_services.id %}" method="POST" style="margin-top:5px;padding:10px;display:block; justify-content:center; gap: 6px;" enctype="multipart/form-data">
+    <!-- manager bar -->
+    <div class="container-manager">
+      <div class="mange-btn top-anime">
+          <!-- back to maneger page -->
+      <div class="order-btn">
+          <a href="{% url 'service_app:manager_services' %}" >Maneger page</a>
+      </div>
+          <!-- To add new service -->
+          <div class="order-btn">
+            <a href="{% url 'service_app:add_service' %}" >Add Services</a>
+        </div>
+        <!-- To add new room -->
+        <div class="order-btn">
+            <a href="{% url 'employee_app:add_room' %}" >Add Rooms</a>
+        </div>
+        <!-- To add new guest -->
+        <div class="order-btn">
+            <a href="{% url 'employee_app:add_guest' %}" >Add Guest</a>
+        </div>
+      </div>
+  </div> 
+
+    <div class="sign-form" style="margin-top: 80px;">
+      <form action="{% url 'service_app:edit_main_service' main_services.id %}" method="POST" class="bottom-anime" style="margin-top:5px;padding:10px;display:block; justify-content:center; gap: 6px;" enctype="multipart/form-data">
           {% csrf_token %}
-          <h1 class="h3 mb-3 fw-normal">Update</h1>
+          <h1 class="h3 mb-3 fw-normal left-ainme">Update service</h1>
 
           <div style="margin-top:20px;">
             <label for="exampleFormControlInput1" class="form-label">service name:</label>

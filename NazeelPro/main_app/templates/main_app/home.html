@@ -12,7 +12,7 @@
     <section class="home" id="home">
         <div class="head_container">
           <div class="box">
-              <div class="text">
+              <div class="text left-ainme">
               <h1>Welcom </h1>
               <p>
                   Stay in our stylish hotel in an enviable city center location in Riyadh. Our hotel is Riyadh’s unique design is inspired by local architecture, mixed with modern interior design. Choose from 192 rooms with different views and state-of-the-art facilities convenient for business and leisure travelers. Our rooms are also equipped with free Wi-Fi and coffee and tea provisions. 
@@ -20,11 +20,6 @@
               <button><a href="{% url 'main_app:about' %}" style="color: #fff;">Read More</a></button>
               </div>
           </div>
-          
-          <div class="image">
-              <img src="{% static 'vedio/home.mp4' %}" class="slide">
-          </div>
-          
         </div>
     </section>
     <script>
@@ -42,28 +37,31 @@
     <section class="room top" id="room">
         <div class="container">
           <div class="heading_top flex1">
-            <div class="heading">
+            <div class="heading top-anime">
               <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
               <h2>Services</h2>
             </div>
-            <div class="button">
+            <div class="button rigt-anime">
               <button class="btn1"><a style="color: #fff;" href="{% url 'service_app:service' %} ">VIEW ALL</a></button>
             </div>
           </div>
           <div class="content grid">
             <!-- service box -->
             {% for service in services %}
-            <div class="box">
+            <div class="box bottom-anime">
               <div class="img">
                   <img src="{{ service.image.url }}" alt="">
               </div>
               <div class="text text-row">
                   <div>
                       <h3>{{ service.name_service }}</h3>
+                      <p>Time: {{ service.time_on|time }} - {{ service.time_off|time }}</p>
+                      <!--
                       <div style="display: flex;">
                         <span class="material-symbols-outlined">star</span>
                         <p>5.5</p>
                       </div>
+                    -->
                   </div>
                   <div class="order-btn">
                       <a href="{% url 'main_app:order' service.id %}">Order</a>
@@ -79,16 +77,16 @@
     <!-- facilities sections -->
     <div class="container">
       <div class="heading_top flex1 marg-t">
-        <div class="heading">
+        <div class="heading top-anime">
         <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
-        <h2>facilities</h2>
+        <h2>Facilities</h2>
         </div>
       </div>
     </div>
     <!-- facilities one -->
     <section class="wrapper top" style="margin-top: 5%;">
         <div class="container">
-          <div class="text">
+          <div class="text rigt-anime">
             <h2>Fitness Center</h2>
             <p>The Huff-and-Puff Fitness Center offers a unique and tranquil environment for your workout—only in much lovelier surroundings than your usual daily exercise location.</p>
     
@@ -133,7 +131,7 @@
     <!-- facilities two -->
     <section class="wrapper-r top">
         <div class="container">
-          <div class="text">
+          <div class="text left-ainme">
             <h2>Dine</h2>
             <p>Long considered among the best in Riyadh, the restaurants our Hotel offer exciting dining experiences from around the globe, using the highest quality and freshest produce.</p>
     
@@ -174,7 +172,7 @@
     <!-- facilities three -->
     <section class="wrapper-z top">
         <div class="container" >
-          <div class="text">
+          <div class="text rigt-anime">
             <h2>Swimmers</h2>
             <p>Our hotel is opening its doors to swimmers with special day access rates, so there’s no need to check-in for the night to take advantage of those cooling waters. Slap on the sunscreen, grab a towel and make a splash at these pool days for men.</p>
     
@@ -211,14 +209,14 @@
     <section class="wrapper-f top">
       <div class="container" >
         <div class="heading_top flex1 marg-t">
-          <div class="heading">
+          <div class="heading top-anime">
           <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
           <h2>Entertainments</h2>
         </div>
       </div>
         <div class="hero-wrapper-visit">
-          <div class="hero-split "><img src="{% static 'images/saudiEvents3.jpg' %}" style="border-radius: 25px;" class="shadow-two" alt=""></div>
-          <div class="hero-split">
+          <div class="hero-split bottom-anime"><img src="{% static 'images/saudiEvents3.jpg' %}" style="border-radius: 25px;" class="shadow-two" alt=""></div>
+          <div class="hero-split rigt-anime">
             <h1 class="visit-h1">Entertainments</h1>
             <p class="visit-p">Discover the most excited activities and events held from the <span  style="color: #806941;">Visit Saudi</span>, which will be your guide during your stay.</p>
             <div class="order-btn">

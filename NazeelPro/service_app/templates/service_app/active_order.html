@@ -28,7 +28,11 @@
     <div class="container">
         <!-- manager bar -->
         <div class="container-manager">
-            <div class="mange-btn">
+            <div class="mange-btn top-anime">
+                <!-- back to maneger page -->
+            <div class="order-btn">
+                <a href="{% url 'service_app:manager_services' %}" >Maneger page</a>
+            </div>
                 <div class="order-btn">
                     <a href="{% url 'service_app:menu' main_services.id %}" >Menu</a>
                 </div>
@@ -43,11 +47,11 @@
         <!-- order card -->
         <div class="card mb-3" style="margin-top: 30px;">
             <!--------------- First Order ---------------->
-            <div class="menu-continer">
+            <div class="menu-continer bottom-anime">
                 <p>َRoom number:</p>
                 <p>Timer: 00:00</p>
             <!--------------- First Item ---------------->
-                <div class="service-menu" style="margin-top: 25px;">
+                <div class="service-menu left-ainme" style="margin-top: 25px;">
                     <img src="{% static 'images/restorant2.jpg' %}" alt="">
                     <div class="menu-detile">
                         <h4>Item name</h4>

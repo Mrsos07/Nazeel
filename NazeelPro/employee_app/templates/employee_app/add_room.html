@@ -25,7 +25,7 @@
 
     <!-- manager bar -->
     <div class="container-manager">
-        <div class="mange-btn">
+        <div class="mange-btn top-anime">
             <!-- back to maneger page -->
             <div class="order-btn">
                 <a href="{% url 'service_app:manager_services' %}" >Maneger page</a>
@@ -48,9 +48,9 @@
     <!-- add form -->
     <div class="container">
         <div class="sign-form" style="margin-top: 125px;">
-            <form action="{% url 'employee_app:add_room' %}" method="POST" style="margin-top:5px;padding:10px;display:block; justify-content:center; gap: 6px;">
+            <form action="{% url 'employee_app:add_room' %}" method="POST" class="bottom-anime" style="margin-top:5px;padding:10px;display:block; justify-content:center; gap: 6px;">
                 {% csrf_token %}
-                <h1>Add Room</h1>
+                <h1 class="left-ainme">Add Room</h1>
 
                 <div style="margin-top:20px;">
                     <label for="exampleFormControlInput1" class="form-label">Room Number</label>
