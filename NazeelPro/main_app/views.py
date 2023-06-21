@@ -19,7 +19,7 @@ def home(request: HttpRequest):
     services = MainService.objects.all()[:3]
     return render(request, 'main_app/home.html', {"services": services})
 
-
+@login_required
 def history(request: HttpRequest):
     """Rendering the history page template"""
     try:
@@ -52,7 +52,7 @@ def order(request: HttpRequest, main_services_id):
 
         return render(request, 'main_app/order.html', context)
     except:
-        return render(request, 'main_app/home.html')
+        return redirect('main_app:home')
 
 
 def maps(request:HttpRequest):
@@ -65,6 +65,7 @@ def maps(request:HttpRequest):
 @csrf_exempt
 @login_required
 def chatbot(request):
+        try:
             if request.method == 'POST':
                 data = json.loads(request.body)
                 clean_data = list(data.values())
@@ -123,12 +124,15 @@ def chatbot(request):
                 return JsonResponse({'response': answer_list})
 
             return render(request, 'main_app/chatbot.html')
-
+        except:
+            return redirect('main_app:home')
 
 
 def services(request: HttpRequest):
-    return render(request, 'main_app/services.html')
-
+    try:
+        return render(request, 'main_app/services.html')
+    except:
+        return redirect('main_app:home')
 
 def about(request: HttpRequest):
     return render(request, 'main_app/about.html')
@@ -140,13 +144,15 @@ def logout_page(request: HttpRequest):
     return redirect('main_app:home')
 
 def add_review(request: HttpRequest):
+    try:
+        if request.method == "POST":
 
-    if request.method == "POST":
-
-        new_review = Review(
-             name= request.POST['name'],content=request.POST["content"], rating=request.POST["rating"])
-        new_review.save()
+            new_review = Review(
+                 name= request.POST['name'],content=request.POST["content"], rating=request.POST["rating"])
+            new_review.save()
 
 
-        return redirect("service_app:service")
+            return redirect("service_app:service")
+    except:
+        return redirect('main_app:home')
 

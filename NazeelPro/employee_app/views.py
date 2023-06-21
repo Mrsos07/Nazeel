@@ -22,7 +22,7 @@ def employee(request):
             # المصادقة على بيانات تسجيل الدخول المدخلة
             user = authenticate(request, username=username, password=password)
 
-            if user is not None and user.employee is not None:
+            if user is not None:
                 # تم العثور على مستخدم موظف صحيح، قم بتسجيل دخوله
                 login(request, user)
                 # توجيه الموظف إلى صفحة البداية الخاصة به

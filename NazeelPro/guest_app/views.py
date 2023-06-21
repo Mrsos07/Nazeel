@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from guest_app.models import Guest , Room
 import os
-#from dotenv import load_dotenv
-#load_dotenv()
+from dotenv import load_dotenv
+load_dotenv()
 
 # Create your views here.
 
@@ -29,7 +29,7 @@ def sign_in(request: HttpRequest,):
         # check if a Guest with this room and phone_number exists
         try:
             guest = Guest.objects.get(room=room, phone_number=phone_number)
-            user, created = User.objects.get_or_create(username=guest.name, defaults={'password':'Mma112233'})
+            user, created = User.objects.get_or_create(username=guest.name, defaults={'password':os.environ.get('pass')})
             user.save()
             if guest and user.is_authenticated:
                 login(request,user)
