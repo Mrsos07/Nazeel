@@ -40,10 +40,16 @@ class SubService(models.Model):
 
 class SubServiceRequest(models.Model):
     # The sub service have a relation to the SubService class
+    Delivery_State = [
+        ('new_request', 'new request'),
+        ('in_progress', 'in_progress'),
+        ('delivered', 'delivered'),
+        ('refuesed', 'refuesed')
+    ]
     sub_service = models.ForeignKey(SubService, on_delete=models.CASCADE)
     room = models.ForeignKey(Room,  on_delete=models.CASCADE)
     quantity = models.IntegerField()
-    is_delivered = models.BooleanField(default=False)
+    is_delivered = models.CharField(max_length=50, choices=Delivery_State, default="new_request")
     created_at = models.DateTimeField(auto_now_add=True)
     date_time= models.DateTimeField(auto_now_add=True)
 

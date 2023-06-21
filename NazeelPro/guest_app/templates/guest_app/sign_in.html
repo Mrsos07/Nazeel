@@ -8,7 +8,7 @@
   <section class="home" id="home">
     <div class="head_container">
     <div class="image">
-        <img src="{% static 'images/black-bg.jpg' %}" style="height: 24vh; object-fit: cover;" class="slide">
+        <img src="{% static 'images/sing_user2.jpg' %}" style="height: 50vh; object-fit: cover;" class="slide">
     </div>
     </div>
   </section>
@@ -26,7 +26,7 @@
   <!-- sign form -->
   <div class="container">
     <div class="sign-form">
-      <form action="{% url 'guest_app:sign_in' %}" method="POST" class="bottom-anime" style="margin-top:5px;padding:10px;display:block; justify-content:center; gap: 6px;">
+      <form action="{% url 'guest_app:sign_in' %}" method="POST" class="bottom-anime" style="margin-top:40px;padding:10px;display:block; justify-content:center; gap: 6px;">
         {% csrf_token %}
         <h1 class="h3 mb-3 fw-normal left-ainme">Please sign in</h1>
 
@@ -40,12 +40,12 @@
 
         <div style="margin-top:20px;width:250px;">
           <label for="floatingInput">Room Number</label>
-          <input type="text" class="form-control" name="room_number" placeholder="XXXX" required>
+          <input type="text" class="form-control" name="room_number" placeholder="your Room Number" required>
         </div>
 
         <div style="margin-top:20px;width:250px;">
           <label >Phone Number</label>
-          <input type="text" name="phone_number" class="form-control" id="floatingPassword" placeholder="05XXXXX" required>
+          <input type="text" name="phone_number" class="form-control" id="floatingPassword" placeholder="your Phone Number" required>
         </div>
 
         <!-- <div class="checkbox mb-3">

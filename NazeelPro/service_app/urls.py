@@ -10,6 +10,7 @@ urlpatterns = [
     path("add/",views.add_service,name='add_service'),
     path("edit/items/<main_services_id>/",views.edit_items,name='edit_items'),
     path("order/request/", views.submit_request, name='order_request'),
+    path("order/request/update/<request_id>/", views.update_request, name='update_request'),
     path("active/order/<main_services_id>/",views.active_order,name='active_order'),
     path("delete/item/<item_id>/",views.delete_items,name='delete_items'),
     path("edit/<main_services_id>/",views.edit_main_service,name='edit_main_service'),

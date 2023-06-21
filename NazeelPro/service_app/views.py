@@ -60,6 +60,13 @@ def submit_request(request: HttpRequest):
 
     return redirect("main_app:history")
 
+def update_request(request: HttpRequest, request_id):
+    new_request = SubServiceRequest.objects.get(id=request_id)
+    new_request.is_delivered = request.POST["is_delivered"]
+    new_request.save()
+
+    return redirect("service_app:active_order" ,request_id)
+
 def edit_main_service(request: HttpRequest, main_services_id):
     main_services = MainService.objects.get(id = main_services_id)
     #hotel = Hotel.objects.get(id=request.POST['hotel'])

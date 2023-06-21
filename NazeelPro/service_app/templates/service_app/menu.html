@@ -38,9 +38,6 @@
                     <a href="{% url 'service_app:menu' main_services.id %}" >Menu</a>
                 </div>
                 <div class="order-btn">
-                    <a href="{% url 'service_app:order_request'%}" >Order Request</a>
-                </div>
-                <div class="order-btn">
                     <a href="{% url 'service_app:active_order' main_services.id %}" >Active Order</a>
                 </div>
             </div>
@@ -72,7 +69,7 @@
                         <p>{{sub.catogory}}</p>
                     </div>
                     <div class="menu-price rigt-anime">
-                        <p>price: {{sub.price}} $</p>
+                        <p>Price for each: {{sub.price}} $</p>
                     </div>
                 </div>
             {% endfor%}

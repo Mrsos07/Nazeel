@@ -8,7 +8,7 @@
     <section class="home" id="home">
         <div class="head_container">
             <div class="image">
-                <img src="{% static 'images/restorant3.jpg' %}" style="height: 50vh; object-fit: cover;" class="slide">
+                <img src="{{main_service.image.url}}" style="height: 50vh; object-fit: cover;" class="slide">
             </div>
         </div>
     </section>
@@ -32,16 +32,6 @@
                 <p>{{main_service.description_service}}</p>
                     </div>
                 <div class="menu-continer">
-                    <!-- categories bar -->
-                    <div class="service-catogres">
-                        
-                        
-                        <div class="complet-order-btn left-ainme">
-                            <a href="{% url 'main_app:history' %}" class="order-btn">order</a>
-                        </div>
-                        <p class="total-price rigt-anime" style="margin-top: 1px;">Total Price: <span id="total_price">0</span> $</p>
-
-                    </div>
                     <!-- menu -->
  <!-- menu -->      {% for sub in sub_service %}
                          <form action="{% url 'service_app:order_request' %}"  method="post">
@@ -72,61 +62,5 @@
                {% endfor %}
         </div>
     </div>
-
-    <!-- price calculater -->
-    <script>
-        var cart = {};
-
-        function addToCart(serviceId, serviceName, servicePrice) {
-            var quantity = document.getElementById('quantity_' + serviceId).value;
-            if (cart.hasOwnProperty(serviceId)) {
-                cart[serviceId].quantity += parseInt(quantity);
-            } else {
-                cart[serviceId] = {
-                    name: serviceName,
-                    price: servicePrice,
-                    quantity: parseInt(quantity)
-                };
-            }
-            calculateTotalPrice();
-        }
-
-        function updateTotalPrice(serviceId) {
-            var quantity = document.getElementById('quantity_' + serviceId).value;
-            if (cart.hasOwnProperty(serviceId)) {
-                cart[serviceId].quantity = parseInt(quantity);
-            }
-            calculateTotalPrice();
-        }
-
-        function calculateTotalPrice() {
-            var totalPrice = 0;
-            for (var serviceId in cart) {
-                var service = cart[serviceId];
-                totalPrice += service.price * service.quantity;
-            }
-            document.getElementById('total_price').innerText = totalPrice.toFixed(2);
-        }
-
-        function saveCart() {
-      var cartData = JSON.stringify(cart); // Convert cart object to JSON string
-
-      // Make an AJAX request to your Django view
-      var xhr = new XMLHttpRequest();
-      xhr.open('POST', '/save_cart/', true);
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.onload = function() {
-        if (xhr.status === 200) {
-          // Cart data saved successfully
-          console.log('Cart data saved');
-        } else {
-          // Error occurred while saving cart data
-          console.error('Error saving cart data');
-        }
-      };
-      xhr.send(cartData);
-    }
-
-    </script>
     </div>
 {% endblock %}

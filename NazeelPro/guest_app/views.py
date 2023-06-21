@@ -13,33 +13,36 @@ load_dotenv()
 
 def sign_in(request: HttpRequest,):
     """Rendering sign in template"""
-    if request.method == "POST":
-        # retrieve the inputs
-        room_number = request.POST["room_number"]
-        phone_number = request.POST["phone_number"]
+    try:
+        if request.method == "POST":
+            # retrieve the inputs
+            room_number = request.POST["room_number"]
+            phone_number = request.POST["phone_number"]
 
 
-        # check if a Room with this room_number exists
-        try:
-            room = Room.objects.get(room_number=room_number)
-        except Room.DoesNotExist:
-            messages.error(request, "Incorrect room number")
-            return render(request, "guest_app/sign_in.html")
+            # check if a Room with this room_number exists
+            try:
+                room = Room.objects.get(room_number=room_number)
+            except Room.DoesNotExist:
+                messages.error(request, "Incorrect room number")
+                return render(request, "guest_app/sign_in.html")
 
-        # check if a Guest with this room and phone_number exists
-        try:
-            guest = Guest.objects.get(room=room, phone_number=phone_number)
-            user, created = User.objects.get_or_create(username=guest.name, defaults={'password':os.environ.get('pass')})
-            user.save()
-            if guest and user.is_authenticated:
-                login(request,user)
-            # guest found, redirect to home
-                return redirect("main_app:home")
-        except Guest.DoesNotExist:    # guest not found, send error message and show the sign_in page again
-            messages.error(request, "Incorrect phone number")
+            # check if a Guest with this room and phone_number exists
+            try:
+                guest = Guest.objects.get(room=room, phone_number=phone_number)
+                user, created = User.objects.get_or_create(username=guest.name, defaults={'password':os.environ.get('pass')})
+                user.save()
+                if guest and user.is_authenticated:
+                    login(request,user)
+                # guest found, redirect to home
+                    return redirect("main_app:home")
+            except Guest.DoesNotExist:    # guest not found, send error message and show the sign_in page again
+                messages.error(request, "Incorrect phone number")
 
-    # if request.method is not POST or if login failed
-    return render(request, "guest_app/sign_in.html")
+        # if request.method is not POST or if login failed
+        return render(request, "guest_app/sign_in.html")
+    except:
+        return render(request, "guest_app/sign_in.html")
 
 
 def guest_home(request: HttpRequest):

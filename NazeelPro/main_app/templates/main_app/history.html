@@ -57,24 +57,19 @@
                         <td>{{order.quantity}}</td>
                         <td>{{order.is_delivered}}</td>
                         <td>{{order.date_time}}</td>
-                        <td><p class="total-price" style="margin-top: 1px;">Total Price: <span id="total_price">{{order.sub_service.price}}</span> $</p></td>
+                        
+                        
+                        <td><p class="total-price" style="margin-top: 1px;">Price for each: <span id="total_price">{{order.sub_service.price}}</span> $</p></td>
                     </tr>
                 {% endfor %}
 
                 <!-- all total amout -->
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>total</td>
-                    <td></td>
-                </tr>
             </table>
         </div>
     </section>
 
     <!-- Add Review Section -->
-    <section class="container sign-form" style="margin-top: 150px;">
+    <section class="container sign-form" style="margin-top: 100px;">
         <form action="{% url 'main_app:add_review' %} " method="POST" class="" style="margin-top:5px;padding:10px;display:block; justify-content:center; gap: 6px;">
             {% csrf_token %}
             <h1 class="left-ainme">Rate Us</h1>
@@ -88,14 +83,14 @@
             </div>
             
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label" style="display: flex; flex-direction: column; margin-top: 25px;">Your opinion matters</label>
-                <textarea style="max-width: 450px; margin-top: 20px; resize: none;" class="form-control" id="exampleFormControlInput1" placeholder="Describe your experience" name="content"></textarea>
+                <label for="exampleFormControlInput1" class="form-label" style="display: flex; flex-direction: column; margin-top: 15px;">Feedback time! How was our service ?</label>
+                <textarea style="max-width: 450px; margin-top: 20px; resize: none; border-radius: 10px;" cols="30" rows="10" class="form-control" id="exampleFormControlInput1" placeholder="Describe your experience" name="content" required></textarea>
             </div>
 
             <div style="display: flex; margin-top: 25px; justify-content: center;">
             <div class="menu-price">
                         <label for="#">Rating</label>
-                        <select name="rating" id="rating" class="form-select">
+                        <select name="rating" id="rating" class="form-select" required>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -104,6 +99,7 @@
                         </select>
                     </div>
 
+                    <!--
                     <div class="menu-price">
                         <label for="#">Service</label>
                         <select name="" id="" class="form-select">
@@ -113,6 +109,7 @@
                         </select>
                     </div>
                     </div>
+                    -->
             
     
                     <div class="btn-form">

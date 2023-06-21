@@ -54,17 +54,17 @@
                 <h1 class="left-ainme">Add guest</h1>
                 <div class="mb-3 mt-3" style="margin-top:20px;">
                     <label for="exampleFormControlInput1" class="form-label">Guest Name</label>
-                    <input type="text" name="guest_name" class="form-control" id="exampleFormControlInput1" placeholder="fill in course title" >
+                    <input type="text" name="guest_name" class="form-control" id="exampleFormControlInput1" placeholder="fill in Guest Name" required>
                 </div>
         
                 <div class="mb-3" style="margin-top:20px;">
                     <label for="exampleFormControlInput1" class="form-label">Guest Phone number</label>
-                    <input type="text" name="guest_phone_number" class="form-control" id="exampleFormControlInput1" placeholder="fill in course hours" >
+                    <input type="text" name="guest_phone_number" class="form-control" id="exampleFormControlInput1" placeholder="fill in Guest Number" required>
                 </div>
         
                 <div style="margin-top:20px;">
                     <label for="room_number">Room:</label>
-                    <select id="room_number" name="guest_room_number">
+                    <select id="room_number" name="guest_room_number" required>
                         {% for room in available_rooms %}
                             <option value="{{ room.room_number }}">{{ room.room_number }}</option>
                         {% endfor %}
@@ -73,12 +73,12 @@
         
                 <div class="mb-3" style="margin-top:20px;">
                     <label for="exampleFormControlInput1" class="form-label">check in date</label>
-                    <input type="date" name="check_in_date"  />
+                    <input type="date" name="check_in_date"  required/>
                 </div>
         
                 <div class="mb-3" style="margin-top:20px;">
                     <label for="exampleFormControlInput1" class="form-label">check out date</label>
-                    <input type="date" name="check_out_date"  />
+                    <input type="date" name="check_out_date"  required/>
                 </div>
                 <div class="btn-form">
                     <button type="submit" class="btn1">Add Guest</button>
