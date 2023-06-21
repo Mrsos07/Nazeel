@@ -15,26 +15,29 @@ from django.shortcuts import render, redirect
 
 
 def employee(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        # المصادقة على بيانات تسجيل الدخول المدخلة
-        user = authenticate(request, username=username, password=password)
+    try:
+        if request.method == 'POST':
+            username = request.POST['username']
+            password = request.POST['password']
+            # المصادقة على بيانات تسجيل الدخول المدخلة
+            user = authenticate(request, username=username, password=password)
 
-        if user is not None and user.employee is not None:
-            # تم العثور على مستخدم موظف صحيح، قم بتسجيل دخوله
-            login(request, user)
-            # توجيه الموظف إلى صفحة البداية الخاصة به
-            return redirect('service_app:manager_services')
+            if user is not None and user.employee is not None:
+                # تم العثور على مستخدم موظف صحيح، قم بتسجيل دخوله
+                login(request, user)
+                # توجيه الموظف إلى صفحة البداية الخاصة به
+                return redirect('service_app:manager_services')
+
+            else:
+                # بيانات تسجيل الدخول غير صحيحة، قم بعرض رسالة خطأ
+                error_message = 'Invalid username or password'
+                return render(request, 'employee_app/employee.html', {'error_message': error_message})
 
         else:
-            # بيانات تسجيل الدخول غير صحيحة، قم بعرض رسالة خطأ
-            error_message = 'Invalid username or password'
-            return render(request, 'employee_app/employee.html', {'error_message': error_message})
-
-    else:
-        # إذا كان الطلب غير POST، قم بعرض صفحة تسجيل الدخول
-        return render(request, 'employee_app/employee.html')
+            # إذا كان الطلب غير POST، قم بعرض صفحة تسجيل الدخول
+            return render(request, 'employee_app/employee.html')
+    except:
+        return render(request,"employee_app/employee.html")
 
 
 @login_required

@@ -11,15 +11,15 @@ class MainService(models.Model):
     hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE)#The name of the hotel have a relation to the Hotel class
     name_service = models.CharField(max_length=100)#The name of the service
     description_service = models.CharField(max_length=1000)#The description of the service
-    time_on = models.DateTimeField(default=timezone.now())#The time on which the service was created
-    time_off = models.DateTimeField(default=timezone.now())#The time off which the service was created
+    time_on = models.TimeField()#The time on which the service was created
+    time_off = models.TimeField()#The time off which the service was created
     image = models.ImageField(upload_to="images/", default="images/default.jpg")
 
 
 
     def __str__(self):
         """Return the model as a string"""
-        return self.name_service
+        return str(f"{self.hotel},{ self.name_service}")
 
 
 # Create Sub Service Model

@@ -44,17 +44,17 @@
                     </div>
                     <!-- menu -->
  <!-- menu -->
-                    <form action="{% url 'service_app:order_request' %}"  method="post">
+                     <form action="{% url 'service_app:order_request' %}"  method="post">
                         {% csrf_token %}
                         {% for sub in sub_service %}
                         <div class="service-menu">
-                            <img class="left-ainme" src="{{ sub.image.url }}" alt="{{ sub.name_service }}">
-                            <div class="menu-detile left-ainme">
+                            <img src="{{ sub.image.url }}" alt="{{ sub.name_service }}">
+                            <div class="menu-detile">
                                 <h4>{{ sub.name_service }}</h4>
                                 <p>{{ sub.catogory }}</p>
                                 <!-- <a href="#" class="order-btn" onclick="addToCart({{ sub.id }}, '{{ sub.name_service }}', {{ sub.price }})">Add</a> -->
                             </div>
-                            <div class="menu-price rigt-anime">
+                            <div class="menu-price">
                                 <p>Price: {{ sub.price }} $</p>
                                 <label for="quantity_{{ sub.id }}">Quantity</label>
                                 <select name="quantity" id="quantity_{{ sub.id }}" class="form-select" >
@@ -69,9 +69,8 @@
                             <input type="hidden" value="{{guest.room.id}}" name="room_id" />
                             <input type="submit" value="Add" />
                         </div>
-                    </form>
                     {% endfor %}
-
+                </form>
         </div>
     </div>
 

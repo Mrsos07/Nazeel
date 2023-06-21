@@ -26,6 +26,8 @@
     
     <!-- history details -->
     <section class="container">
+        <div>
+        </div>
 
         <div class="heading_top flex1 marg-t" style="margin-top: 400px;">
             <div class="heading top-anime">
@@ -36,35 +38,33 @@
         <div class="history-detail bottom-anime">
             <table class="t-history">
                 <!-- table titel -->
+
                 <tr>
-                    <th>Name service</th>
-                    <th>Date order</th>
-                    <th>Room Number</th>
-                    <th>Order detail</th>
-                    <th>Total amount</th>
+
+                    <th>Name service </th>
+                    <th>Room Number </th>
+                    <th>Order quantity</th>
+                    <th>is delivered</th>
+                    <th>Price </th>
                 </tr>
                 <!-- contant of table -->
-                <tr>
-                    <td>rerer</td>
-                    <td>123513</td>
-                    <td>2.54</td>
-                    <td>asfwetjklanskfhio</td>
-                    <td><p class="total-price" style="margin-top: 1px;">Total Price: <span id="total_price"><p>Total Price: {{ total_price }}</p></span> $</p></td>
-                </tr>
-                <tr>
-                    <td>rerer</td>
-                    <td>123513</td>
-                    <td>2.54</td>
-                    <td>asfwetjklanskfhio</td>
-                    <td>60</td>
-                </tr>
+                {% for order in user_requests %}
+                    <tr>
+                        <td>{{order.sub_service.name_service}}</td>
+                        <td>{{order.room.room_number}}</td>
+                        <td>{{order.quantity}}</td>
+                        <td>{{order.is_delivered}}</td>
+                        <td><p class="total-price" style="margin-top: 1px;">Total Price: <span id="total_price">{{order.sub_service.price}}</span> $</p></td>
+                    </tr>
+                {% endfor %}
+
                 <!-- all total amout -->
                 <tr>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td>total</td>
-                    <td>60</td>
+                    <td></td>
                 </tr>
             </table>
         </div>
@@ -79,8 +79,9 @@
             <div style="display: flex; margin-top: 25px;">
             <div class="bottom-anime">
             <div class="mb-3" style="margin-top: 25px;">
-                <label for="exampleFormControlInput1" class="form-label">Your name matters</label>
-                <input class="form-control" id="exampleFormControlInput1" placeholder="Type your name" name="name"></input>
+                {% if request.user.is_authenticated %}
+                    <label for="exampleFormControlInput1" class="form-label" id="name">{{ request.user.username }} </label>
+                {%endif%}
             </div>
             
             <div class="mb-3">
@@ -91,7 +92,7 @@
             <div style="display: flex; margin-top: 25px; justify-content: center;">
             <div class="menu-price">
                         <label for="#">Rating</label>
-                        <select name="rating" id="" class="form-select">
+                        <select name="rating" id="rating" class="form-select">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -103,8 +104,8 @@
                     <div class="menu-price">
                         <label for="#">Service</label>
                         <select name="" id="" class="form-select">
-                            {% for service in main_services%}
-                            <option value="{{service.id}}">{{service.name_service}}</option>
+                            {% for order in user_requests%}
+                                <option >{{order.sub_service.name_service}} </option>
                            {% endfor %}
                         </select>
                     </div>

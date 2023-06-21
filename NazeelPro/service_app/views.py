@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 
 
 # Create your views here.
+from guest_app.models import Guest
 
 
 def service(request: HttpRequest):
@@ -126,11 +127,16 @@ def order_request(request: HttpRequest, main_services_id):
 
     return render(request, "service_app/order_request.html", {'main_services': main_services, 'sub_service': sub_service})
 
-def active_order(request: HttpRequest, main_services_id):
-    main_services = MainService.objects.get(id=main_services_id)
-    sub_service = SubService.objects.filter(main_service=main_services)
 
-    return render(request, "service_app/active_order.html", {'main_services': main_services, 'sub_service': sub_service})
+
+
+
+def active_order(request: HttpRequest, main_services_id):
+    #guest = Guest.objects.get(name=request.user.username)
+
+    user_requests = SubServiceRequest.objects.all()
+
+    return render(request, 'service_app/active_order.html', {"user_requests": user_requests})
 
 def edit_main_service(request: HttpRequest, main_services_id):
     main_services = MainService.objects.get(id = main_services_id)

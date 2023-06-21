@@ -3,6 +3,7 @@
 import datetime
 from django.db import migrations, models
 import django.db.models.deletion
+from django.utils import timezone
 
 
 class Migration(migrations.Migration):
@@ -21,8 +22,8 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name_service', models.CharField(max_length=100)),
                 ('description_service', models.CharField(max_length=1000)),
-                ('time_on', models.DateTimeField(default=datetime.datetime(2023, 6, 20, 13, 17, 37, 362904, tzinfo=datetime.timezone.utc))),
-                ('time_off', models.DateTimeField(default=datetime.datetime(2023, 6, 20, 13, 17, 37, 362904, tzinfo=datetime.timezone.utc))),
+                ('time_on', models.DateTimeField(default=timezone.now())),
+                ('time_off', models.DateTimeField(default=timezone.now())),
                 ('image', models.ImageField(default='images/default.jpg', upload_to='images/')),
                 ('hotel', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='main_app.hotel')),
             ],

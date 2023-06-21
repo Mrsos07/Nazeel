@@ -29,46 +29,69 @@
         <!-- manager bar -->
         <div class="container-manager">
             <div class="mange-btn top-anime">
-                <!-- back to maneger page -->
-            <div class="order-btn">
-                <a href="{% url 'service_app:manager_services' %}" >Maneger page</a>
-            </div>
-                <div class="order-btn">
-                    <a href="{% url 'service_app:menu' main_services.id %}" >Menu</a>
-                </div>
-                <div class="order-btn">
-                    <a href="{% url 'service_app:order_request'  %}" >Order Request</a>
-                </div>
-                <div class="order-btn">
-                    <a href="{% url 'service_app:active_order' main_services.id %}" >Active Order</a>
-                </div>
-            </div>
-        </div> 
-        <!-- order card -->
-        <div class="card mb-3" style="margin-top: 30px;">
-            <!--------------- First Order ---------------->
-            <div class="menu-continer bottom-anime">
-                <p>َRoom number:</p>
-                <p>Timer: 00:00</p>
-            <!--------------- First Item ---------------->
-                <div class="service-menu left-ainme" style="margin-top: 25px;">
-                    <img src="{% static 'images/restorant2.jpg' %}" alt="">
-                    <div class="menu-detile">
-                        <h4>Item name</h4>
-                        <p>Quantity: 0000000000000</p>
+                                <div class="container-manager">
+                    <div class="mange-btn top-anime">
+                        <!-- back to maneger page -->
+                    <div class="order-btn">
+                        <a href="{% url 'service_app:manager_services' %}" >Maneger page</a>
                     </div>
-                </div>
-            <!--------------- End of First Item ---------------->
-                <p>َTotal price:</p>
-                <!-- button div -->
-                <div style="margin-top: 25px;" class="service-catogres">
-                    <div class="cat-ser">      
                         <div class="order-btn">
-                            <a href="#" >Done</a>
+                            <a href="#" >Menu</a>
+                        </div>
+                        <div class="order-btn">
+                            <a href="#" >Active Order</a>
                         </div>
                     </div>
                 </div>
-            </div>  
+
+            </div>
+        </div>
+        <!-- order card -->
+    <section class="container">
+
+        <div class="heading_top flex1 marg-t" style="margin-top: 400px;">
+            <div class="heading top-anime">
+            <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
+            <h2>Guest orders</h2>
+            </div>
+        </div>
+        <div class="history-detail bottom-anime">
+            <table class="t-history">
+
+
+                <tr>
+
+                    <th> Service provider </th>
+                    <th>Order type </th>
+                    <th>Room Number </th>
+                    <th>Order quantity</th>
+                    <th>is delivered</th>
+                    <th>Price </th>
+                </tr>
+                <!-- contant of table -->
+                {% for order in user_requests %}
+                    <tr>
+                        <td>{{order.sub_service.main_service}}</td>
+                        <td>{{order.sub_service.name_service}}</td>
+                        <td>{{order.room.room_number}}</td>
+                        <td>{{order.quantity}}</td>
+                        <td>{{order.is_delivered}}</td>
+                        <td><p class="total-price" style="margin-top: 1px;">Total Price: <span id="total_price">{{order.sub_service.price}}</span> $</p></td>
+                    </tr>
+                {% endfor %}
+
+                <!-- all total amout -->
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>total</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
             <!--------------- End of First Order ---------------->
         </div>
     </div>

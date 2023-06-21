@@ -74,7 +74,7 @@
             {%for review in reviews%}
             <div class='panel'>
                 <div style="display: flex; gap: 5px; align-items: center; margin-top: 50px;">
-                    <h7 style="width: 180px;">{{review.name|safe}}</h7>
+                    <h7 style="width: 180px;">{{ request.user.username }} </h7>
                     <span class="material-symbols-outlined">star</span>
                     <p>{{review.rating}}</p>
                 </div>

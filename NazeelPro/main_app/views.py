@@ -22,35 +22,37 @@ def home(request: HttpRequest):
 
 def history(request: HttpRequest):
     """Rendering the history page template"""
-    guest = Guest.objects.get(name=request.user.username)
-    user_requests = SubServiceRequest.objects.filter(room=guest.room)
+    try:
+        main_services = MainService.objects.all()
+        guest = Guest.objects.get(name=request.user.username)
+        user_requests = SubServiceRequest.objects.filter(room=guest.room)
 
-    return render(request, 'main_app/history.html', {"user_requests": user_requests})
-
-# def services(request:HttpRequest):
-#     return render(request,'main_app/services.html')
+        return render(request, 'main_app/history.html', {"user_requests": user_requests})
+    except:
+        return render(request,'main_app/home.html')
 
 @login_required
 def order(request: HttpRequest, main_services_id):
-    sub_services_all = SubService.objects.all()
-    main_services = MainService.objects.get(id=main_services_id)
-    sub_service = SubService.objects.filter(main_service=main_services)
-    guest = Guest.objects.get(name=request.user.username)
+    try:
+        sub_services_all = SubService.objects.all()
+        main_services = MainService.objects.get(id=main_services_id)
+        sub_service = SubService.objects.filter(main_service=main_services)
+        guest = Guest.objects.get(name=request.user.username)
 
 
-    total_price = 0
-    context = {
-        'sub_service': sub_service,
-        'total_price': total_price,
-        'sub_service_all': sub_services_all,
-        'main_service': main_services,
-        "guest": guest
-    }
-   # try:
+        total_price = 0
+        context = {
+            'sub_service': sub_service,
+            'total_price': total_price,
+            'sub_service_all': sub_services_all,
+            'main_service': main_services,
+            "guest": guest
+        }
 
-    return render(request, 'main_app/order.html', context)
-    #except:
-     #   messages.error(request,'please sign in ...')
+
+        return render(request, 'main_app/order.html', context)
+    except:
+        return render(request, 'main_app/home.html')
 
 def maps(request:HttpRequest):
     return render(request,'main_app/maps.html')
@@ -141,7 +143,7 @@ def add_review(request: HttpRequest):
     if request.method == "POST":
 
         new_review = Review(
-            name=request.POST["name"], content=request.POST["content"], rating=request.POST["rating"])
+             content=request.POST["content"], rating=request.POST["rating"])
         new_review.save()
 
 

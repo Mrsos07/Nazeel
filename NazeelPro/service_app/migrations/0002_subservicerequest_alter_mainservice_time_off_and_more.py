@@ -3,6 +3,7 @@
 import datetime
 from django.db import migrations, models
 import django.db.models.deletion
+from django.utils import timezone
 
 
 class Migration(migrations.Migration):
@@ -27,12 +28,12 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='mainservice',
             name='time_off',
-            field=models.DateTimeField(default=datetime.datetime(2023, 6, 20, 13, 42, 47, 952439, tzinfo=datetime.timezone.utc)),
+            field=models.DateTimeField(default=timezone.now()),
         ),
         migrations.AlterField(
             model_name='mainservice',
             name='time_on',
-            field=models.DateTimeField(default=datetime.datetime(2023, 6, 20, 13, 42, 47, 952439, tzinfo=datetime.timezone.utc)),
+            field=models.DateTimeField(default=timezone.now()),
         ),
         migrations.DeleteModel(
             name='OrderItm',
