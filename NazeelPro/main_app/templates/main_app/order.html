@@ -8,7 +8,7 @@
     <section class="home" id="home">
         <div class="head_container">
             <div class="image">
-                <img src="{% static 'images/restorant3.jpg' %}" style="height: 50vh; object-fit: cover;" class="slide">
+                <img src="{{main_service.image.url}}" style="height: 50vh; object-fit: cover;" class="slide">
             </div>
         </div>
     </section>
@@ -32,30 +32,20 @@
                 <p>{{main_service.description_service}}</p>
                     </div>
                 <div class="menu-continer">
-                    <!-- categories bar -->
-                    <div class="service-catogres">
-                        
-                        
-                        <div class="complet-order-btn left-ainme">
-                            <a href="{% url 'main_app:history' %}" class="order-btn">order</a>
-                        </div>
-                        <p class="total-price rigt-anime" style="margin-top: 1px;">Total Price: <span id="total_price">0</span> $</p>
-
-                    </div>
                     <!-- menu -->
  <!-- menu -->
                      <form action="{% url 'service_app:order_request' %}"  method="post">
                         {% csrf_token %}
                         {% for sub in sub_service %}
                         <div class="service-menu">
-                            <img src="{{ sub.image.url }}" alt="{{ sub.name_service }}">
-                            <div class="menu-detile">
+                            <img src="{{ sub.image.url }}" class="left-ainme" alt="{{ sub.name_service }}">
+                            <div class="menu-detile left-ainme">
                                 <h4>{{ sub.name_service }}</h4>
                                 <p>{{ sub.catogory }}</p>
                                 <!-- <a href="#" class="order-btn" onclick="addToCart({{ sub.id }}, '{{ sub.name_service }}', {{ sub.price }})">Add</a> -->
                             </div>
-                            <div class="menu-price">
-                                <p>Price: {{ sub.price }} $</p>
+                            <div class="menu-price rigt-anime" style="width: 150px;">
+                                <p>Price for each: {{sub.price}} $</p>
                                 <label for="quantity_{{ sub.id }}">Quantity</label>
                                 <select name="quantity" id="quantity_{{ sub.id }}" class="form-select" >
                                     <option value="1" selected>1</option>
@@ -67,67 +57,13 @@
 
                             <input type="hidden" value="{{sub.id}}" name="sub_services_id" />
                             <input type="hidden" value="{{guest.room.id}}" name="room_id" />
-                            <input type="submit" value="Add" />
+                            <div class="complet-order-btn rigt-anime">
+                                <input type="submit" class="order-btn" value="Add" style="color: white;"/>
+                            </div>
                         </div>
                     {% endfor %}
                 </form>
         </div>
     </div>
-
-    <!-- price calculater -->
-    <script>
-        var cart = {};
-
-        function addToCart(serviceId, serviceName, servicePrice) {
-            var quantity = document.getElementById('quantity_' + serviceId).value;
-            if (cart.hasOwnProperty(serviceId)) {
-                cart[serviceId].quantity += parseInt(quantity);
-            } else {
-                cart[serviceId] = {
-                    name: serviceName,
-                    price: servicePrice,
-                    quantity: parseInt(quantity)
-                };
-            }
-            calculateTotalPrice();
-        }
-
-        function updateTotalPrice(serviceId) {
-            var quantity = document.getElementById('quantity_' + serviceId).value;
-            if (cart.hasOwnProperty(serviceId)) {
-                cart[serviceId].quantity = parseInt(quantity);
-            }
-            calculateTotalPrice();
-        }
-
-        function calculateTotalPrice() {
-            var totalPrice = 0;
-            for (var serviceId in cart) {
-                var service = cart[serviceId];
-                totalPrice += service.price * service.quantity;
-            }
-            document.getElementById('total_price').innerText = totalPrice.toFixed(2);
-        }
-
-        function saveCart() {
-      var cartData = JSON.stringify(cart); // Convert cart object to JSON string
-
-      // Make an AJAX request to your Django view
-      var xhr = new XMLHttpRequest();
-      xhr.open('POST', '/save_cart/', true);
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.onload = function() {
-        if (xhr.status === 200) {
-          // Cart data saved successfully
-          console.log('Cart data saved');
-        } else {
-          // Error occurred while saving cart data
-          console.error('Error saving cart data');
-        }
-      };
-      xhr.send(cartData);
-    }
-
-    </script>
     </div>
 {% endblock %}

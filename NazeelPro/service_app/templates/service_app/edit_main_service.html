@@ -54,40 +54,31 @@
 
           <div style="margin-top:20px;">
             <label for="exampleFormControlInput1" class="form-label">service name:</label>
-            <input name="name_service" value="{{main_services.name_service}}" type="text" class="">
+            <input name="name_service" value="{{main_services.name_service}}" type="text" class="" required>
           </div>
 
           <div style="margin-top:20px; display: flex; flex-direction: column;">
               <label class="input-group-text">service description:</label>
-              <textarea style="max-width: 450px; margin-top: 20px;" name="description_service" aria-label="With textarea">{{main_services.description_service}}</textarea>
+              <textarea style="max-width: 550px; margin-top: 20px;" name="description_service" aria-label="With textarea" required>{{main_services.description_service}}</textarea>
           </div>
 
           <div style="margin-top:20px;">
               <label for="exampleFormControlInput1" class="form-label">Open time:</label>
-              <input type="time" name="time_on" value="{{main_services.time_on}}"/>
+              <input type="time" name="time_on" value="{{main_services.time_on}}" required/>
           </div>
 
           <div style="margin-top:20px;">
               <label for="exampleFormControlInput1" class="form-label">Close time:</label>
-              <input type="time" name="time_off" value="{{main_services.time_off}}"/>
+              <input type="time" name="time_off" value="{{main_services.time_off}}" required/>
           </div>
 
           <div style="margin-top:20px;">
               <label for="exampleFormControlInput1" class="form-label">Service image:</label>
               <img src="{{ main_services.image.url }}" class="card-img-top rounded-5 " style="width: 120px; height:auto ;" alt="...">
-              <input type="file" name="image"/>
+              <input type="file" name="image" required/>
           </div>
 
-          <div style="margin-top:20px; display: flex; gap: 15px;">
-              <label for="hotel">Hotel:</label>
-              <select name="hotel" >
-                {% for hotel in hotels %}
-                  <option value="{{ hotel.id }}">{{ hotel.name }}</option>
-                {% endfor %}
-              </select>
-            </div>
-
-            <div class="btn-form">
+            <div class="btn-form" style="margin-top: 20px;">
               <button class="btn1" type="submit" fdprocessedid="1isj6h">Update Service</button>
             </div>
       </form>
