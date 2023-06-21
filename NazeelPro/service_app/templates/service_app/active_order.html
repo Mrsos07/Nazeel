@@ -29,15 +29,12 @@
         <!-- manager bar -->
         <div class="container-manager">
             <div class="mange-btn top-anime">
-                                <div class="container-manager">
+                                <div class="container-manager" style="margin-top: 10px;">
                     <div class="mange-btn top-anime">
                         <!-- back to maneger page -->
                     <div class="order-btn">
                         <a href="{% url 'service_app:manager_services' %}" >Maneger page</a>
                     </div>
-                        <div class="order-btn">
-                            <a href="#" >Menu</a>
-                        </div>
                         <div class="order-btn">
                             <a href="#" >Active Order</a>
                         </div>
@@ -49,7 +46,7 @@
         <!-- order card -->
     <section class="container">
 
-        <div class="heading_top flex1 marg-t" style="margin-top: 400px;">
+        <div class="heading_top flex1 marg-t" >
             <div class="heading top-anime">
             <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
             <h2>Guest orders</h2>
@@ -66,6 +63,7 @@
                     <th>Room Number </th>
                     <th>Order quantity</th>
                     <th>is delivered</th>
+                    <th>Order Time </th>
                     <th>Price </th>
                 </tr>
                 <!-- contant of table -->
@@ -76,18 +74,10 @@
                         <td>{{order.room.room_number}}</td>
                         <td>{{order.quantity}}</td>
                          <td>{{order.is_delivered}}</td>
-                        <td><p class="total-price" style="margin-top: 1px;">Total Price: <span id="total_price">{{order.sub_service.price}}</span> $</p></td>
+                         <td>{{order.date_time}}</td>
+                        <td><p class="total-price" style="margin-top: 1px;">Price for each: <span id="total_price">{{order.sub_service.price}}</span> $</p></td>
                     </tr>
                 {% endfor %}
-
-                <!-- all total amout -->
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>total</td>
-                    <td></td>
-                </tr>
             </table>
         </div>
     </section>

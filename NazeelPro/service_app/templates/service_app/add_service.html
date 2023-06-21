@@ -51,31 +51,31 @@
       <div class="sign-form" style="margin-top: 125px;">
         <form action="{% url 'service_app:add_service' %}" method="POST" class="bottom-anime" style="margin-top:5px;padding:10px;display:block; justify-content:center; gap: 6px;" enctype="multipart/form-data">
             {% csrf_token %}
-            <h1 class="h3 mb-3 fw-normal left-ainme">Add service</h1>
+            <h1 class="h3 mb-3 fw-normal left-ainme">Add Service</h1>
 
             <div style="margin-top:20px;">
-              <label for="exampleFormControlInput1" class="form-label">service name:</label>
-              <input name="name_service" type="text" class="">
+              <label for="exampleFormControlInput1" class="form-label">Service Name:</label>
+              <input name="name_service" type="text" class="" placeholder="fill in Service Name" required>
             </div>
 
             <div style="margin-top:20px; display: flex; flex-direction: column;">
-                <label class="input-group-text">service description:</label>
-                <textarea style="max-width: 450px; margin-top: 20px;" name="description_service" aria-label="With textarea"></textarea>
+                <label class="input-group-text">Service Description:</label>
+                <textarea style="max-width: 450px; margin-top: 20px;" name="description_service" aria-label="With textarea" placeholder="Type in a Description" required></textarea>
             </div>
 
             <div style="margin-top:20px;">
                 <label for="exampleFormControlInput1" class="form-label">Open time:</label>
-                <input type="time" name="time_on"/>
+                <input type="time" name="time_on" required/>
             </div>
 
             <div style="margin-top:20px;">
                 <label for="exampleFormControlInput1" class="form-label">Close time:</label>
-                <input type="time" name="time_off"/>
+                <input type="time" name="time_off" required/>
             </div>
 
             <div style="margin-top:20px;">
                 <label for="exampleFormControlInput1" class="form-label">Service image:</label>
-                <input type="file" name="image"/>
+                <input type="file" name="image" required/>
             </div>
 
             <div style="margin-top:20px; display: flex; gap: 15px;">
