@@ -43,32 +43,35 @@ def employee(request):
 @login_required
 @permission_required('guest_app.add_guest', raise_exception=True)
 def add_guest(request: HttpRequest,):
-    if request.method == 'POST' and request.user.is_authenticated:
-        # get the Employee instance linked to the User
-        employee = Employee.objects.get(user=request.user)
+    try:
+        if request.method == 'POST' and request.user.is_authenticated:
+            # get the Employee instance linked to the User
+            employee = Employee.objects.get(user=request.user)
 
-        # get the room number from the POST data and use it to get the Room instance
-        room_number = request.POST["guest_room_number"]
-        room = Room.objects.get(room_number=room_number)
+            # get the room number from the POST data and use it to get the Room instance
+            room_number = request.POST["guest_room_number"]
+            room = Room.objects.get(room_number=room_number)
 
-        # create the Guest instance with the Room
-        guest = Guest.objects.create(
-            created_by=employee,
-            name=request.POST["guest_name"],
-            room=room,
-            phone_number=request.POST["guest_phone_number"]
-        )
+            # create the Guest instance with the Room
+            guest = Guest.objects.create(
+                created_by=employee,
+                name=request.POST["guest_name"],
+                room=room,
+                phone_number=request.POST["guest_phone_number"]
+            )
 
-        # set the room as not available anymore
-        room.is_available = False
-        room.save()
+            # set the room as not available anymore
+            room.is_available = False
+            room.save()
 
-        return redirect('main_app:home')
-    else:
-        # get all available rooms
-        available_rooms = Room.objects.filter(is_available=True)
+            return redirect('main_app:home')
+        else:
+            # get all available rooms
+            available_rooms = Room.objects.filter(is_available=True)
 
-        return render(request, 'employee_app/add_guest.html', {'available_rooms': available_rooms})
+            return render(request, 'employee_app/add_guest.html', {'available_rooms': available_rooms})
+    except:
+        return render(request,'employee_app/add_guest.html')
 
 @login_required
 @permission_required('guest_app.add_room', raise_exception=True)
