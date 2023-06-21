@@ -45,7 +45,9 @@
                     <th>Room Number </th>
                     <th>Order quantity</th>
                     <th>is delivered</th>
+                    <th>Order Time </th>
                     <th>Price </th>
+
                 </tr>
                 <!-- contant of table -->
                 {% for order in user_requests %}
@@ -54,6 +56,7 @@
                         <td>{{order.room.room_number}}</td>
                         <td>{{order.quantity}}</td>
                         <td>{{order.is_delivered}}</td>
+                        <td>{{order.date_time}}</td>
                         <td><p class="total-price" style="margin-top: 1px;">Total Price: <span id="total_price">{{order.sub_service.price}}</span> $</p></td>
                     </tr>
                 {% endfor %}
@@ -79,16 +82,16 @@
             <div style="display: flex; margin-top: 25px;">
             <div class="bottom-anime">
             <div class="mb-3" style="margin-top: 25px;">
-                {% if request.user.is_authenticated %}
-                    <label for="exampleFormControlInput1" class="form-label" id="name">{{ request.user.username }} </label>
-                {%endif%}
+
+                    <input type="hidden" class="form-label" id="name" value="{{ request.user.username }}" name="name">
+
             </div>
             
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label" style="display: flex; flex-direction: column; margin-top: 25px;">Your opinion matters</label>
                 <textarea style="max-width: 450px; margin-top: 20px; resize: none;" class="form-control" id="exampleFormControlInput1" placeholder="Describe your experience" name="content"></textarea>
             </div>
-    
+
             <div style="display: flex; margin-top: 25px; justify-content: center;">
             <div class="menu-price">
                         <label for="#">Rating</label>

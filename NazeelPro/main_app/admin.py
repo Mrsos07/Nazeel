@@ -6,7 +6,7 @@ from service_app.models import SubService
 from guest_app.models import Guest, Stay, Room
 from employee_app.models import Employee
 from service_app.models import Review
-
+from service_app.models import SubServiceRequest
 
 
 class HotelAdmin(admin.ModelAdmin):
@@ -69,3 +69,7 @@ class ReviewAdmin(admin.ModelAdmin):
 admin.site.register(Review,ReviewAdmin)
 
 
+class SubServiceRequestAdmin(admin.ModelAdmin):
+    list_display = ('room','quantity','is_delivered')
+
+admin.site.register(SubServiceRequest,SubServiceRequestAdmin)

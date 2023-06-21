@@ -127,6 +127,15 @@ def order_request(request: HttpRequest, main_services_id):
 
     return render(request, "service_app/order_request.html", {'main_services': main_services, 'sub_service': sub_service})
 
+#def is_deliverd(request:HttpRequest):
+    #deliverd=SubService.objects.filter(id=order_id)
+ #   sub_request=SubServiceRequest.objects.filter(is_deliverd)
+  #  if sub_request.is_deliverd ==True:
+   #     sub_request.is_deliverd=False
+    #else:
+     #   sub_request.is_deliverd=True
+
+    #return render(request, "service_app/active_order.html",)
 
 
 
@@ -135,6 +144,8 @@ def active_order(request: HttpRequest, main_services_id):
     #guest = Guest.objects.get(name=request.user.username)
 
     user_requests = SubServiceRequest.objects.all()
+    if request.method == 'POST':
+        is_delivered = request.POST['is_delivered']
 
     return render(request, 'service_app/active_order.html', {"user_requests": user_requests})
 

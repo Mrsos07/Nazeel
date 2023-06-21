@@ -45,6 +45,7 @@ class SubServiceRequest(models.Model):
     quantity = models.IntegerField()
     is_delivered = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
+    date_time= models.DateTimeField(auto_now_add=True)
 
 
 
@@ -54,6 +55,7 @@ class Review(models.Model):
     content = models.TextField()
     rating = models.FloatField()
     created_at = models.DateTimeField(auto_now_add=True)
+
 
 
 

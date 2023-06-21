@@ -54,6 +54,7 @@ def order(request: HttpRequest, main_services_id):
     except:
         return render(request, 'main_app/home.html')
 
+
 def maps(request:HttpRequest):
     return render(request,'main_app/maps.html')
 
@@ -143,7 +144,7 @@ def add_review(request: HttpRequest):
     if request.method == "POST":
 
         new_review = Review(
-             content=request.POST["content"], rating=request.POST["rating"])
+             name= request.POST['name'],content=request.POST["content"], rating=request.POST["rating"])
         new_review.save()
 
 
