@@ -4,6 +4,8 @@ from .models import MainService, SubService, Review , Room , SubServiceRequest
 from main_app.models import Hotel
 from django.http import HttpRequest
 from django.contrib.auth.decorators import login_required, permission_required
+from django.shortcuts import get_object_or_404
+from django.urls import reverse
 
 
 # Create your views here.
@@ -65,7 +67,7 @@ def update_request(request: HttpRequest, request_id):
     new_request.is_delivered = request.POST["is_delivered"]
     new_request.save()
 
-    return redirect("service_app:active_order" ,request_id)
+    return redirect(reverse("service_app:active_order", kwargs={'main_services_id': new_request.sub_service.main_service.id}))
 
 def edit_main_service(request: HttpRequest, main_services_id):
     main_services = MainService.objects.get(id = main_services_id)
@@ -148,9 +150,12 @@ def order_request(request: HttpRequest, main_services_id):
 
 
 def active_order(request: HttpRequest, main_services_id):
-    #guest = Guest.objects.get(name=request.user.username)
+    main_services = get_object_or_404(MainService, id=main_services_id)
 
-    user_requests = SubServiceRequest.objects.all()
+    is_delivered_status= SubServiceRequest.objects.all()
+
+    user_requests = SubServiceRequest.objects.filter(sub_service__main_service=main_services)
+
     if request.method == 'POST':
         is_delivered = request.POST['is_delivered']
 
