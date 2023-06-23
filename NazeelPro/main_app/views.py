@@ -12,6 +12,7 @@ from django.contrib import messages
 # Create your views here.
 from guest_app.models import Guest
 
+from main_app.models import Hotel
 
 
 def home(request: HttpRequest):
@@ -79,8 +80,8 @@ def chatbot(request):
                 print(clean_text)
                 # Define the chatbot's responses for different questions
                 answer_list=['please choose one :\n\n'
-                             '-check in time\n\n\n'
-                             '-check out time\n\n\n'
+                             '-check in \n\n\n'
+                             '-check out \n\n\n'
                              '-breakfast\n\n\n'
                              '-wifi\n\n'
                              '-room service\n\n'
@@ -90,8 +91,8 @@ def chatbot(request):
                 responses = {
                     'hi': 'Hello! How can I assist you today?',
                     'hello': 'Hello! How can I assist you today?',
-                    'check in time': 'The check-in time is at 3:00 PM.',
-                    'check out time': 'The check-out time is at 11:00 AM.',
+                    'check in': 'The check-in time is at 3:00 PM.',
+                    'check out': 'The check-out time is at 11:00 AM.',
                     'breakfast': 'Yes, we offer complimentary breakfast for all guests.',
                     'parking': 'Yes, we have free parking available for our guests.',
                     'wifi': 'Yes, we provide free Wi-Fi access in all rooms and public areas.',
@@ -99,7 +100,7 @@ def chatbot(request):
                     'pool': 'Yes, we have an outdoor pool for guests to enjoy.',
                     'gym': 'Yes, we have a fully equipped gym available for guests to use.',
                     'thank you': 'You\'re welcome! If you have any more questions, feel free to ask.',
-                    'bye': 'Goodbye! Have a great day!'
+                    'by': 'Goodbye! Have a great day!'
 
                     }
 
@@ -153,6 +154,17 @@ def add_review(request: HttpRequest):
 
 
             return redirect("service_app:service")
+    except:
+        return redirect('main_app:home')
+
+
+def entertainment(request: HttpRequest):
+    try:
+        hotel = Hotel.objects.first()  # Get a specific hotel instance
+        city = hotel.city.lower()  # Access the city attribute of the hotel
+
+        saudi_vist = f"https://www.visitsaudi.com/en/see-do/destinations/{city}"
+        return redirect(saudi_vist)
     except:
         return redirect('main_app:home')
 
