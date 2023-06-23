@@ -49,7 +49,7 @@ class SubServiceRequest(models.Model):
     sub_service = models.ForeignKey(SubService, on_delete=models.CASCADE)
     room = models.ForeignKey(Room,  on_delete=models.CASCADE)
     quantity = models.IntegerField()
-    is_delivered = models.CharField(max_length=50, choices=Delivery_State, default="new_request")
+    is_delivered = models.CharField(max_length=50, choices=Delivery_State, default="new request")
     created_at = models.DateTimeField(auto_now_add=True)
     date_time= models.DateTimeField(auto_now_add=True)
 

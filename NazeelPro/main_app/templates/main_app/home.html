@@ -13,8 +13,8 @@
         <div class="head_container">
           <div class="box">
               <div class="text left-ainme">
-              <h1>Welcome <span style="color: #806941; font-size: 50px;">{{request.user.username}}</span></h1>
-              <p>
+              <h1>Welcome <br><span style="color: #806941; font-size: 50px; margin-left: 70px;">{{request.user.username}}</span></h1>
+              <p style="margin-top: 25px;">
                   Stay in our stylish hotel in an enviable city center location in Riyadh. Our hotel is Riyadh’s unique design is inspired by local architecture, mixed with modern interior design. Choose from 192 rooms with different views and state-of-the-art facilities convenient for business and leisure travelers. Our rooms are also equipped with free Wi-Fi and coffee and tea provisions. 
               </p>
               <button><a href="{% url 'main_app:about' %}" style="color: #fff;">Read More</a></button>
@@ -35,6 +35,7 @@
 
     <!-- Services section -->
     <section class="room top" id="room">
+      {% if request.user.is_authenticated %}
         <div class="container">
           <div class="heading_top flex1">
             <div class="heading top-anime">
@@ -72,6 +73,7 @@
             <!-- end box -->
           </div>
         </div>
+        {% endif %}
     </section>
 
     <!-- facilities sections -->
@@ -206,6 +208,7 @@
     <!-- End Of facilities sections -->
 
     <!-- Visit Saudi sections -->
+    {% if request.user.is_authenticated %}
     <section class="wrapper-f top">
       <div class="container" >
         <div class="heading_top flex1 marg-t">
@@ -225,5 +228,6 @@
         </div>
       </div>
     </section> 
+    {% endif %}
     <!--End Of Visit Saudi sections -->
 {% endblock %}

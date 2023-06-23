@@ -62,10 +62,10 @@
                     <th>Order type </th>
                     <th>Room Number </th>
                     <th>Order quantity</th>
-                    <th>is delivered</th>
-                    <th>update</th>
+                    <th>Status</th>
+                    <th>Update</th>
                     <th>Order Time </th>
-                    <th>Price </th>
+                    <th>Price for each </th>
                 </tr>
                 <!-- contant of table -->
                                {% for order in user_requests %}
@@ -89,7 +89,7 @@
                         </div>
                         <td>{{order.date_time}}</td>
                     </td>
-                        <td><p class="total-price" style="margin-top: 1px;">Price for each: <span id="total_price">{{order.sub_service.price}}</span> $</p></td>
+                        <td><p class="total-price" style="margin-top: 1px;"><span id="total_price">{{order.sub_service.price}}</span> $</p></td>
                     </tr>
                 {% endfor %}
             </table>

@@ -12,6 +12,8 @@ class Room(models.Model):
     room_number = models.IntegerField()  # the number of the room
     is_available = models.BooleanField(
         default=True)  # the room is available or not
+    def __str__(self):
+        return f"{self.room_number}"
 
 
 # Create guest model
