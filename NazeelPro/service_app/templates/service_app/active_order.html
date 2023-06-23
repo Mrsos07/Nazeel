@@ -36,7 +36,7 @@
                         <a href="{% url 'service_app:manager_services' %}" >Maneger page</a>
                     </div>
                         <div class="order-btn">
-                            <a href="#" >Active Order</a>
+                            <a href="" >Active Order</a>
                         </div>
                     </div>
                 </div>
@@ -75,20 +75,21 @@
                         <td>{{order.room.room_number}}</td>
                         <td>{{order.quantity}}</td>
                          <td>{{order.is_delivered}}</td>
-         		<td>{{order.date_time}}</td>
-                         <td> <div class="menu-price">
+                         <td> <div class="menu-price" style="display: flex; align-items: center;">
                             <form action="{% url 'service_app:update_request' order.id %}" method="post">
                             {% csrf_token %}
                             <select name="is_delivered" id="quantity_{{ sub.id }}" class="form-select" >
-                                <option value="new_request" selected>new_request</option>
-                                <option value="in_progress">in_progress</option>
+                                <option value="new_request" selected>new order</option>
+                                <option value="in_progress">in progress</option>
                                 <option value="delivered">delivered</option>
                                 <option value="refuesed">refuesed</option>
                             </select>
-                            <input type="submit" value="save" />
+                            <button type="submit" class="btn1" style="padding: 10px 20px;">Save</button>
                             </form>
-                        </div></td>
-                        <td><p class="total-price" style="margin-top: 1px;">Total Price: <span id="total_price">{{order.sub_service.price}}</span> $</p></td>
+                        </div>
+                        <td>{{order.date_time}}</td>
+                    </td>
+                        <td><p class="total-price" style="margin-top: 1px;">Price for each: <span id="total_price">{{order.sub_service.price}}</span> $</p></td>
                     </tr>
                 {% endfor %}
             </table>
