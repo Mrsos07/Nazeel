@@ -32,7 +32,7 @@
         <div class="heading_top flex1 marg-t" style="margin-top: 400px;">
             <div class="heading top-anime">
             <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
-            <h2>my orders</h2>
+            <h2>My Orders</h2>
             </div>
         </div>
         <div class="history-detail bottom-anime">
@@ -44,9 +44,9 @@
                     <th>Name service </th>
                     <th>Room Number </th>
                     <th>Order quantity</th>
-                    <th>is delivered</th>
+                    <th>Status</th>
                     <th>Order Time </th>
-                    <th>Price </th>
+                    <th>Price for each </th>
 
                 </tr>
                 <!-- contant of table -->
@@ -59,7 +59,7 @@
                         <td>{{order.date_time}}</td>
                         
                         
-                        <td><p class="total-price" style="margin-top: 1px;">Price for each: <span id="total_price">{{order.sub_service.price}}</span> $</p></td>
+                        <td><p class="total-price" style="margin-top: 1px;"><span id="total_price">{{order.sub_service.price}}</span> $</p></td>
                     </tr>
                 {% endfor %}
 

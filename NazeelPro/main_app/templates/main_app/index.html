@@ -49,11 +49,15 @@
             {% if request.user.is_authenticated %}
               <ul class="nav-menu">
                 <li> <a href="{% url 'main_app:home' %}" class="nav-link">Home</a> </li>
+                {% if not request.user.is_staff %}
                 <li> <a href="{% url 'service_app:service' %}" class="nav-link">Services</a> </li>
+                {% endif %}
                 {% if request.user.is_staff %}
                   <li> <a href="{% url 'service_app:manager_services' %}" class="nav-link">Manger</a> </li>
                 {% endif %}
+                {% if not request.user.is_staff %}
                 <li> <a href="{% url 'main_app:history' %}" class="nav-link">My Order</a> </li>
+                {% endif %}
                 <li> <a href="{% url 'main_app:about' %}" class="nav-link">About</a> </li>
                 <li> <a href="{% url 'main_app:maps' %}" class="nav-link">Hotel Guide</a> </li>
               </ul>
@@ -64,6 +68,14 @@
               <span class="bar"></span>
               <span class="bar"></span>
             </div>
+
+            {% if not request.user.is_authenticated %}
+            <ul class="nav-menu">
+              <li> <a href="{% url 'main_app:home' %}" class="nav-link">Home</a> </li>
+              <li> <a href="{% url 'main_app:about' %}" class="nav-link">About</a> </li>
+              <li> <a href="{% url 'main_app:maps' %}" class="nav-link">Hotel Guide</a> </li>
+            </ul>
+            {% endif %}
 
             <!-- user bar -->
             {% if request.user.is_authenticated %}
@@ -157,18 +169,25 @@
     
           <!-- footer links -->
           <div class="box">
-            <h3>Sit map</h3>
+            <h3>Site Map</h3>
             {% if request.user.is_authenticated %}
             <ul>
               <a href="{% url 'main_app:home' %}"  style="color: #000;"><li>Home</li></a>
+              {% if not request.user.is_staff %}
               <a href="{% url 'service_app:service' %}"  style="color: #000;"><li>Services</li></a>
               <a href="{% url 'main_app:history' %}"  style="color: #000;"><li>My Order</li></a>
+              {% endif %}
+              {% if request.user.is_staff %}
+                <a href="{% url 'service_app:manager_services' %}" style="color: #000;"><li>Manger</li></a>
+              {% endif %}
               <a href="{% url 'main_app:about' %}"  style="color: #000;"><li>About</li></a>
               <a href="{% url 'main_app:maps' %}"  style="color: #000;"><li>Hotel Guide</li></a>
             </ul>
             {% else %}
               <ul>
+                <a href="{% url 'main_app:home' %}"  style="color: #000;"><li>Home</li></a>
                 <a href="{% url 'main_app:about' %}"  style="color: #000;"><li>About</li></a>
+                <a href="{% url 'main_app:maps' %}"  style="color: #000;"><li>Hotel Guide</li></a>
                 <a href="{% url 'guest_app:sign_in' %}"  style="color: #000;"><li>Log in</li></a>
               </ul>
             {% endif %}
@@ -180,8 +199,8 @@
             <h3>Social Media</h3>
             <ul>
               <a href="https://www.snapchat.com/add/tuwaiqacademy" target="_blank" style="color: black;"><li><i class="fa-brands fa-snapchat fa-xl"></i>  Snapchat</li></a>
-              <a href="https://www.youtube.com/channel/UC_pOwgeaVK7bg3z7fJB5N8w" target="_blank" style="color: black;"><li><i class="fa-brands fa-instagram fa-xl"></i>  instagram</li></a>
-              <a href="https://twitter.com/TuwaiqAcademy" target="_blank" style="color: black;"><li><i class="fa-brands fa-twitter fa-xl"></i>  twitter</li></a>
+              <a href="https://www.youtube.com/channel/UC_pOwgeaVK7bg3z7fJB5N8w" target="_blank" style="color: black;"><li><i class="fa-brands fa-instagram fa-xl"></i>  Instagram</li></a>
+              <a href="https://twitter.com/TuwaiqAcademy" target="_blank" style="color: black;"><li><i class="fa-brands fa-twitter fa-xl"></i>  Twitter</li></a>
             </ul>
           </div>
         </div>
