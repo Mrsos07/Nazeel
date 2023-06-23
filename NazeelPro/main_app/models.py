@@ -11,4 +11,4 @@ class Hotel(models.Model):
 
     def __str__(self):
         """String for representing the Model object"""
-        return self.name
+        return str(f"{self.name},{ self.city}")
